@@ -6,28 +6,31 @@ class Router2
 {
 
     protected $routes = [];
-    //$routes = ['^posts$/i' => ['controller' => 'Posts', 'action' => 'index']];
+    // protected $routes = [
+    //     "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i" => ['namespace' => 'Admin']
+    // ];
 
     protected $params = [];
-    // $params = ['controller' => 'Posts', 'action' => 'index'];
+    // $params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
 
-    // $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
+    // $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
     public function add($route, $params = []): void
     {
         $route = preg_replace('/\//', '\\/', $route);
-        // $route = 'posts';
+        // $route = "admin\/{controller}\/{action}";
 
         $route = preg_replace('/\{([a-z-]+)\}/', '(?P<\1>[a-z-]+)', $route);
-        // $route = 'posts';
+        // $route = "admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)";
 
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
-        // $route = 'posts';
+        // $route = "admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)";
 
         $route = '/^' . $route . '$/i';
-        // $route = '/^posts$/i';
+        // $route = "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i";
 
         $this->routes[$route] = $params;
-        // $this->routes['^posts$/i'] = ['controller' => 'Posts', 'action' => 'index'];
+        // $this->routes["/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i"] =
+        //                                                      ['namespace' => 'Admin'];
     }
 
     public function getRoutes()
@@ -35,29 +38,41 @@ class Router2
         return $this->routes;
     }
 
-    // $url = "posts";
+    // $url = "admin/users/action";
     public function match($url): bool
     {
-        // $this->routes = [
-        //     '^posts$/i' => ['controller' => 'Posts', 'action' => 'index']
+        // $this->routes=[
+        //     "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i" =>
+        //     ['namespace' => 'Admin']
         // ];
+
+        // $route = "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i";
+        // $params = ['namespace' => 'Admin'];
         foreach ($this->routes as $route => $params) {
-            // $route= '^posts$/i';
-            // $params = ['controller' => 'Posts', 'action' => 'index'];
 
             if (preg_match($route, $url, $matches)) {
-                // preg_match('^posts$/i', 'posts', $matches);
-                // $matches=[0 => "posts"];
+                // preg_match("/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i",
+                //            "admin/users/action",
+                //             $matches);
+
+                // $matches = [
+                //     0 => "admin/users/index",
+                //     "controller" => "users",
+                //     1 => "users",
+                //     "action" => "index",
+                //     2 => "index"
+                // ];
 
                 foreach ($matches as $key => $match) {
-                    // foreach([0 => "posts"] as 0 => "posts")
                     if (is_string($key)) {
                         $params[$key] = $match;
+                        // $params["controller"] = "users";
+                        // $params["action"] = "index";
                     }
                 }
 
                 $this->params = $params;
-                // $this->params = ['controller' => 'Posts', 'action' => 'index'];
+                // $this->params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
 
                 return true;
             }
@@ -71,37 +86,39 @@ class Router2
         return $this->params;
     }
 
-    // $url = "posts";
+    // admin/controller/action
     public function dispatch($url): void
     {
         $url = $this->removeQueryStringVariables($url);
 
         if ($this->match($url)) {
+            // $this->params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
+
             $controller = $this->params['controller'];
-            //$controller = "Posts";
+            // $controller = "users";
 
             $controller = $this->convertToStudlyCaps($controller);
-            //$controller = "Posts";
+            // $controller = "Users";
 
-            $controller = "App\Controllers\\$controller";
-            // $controller = "App\Controllers\Posts";
+            $controller = $this->getNamespace() . $controller;
+            // $namespace = "App\Controllers\Admin\Users";
+            // $controller = $this->getNamespace()."Users";
 
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
-                // $controller_object = new App\Controllers\Posts(
-                //     ['controller' => 'Posts', 'action' => 'index']
-                // );
+                // $controller_object = new App\Controllers\Admin\Users([
+                //     "namespace" => "Admin",
+                //     "controller" => "users",
+                //     "action" => "index"
+                // ]);
 
                 $action = $this->params['action'];
-                // $action = 'index';
 
                 $action = $this->convertToCamelCase($action);
-                // $action = 'index';
 
                 if (preg_match('/action$/i', $action) == 0) {
+                    $action = $action . "Action";
                     $controller_object->$action();
-                    // App\Controllers\Posts->index();
-
                 } else {
                     throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
                 }
@@ -113,28 +130,23 @@ class Router2
         }
     }
 
-    // $string = "Posts";
     protected function convertToStudlyCaps($string): string
     {
         $string = str_replace('-', ' ', $string);
-        //$string = "Posts";
 
         $string = ucwords($string);
-        //$string = "Posts";
 
         $string = str_replace(' ', '', $string);
 
         return $string;
-        //$string = "Posts";
     }
 
-    // $string = "index";
     protected function convertToCamelCase($string): string
     {
         return lcfirst($this->convertToStudlyCaps($string));
     }
 
-    // $url = "posts";
+    // $url = "admin/controller/action";
     protected function removeQueryStringVariables($url): string
     {
         /*
@@ -149,23 +161,43 @@ class Router2
         localhost/&page=1  posts/index&page=1     
         */
 
-        // $url = "posts";
+        // $url = "admin/users/index";
         if ($url != '') {
             //explode(string $separator, string $string, int $limit = PHP_INT_MAX): array
 
             $parts = explode('&', $url, 2);
-            // $parts = [0 => "posts"];
 
             if (strpos($parts[0], '=') === false) {
-                // $parts[0] = "posts";
                 $url = $parts[0];
-                // $url = "posts";
             } else {
                 $url = '';
             }
         }
 
         return $url;
-        // $url = "posts";
+        // $url="admin/users/index";
+    }
+
+    /**
+     * Get the namespace for the controller class. The namespace defined in the
+     * route parameters is added if present
+     * 
+     * @return string The request URL
+     */
+
+    // $controller = $this->getNamespace()."Users";
+    protected function getNamespace()
+    {
+        $namespace = "App\Controllers\\";
+
+        // $params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
+        if (array_key_exists('namespace', $this->params)) {
+            // $namespace .= $this->params['namespace'] . '\\';
+            $namespace = $namespace . $this->params['namespace'] . '\\';
+            // $namespace = "App\Controllers\\" ."Admin" . '\\';
+            $namespace = "App\Controllers\Admin\\";
+        }
+
+        return $namespace;
     }
 }

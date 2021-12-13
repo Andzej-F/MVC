@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+
 /**
  * Home controller
  * 
@@ -39,6 +41,7 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        // echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        View::render('Home/index.php');
     }
 }

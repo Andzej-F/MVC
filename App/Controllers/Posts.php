@@ -9,12 +9,10 @@ namespace App\Controllers;
  */
 class Posts extends \Core\Controller
 {
-    // protected $route_params = ['controller' => 'Posts', 'action' => 'index'];
-
     /**
      * Before filter
      * 
-     * @return mixed
+     * @return void
      */
     protected function before()
     {
@@ -25,7 +23,7 @@ class Posts extends \Core\Controller
     /**
      * After filter
      * 
-     * @return mixed
+     * @return void
      */
     protected function after()
     {
