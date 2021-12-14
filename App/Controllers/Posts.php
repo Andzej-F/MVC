@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+use \App\Models\Post;
+
 /**
  * Posts controller
  * 
@@ -9,6 +12,12 @@ namespace App\Controllers;
  */
 class Posts extends \Core\Controller
 {
+    //     $this->params = [
+    //     "controller" => "posts",
+    //     "id" => "12",
+    //     "action" => "edit"
+    // ];
+
     /**
      * Before filter
      * 
@@ -40,11 +49,17 @@ class Posts extends \Core\Controller
     {
         $this->before();
 
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-        echo '<p>Query string parameters: <pre>' .
-            htmlspecialchars(print_r($_GET, true)) . '</pre></p>';
-        echo '<p>Route parameters: <pre>' .
-            htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+        // echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        // echo '<p>Query string parameters: <pre>' .
+        //     htmlspecialchars(print_r($_GET, true)) . '</pre></p>';
+        // echo '<p>Route parameters: <pre>' .
+        //     htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+
+        $posts = Post::getAll();
+
+        View::render('Posts/index.php', [
+            'posts' => $posts
+        ]);
 
         $this->after();
     }
@@ -56,9 +71,7 @@ class Posts extends \Core\Controller
      */
     public function addNewAction()
     {
-        if ($this->before() == false) {
-            return;
-        }
+        $this->before();
 
         echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
         echo '<p>Route parameters: <pre>' .
@@ -69,13 +82,15 @@ class Posts extends \Core\Controller
 
     public function editAction()
     {
-        if ($this->before() == false) {
-            return;
-        }
+        $this->before();
 
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-        echo '<p>Route parameters: <pre>' .
-            htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+        // echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        // echo '<p>Route parameters: <pre>' .
+        //     htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+
+        $posts = Post::getAll();
+
+        View::render('Posts/edit.php');
 
         $this->after();
     }

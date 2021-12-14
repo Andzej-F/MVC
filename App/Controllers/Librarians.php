@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+
 /**
  * Librarians controller
  * 
@@ -9,14 +11,46 @@ namespace App\Controllers;
  */
 class Librarians extends \Core\Controller
 {
+    // protected $route_params = [
+    //     "controller" => "librarians",
+    //     "id" => "25",
+    //     "action" => "login",
+    // ];
+
+    /**
+     * Before filter
+     * 
+     * @return void
+     */
+    protected function before()
+    {
+        echo "(before) <br>";
+        // return false
+    }
+
+    /**
+     * After filter
+     * 0
+     * @return void
+     */
+    protected function after()
+    {
+        echo "(after)<br>";
+        // return false
+    }
+
     /**
      * Show the index page
      * 
      * @return void
      */
-    public function index()
+    public function indexAction()
     {
+        $this->before();
+
         echo "Hello from the index action in the Librarians controller";
+
+        $this->after();
     }
 
     /**
@@ -24,9 +58,14 @@ class Librarians extends \Core\Controller
      * 
      * @return void
      */
-    public function login()
+    public function loginAction()
     {
-        echo "Hello from the login action in the Librarians controller!";
+        $this->before();
+
+        // echo "Hello from the login action in the Librarians controller!";
+        View::render('Librarians/login.php');
+
+        $this->after();
     }
 
     /**
@@ -34,8 +73,12 @@ class Librarians extends \Core\Controller
      * 
      * @return void
      */
-    public function logout()
+    public function logoutAction()
     {
+        $this->before();
+
         echo "Hello from the logout action in the Librarians controller";
+
+        $this->after();
     }
 }

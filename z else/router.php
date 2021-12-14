@@ -7,30 +7,33 @@ class Router2
 
     protected $routes = [];
     // protected $routes = [
-    //     "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i" => ['namespace' => 'Admin']
+    //     '/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i' => []
     // ];
 
     protected $params = [];
-    // $params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
+    // $params = [
+    //     "controller" => "librarians",
+    //     "id" => "25",
+    //     "action" => "login",
+    // ];
 
-    // $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
+    // $router->add('{controller}/{id:\d+}/{action}');
     public function add($route, $params = []): void
     {
         $route = preg_replace('/\//', '\\/', $route);
-        // $route = "admin\/{controller}\/{action}";
+        // $route = '{controller}\/{id:\d+}\/{action}';
 
         $route = preg_replace('/\{([a-z-]+)\}/', '(?P<\1>[a-z-]+)', $route);
-        // $route = "admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)";
+        // $route = '(?P<controller>[a-z-]+)\/{id:\d+}\/(?P<action>[a-z-]+)';
 
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
-        // $route = "admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)";
+        // $route = '(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)';
 
         $route = '/^' . $route . '$/i';
-        // $route = "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i";
+        // $route = '/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i';
 
         $this->routes[$route] = $params;
-        // $this->routes["/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i"] =
-        //                                                      ['namespace' => 'Admin'];
+        // $this->routes['/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i'] = [];
     }
 
     public function getRoutes()
@@ -38,41 +41,49 @@ class Router2
         return $this->routes;
     }
 
-    // $url = "admin/users/action";
+    // $url="librarians/25/login";
     public function match($url): bool
     {
-        // $this->routes=[
-        //     "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i" =>
-        //     ['namespace' => 'Admin']
-        // ];
 
-        // $route = "/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i";
-        // $params = ['namespace' => 'Admin'];
         foreach ($this->routes as $route => $params) {
+            // protected $routes = [
+            //     '/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i' => []
+            // ];
+
+            // $route = '/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i';
+            // $params =[];
 
             if (preg_match($route, $url, $matches)) {
-                // preg_match("/^admin\/(?P<controller>[a-z-]+)\/(?P<action>[a-z-]+)$/i",
-                //            "admin/users/action",
-                //             $matches);
+                // preg_match(
+                //     '/^(?P<controller>[a-z-]+)\/(?P<id>\d+)\/(?P<action>[a-z-]+)$/i',
+                //     'librarians/25/login',
+                //     $matches
+                // );
 
                 // $matches = [
-                //     0 => "admin/users/index",
-                //     "controller" => "users",
-                //     1 => "users",
-                //     "action" => "index",
-                //     2 => "index"
+                //     0 => 'librarians/25/login',
+                //     'controller' => 'librarians',
+                //     1 => 'librarians',
+                //     'id' => 25,
+                //     2 => 25,
+                //     'action' => 'login',
+                //     3 => 'login'
                 // ];
-
                 foreach ($matches as $key => $match) {
                     if (is_string($key)) {
                         $params[$key] = $match;
-                        // $params["controller"] = "users";
-                        // $params["action"] = "index";
+                        // $params["controller"] = "librarians";
+                        // $params["id"] = "25";
+                        // $params["action"] = "login";
                     }
                 }
 
                 $this->params = $params;
-                // $this->params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
+                // $this->params = [
+                //     "controller" => "librarians",
+                //     "id" => "25",
+                //     "action" => "login",
+                // ];
 
                 return true;
             }
@@ -86,39 +97,44 @@ class Router2
         return $this->params;
     }
 
-    // admin/controller/action
+    // $url="librarians/25/login&getinfo=true";
     public function dispatch($url): void
     {
         $url = $this->removeQueryStringVariables($url);
+        // $url="librarians/25/login";
 
         if ($this->match($url)) {
-            // $this->params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
 
             $controller = $this->params['controller'];
-            // $controller = "users";
+            // $controller = 'librarians'; 
 
             $controller = $this->convertToStudlyCaps($controller);
-            // $controller = "Users";
+            // $controller = 'Librarians'; 
 
             $controller = $this->getNamespace() . $controller;
-            // $namespace = "App\Controllers\Admin\Users";
-            // $controller = $this->getNamespace()."Users";
+            // $namespace = "App\Controllers\\";
+            // $controller = "App\Controllers\Librarians;
 
             if (class_exists($controller)) {
                 $controller_object = new $controller($this->params);
-                // $controller_object = new App\Controllers\Admin\Users([
-                //     "namespace" => "Admin",
-                //     "controller" => "users",
-                //     "action" => "index"
+                // $controller_object = new App\Controllers\Librarians($params = [
+                //     "controller" => "librarians",
+                //     "id" => "25",
+                //     "action" => "login",
                 // ]);
 
                 $action = $this->params['action'];
+                // $action = 'login';
 
                 $action = $this->convertToCamelCase($action);
+                // $action = 'login';
 
                 if (preg_match('/action$/i', $action) == 0) {
                     $action = $action . "Action";
+                    // $action = 'loginAction';
+
                     $controller_object->$action();
+                    // $controller_object->$loginAction();
                 } else {
                     throw new \Exception("Method $action in controller $controller cannot be called directly - remove the Action suffix to call this method");
                 }
@@ -146,7 +162,6 @@ class Router2
         return lcfirst($this->convertToStudlyCaps($string));
     }
 
-    // $url = "admin/controller/action";
     protected function removeQueryStringVariables($url): string
     {
         /*
@@ -161,40 +176,42 @@ class Router2
         localhost/&page=1  posts/index&page=1     
         */
 
-        // $url = "admin/users/index";
+        // $url="librarians/25/login&getinfo=true";
         if ($url != '') {
             //explode(string $separator, string $string, int $limit = PHP_INT_MAX): array
 
             $parts = explode('&', $url, 2);
+            // $parts = [
+            // 0 => "librarians/25/login",
+            // 1 => "getinfo=true"
+            // ];
 
             if (strpos($parts[0], '=') === false) {
+                // $parts[0] = "librarians/25/login";
+
                 $url = $parts[0];
+                //$url="librarians/25/login";
             } else {
                 $url = '';
             }
         }
 
         return $url;
-        // $url="admin/users/index";
+        // $url="librarians/25/login";
     }
 
-    /**
-     * Get the namespace for the controller class. The namespace defined in the
-     * route parameters is added if present
-     * 
-     * @return string The request URL
-     */
-
-    // $controller = $this->getNamespace()."Users";
     protected function getNamespace()
     {
         $namespace = "App\Controllers\\";
+        // $params = [
+        //     "controller" => "librarians",
+        //     "id" => "25",
+        //     "action" => "login",
+        // ];
 
-        // $params = ["namespace" => "Admin", "controller" => "users", "action" => "index"];
         if (array_key_exists('namespace', $this->params)) {
-            // $namespace .= $this->params['namespace'] . '\\';
             $namespace = $namespace . $this->params['namespace'] . '\\';
-            // $namespace = "App\Controllers\\" ."Admin" . '\\';
+
             $namespace = "App\Controllers\Admin\\";
         }
 

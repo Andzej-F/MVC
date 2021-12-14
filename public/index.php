@@ -7,6 +7,11 @@
  */
 
 /**
+ * Twig
+ */
+// require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+/**
  * Autoloader
  */
 spl_autoload_register('myAutoloader', true, false);
@@ -30,12 +35,8 @@ $router = new Core\Router();
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
-// $router->add('posts/new', ['controller' => 'Posts', 'action' => 'new']);
-// $router->add('users', ['controller' => 'Users', 'action' => 'index']);
-
+$router->add('{controller}/{id:\d+}/{action}');
 $router->add('{controller}/{action}');
-// $router->add('{controller}/{id:\d+}/{action}');
-// $router->add('admin/{action}/{controller}');
 
 /*
 // Display the routing table

@@ -42,6 +42,9 @@ class Home extends \Core\Controller
     public function indexAction()
     {
         // echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-        View::render('Home/index.php');
+        View::render('Home/index.php', [
+            'name' => 'Dave',
+            'colours' => ['red', 'green', 'blue']
+        ]);
     }
 }
