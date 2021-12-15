@@ -10,15 +10,40 @@ namespace App\Controllers;
 class Authors extends \Core\Controller
 {
     /**
+     * Before filter
+     * 
+     * @return void
+     */
+    protected function before()
+    {
+        echo "(before)";
+        // return true;
+    }
+
+    /**
+     * After filter
+     * 
+     * @return void
+     */
+    protected function after()
+    {
+        echo "(after)";
+        // return true;
+    }
+    /**
      * Show the index page
      * 
      * @return void
      */
-    public function index()
+    public function indexAction()
     {
+        $this->before();
+
         echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
         echo '<p>Route parameters: <pre>' .
             htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
+
+        $this->after();
     }
 
     /**

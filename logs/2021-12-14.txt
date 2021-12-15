@@ -1,0 +1,91 @@
+[14-Dec-2021 16:18:02 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:18:02 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method Core\View::renderTemplate() in C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php:74
+Stack trace:
+#0 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#1 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php on line 74
+[14-Dec-2021 16:18:21 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:18:24 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:18:37 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:18:49 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:18:51 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:30:11 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched.'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:30:11 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method Core\View::renderTemplate() in C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php:74
+Stack trace:
+#0 [internal function]: Core\Error::exceptionHandler(Object(Exception))
+#1 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php on line 74
+[14-Dec-2021 16:30:22 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched.'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 192
+=======================================================
+
+
+[14-Dec-2021 16:30:38 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Controller class App\Controllers\Products not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(72): Core\Router->dispatch('products/neee')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 188
+=======================================================
+
+

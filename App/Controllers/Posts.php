@@ -90,7 +90,9 @@ class Posts extends \Core\Controller
 
         $posts = Post::getAll();
 
-        View::render('Posts/edit.php');
+        View::render('Posts/edit.php', [
+            'posts' => $posts
+        ]);
 
         $this->after();
     }

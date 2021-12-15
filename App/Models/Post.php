@@ -21,12 +21,43 @@ class Post extends \Core\Model
 
         try {
             $db = static::getDB();
+            //    $db=PDO Object
+            // (
+            // )
 
             $stmt = $db->query('SELECT id, title, content FROM posts
                                 ORDER BY created_at');
+            // $stmt=PDOStatement Object
+            // (
+            //     [queryString] => SELECT id, title, content FROM posts
+            //                                 ORDER BY created_at
+            // )
 
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // $results= Array
+            // (
+            //     [0] => Array
+            //         (
+            //             [id] => 1
+            //             [title] => First post
+            //             [content] => This is a really interesting post.
+            //         )
 
+            //     [1] => Array
+            //         (
+            //             [id] => 2
+            //             [title] => Second post
+            //             [content] => This is a fascinating post.
+            //         )
+
+            //     [2] => Array
+            //         (
+            //             [id] => 3
+            //             [title] => Third post
+            //             [content] => This is a very informative post.
+            //         )
+
+            // )
             return $results;
         } catch (PDOException $e) {
             echo $e->getMessage();
