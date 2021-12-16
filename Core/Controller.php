@@ -47,14 +47,14 @@ abstract class Controller
     // }
 
     /**
-     * Before filter - called before an action method.
+     * Before filter
      * 
      * @return void
      */
     abstract protected function before();
 
     /**
-     * After filter - called after an action method.
+     * After filter
      * 
      * @return void
      */
