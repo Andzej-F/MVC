@@ -31,10 +31,20 @@ abstract class Model
 
             $db = new PDO($dsn, Config::DB_USER, Config::DB_PASSWORD);
             //$db=object(PDO)#3 (0) {}
+            // echo '<pre>';
+            // echo "printing in <br>" . __FILE__;
+            // print_r($db);
+            // var_dump($db);
+            // echo '</pre>';
 
             // Throw an exception when an error occurs
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
+        // echo '<pre>';
+        // echo "printing in <br>" . __FILE__;
+        // print_r($db);
+        // var_dump($db);
+        // echo '</pre>';
 
         return $db;
     }

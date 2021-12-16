@@ -12,10 +12,10 @@
 </head>
 
 <body>
-    <a href=" ">Home</a>
-    <a href="posts">Posts</a>
+    <a href="http://localhost/PHP/Other/MVC/public/">Home</a>
+    <a href="http://localhost/PHP/Other/MVC/public/posts">Posts</a>
     <a href="">Authors</a>
     <a href="">Books</a>
     <a href="">Login</a>
-    <a href="">Sign Up</a>
+    <a href="http://localhost/PHP/Other/MVC/public/signup/new">Sign Up</a>
     <a href="">About</a>

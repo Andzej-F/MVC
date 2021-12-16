@@ -23,19 +23,13 @@ class View
     // 'colours' => ['red', 'green', 'blue']
     // ]);;
 
-    // $view ="Home/index.php";
+    // $view ="Signup/new.php";
     public static function render($view, $args = [])
     {
         extract($args, EXTR_SKIP);
-        // $name = 'Dave';
-        // $colours = [
-        //     0 => "red",
-        //     1 => "green",
-        //     2 => "blue"
-        // ];
 
         $file = "../App/Views/$view"; // Relative to Core directory
-        // $file = "../App/Views/Home/index.php";
+        // $file="../App/Views/Signup/new.php";
 
         if (is_readable($file)) {
             require $file;
