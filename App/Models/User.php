@@ -25,25 +25,11 @@ class User extends \Core\Model
      * 
      * @return void
      */
-    //     $user->name => "Dave";
-    //     $user->email => "dave@example.com";
-    //     $user->password => "secret";
-    //     $user->password_confirmation => "secret";
 
-    // $data = [
-    //     "name" => "Dave",
-    //     "email" => "dave@example.com",
-    //     "password" => "secret",
-    //     "password_confirmation" => "secret"
-    // ];
-    public function __construct($data)
+    public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
             $this->$key = $value;
-            // $this->name = 'Dave';
-            // $this->email = 'dave@example.com';
-            // $this->password = 'secret';
-            // $this->password_confirmation = 'secret';
         }
     }
 
@@ -124,7 +110,19 @@ class User extends \Core\Model
      * @return boolean True if a record already exists with the specified email,
      * false otherwise
      */
-    public function emailExists($email)
+    public static function emailExists($email)
+    {
+        return static::findByEmail($email) !== false;
+    }
+
+    /**
+     * Find a user model by email address
+     * 
+     * @param string $email email address to search for
+     * 
+     * @return mixed User object if found, false otherwise
+     */
+    public static function findByEmail($email)
     {
         $sql = 'SELECT * FROM `users` WHERE email = :email';
 
@@ -132,13 +130,18 @@ class User extends \Core\Model
 
         $stmt = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
         $stmt->execute();
 
-        $result = $stmt->fetch();
+        return $stmt->fetch();
+    }
 
-        return $stmt->fetch() !== false;
+    public static function authenticate($email, $password)
+    {
     }
 }
 

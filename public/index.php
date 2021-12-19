@@ -43,6 +43,7 @@ $router = new Core\Router();
 // Add the routes
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('posts', ['controller' => 'Posts', 'action' => 'index']);
+$router->add('login', ['controller' => 'Login', 'action' => 'new']);
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('{controller}/{action}');

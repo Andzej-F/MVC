@@ -51,19 +51,9 @@ class Signup extends \Core\Controller
      */
     public function createAction()
     {
-        // echo '<pre>';
-        // var_dump($_POST);
-        // print_r($_POST);
-        // echo '</pre>';
         // Automatically will execute the class constructor
 
         $user = new User($_POST);
-        // $user = new User([
-        //     "name" => "Dave",
-        //     "email" => "dave@example.com",
-        //     "password" => "secret",
-        //     "password_confirmation" => "secret"
-        // ]);
 
         if ($user->save()) {
 

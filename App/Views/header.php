@@ -16,6 +16,6 @@
     <a href="http://localhost/PHP/Other/MVC/public/posts">Posts</a>
     <a href="">Authors</a>
     <a href="">Books</a>
-    <a href="">Login</a>
+    <a href="http://localhost/PHP/Other/MVC/public/login">Login</a>
     <a href="http://localhost/PHP/Other/MVC/public/signup/new">Sign Up</a>
     <a href="">About</a>
