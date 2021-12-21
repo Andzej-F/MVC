@@ -6,7 +6,7 @@
 
     <div>
         <label for="inputEmail">Email address</label>
-        <input id="inputEmail" name="email" placeholder="email address" autofocus value=<?= isset($user->email) ? htmlspecialchars($user->email) : ''; ?>>
+        <input id="inputEmail" name="email" placeholder="email address" autofocus value=<?= isset($email) ? htmlspecialchars($email) : ''; ?>>
     </div>
 
     <div>
@@ -14,7 +14,7 @@
         <input type="password" id="inputPassword" name="password" placeholder="Password">
     </div>
 
-    <button type="submit">Sign up</button>
+    <button type="submit">Log in</button>
 
 </form>
 

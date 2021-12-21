@@ -2,8 +2,6 @@
 
 session_start();
 
-$_SESSION['user'] = 'Dave';
-
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +18,9 @@ $_SESSION['user'] = 'Dave';
 
     <h1>PHP Session Demo</h1>
 
-    <p>Name saved to session.</p>
+    <p>Current session ID: <?= session_id(); ?></p>
+
+    <a href="http://localhost/PHP/Other/MVC/z%20else/destroy.php">Destroy</a>
 
 </body>
 

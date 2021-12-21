@@ -18,18 +18,11 @@ class View
      * 
      * @return void
      */
-    //         View::render('Home/index.php', [
-    // 'name' => 'Dave',
-    // 'colours' => ['red', 'green', 'blue']
-    // ]);;
-
-    // $view ="Signup/new.php";
     public static function render($view, $args = [])
     {
         extract($args, EXTR_SKIP);
 
         $file = "../App/Views/$view"; // Relative to Core directory
-        // $file="../App/Views/Signup/new.php";
 
         if (is_readable($file)) {
             require $file;

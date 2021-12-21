@@ -57,6 +57,7 @@ class User extends \Core\Model
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
 
+            // Returns true on success or false on failure.
             return $stmt->execute();
         }
 
@@ -140,13 +141,24 @@ class User extends \Core\Model
         return $stmt->fetch();
     }
 
+    /**
+     * Authenticate a user by email and password
+     * 
+     * @param string $email email address
+     * @param string $password password
+     * 
+     * @return mixed The user object or false if authentication fails
+     */
     public static function authenticate($email, $password)
     {
+        $user = static::findByEmail($email);
+
+        if ($user) {
+            if (password_verify($password, $user->password_hash)) {
+                return $user;
+            }
+        }
+
+        return false;
     }
 }
-
-// echo '<pre>';
-// echo "printing in <br>" . __FILE__, __LINE__ . '<br>';
-// print_r($db);
-// var_dump($db);
-// echo '</pre>';
