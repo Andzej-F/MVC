@@ -2,7 +2,9 @@
 
 <h1>Welcome</h1>
 
-<?php if (isset($_SESSION['user_id'])) : ?>
+<?php //if (isset($_SESSION['user_id'])) : 
+?>
+<?php if ($is_logged_in) : ?>
     User with ID <?= $_SESSION['user_id']; ?> is logged in.
     <a href="http://localhost/PHP/Other/MVC/public/login/destroy">Log out</a>
 <?php else : ?>

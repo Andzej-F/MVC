@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use \App\Auth;
+
 /**
  * Base controller
  *
@@ -46,31 +48,48 @@ abstract class Controller
     //     }
     // }
 
-    /**
-     * Before filter
-     * 
-     * @return void
-     */
-    abstract protected function before();
+    // /**
+    //  * Before filter
+    //  * 
+    //  * @return void
+    //  */
+    // abstract protected function before();
 
-    /**
-     * After filter
-     * 
-     * @return void
-     */
+    // /**
+    //  * After filter
+    //  * 
+    //  * @return void
+    //  */
 
-    abstract protected function after();
+    // abstract protected function after();
 
-    /**
-     * Redirect to a different page
-     * 
-     * @param string $url The relative URL
-     * 
-     * @return void
-     */
+    // /** 
+    //  * Redirect to a different page
+    //  * 
+    //  * @param string $url The relative URL
+    //  * 
+    //  * @return void
+    //  */
     public function redirect($url)
     {
-        header('Location: http://localhost/PHP/Other/MVC/public' . $url, true, 303);
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/PHP/Other/MVC/public' . $url, true, 303);
         exit;
+    }
+
+    /**
+     * Require the user to be logged in before giving access to the requested page.
+     * Remember the requested page for later, then redirect to the login page.
+     * 
+     * @return void
+     */
+    public function requireLogin()
+    {
+        if (!Auth::isLoggedIn()) {
+            // exit("access denied");
+
+            Auth::rememberRequestedPage();
+
+            $this->redirect('/login');
+        }
     }
 }

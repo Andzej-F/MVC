@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use App\Auth;
+
 /**
  * View 
  * 
@@ -23,6 +25,8 @@ class View
         extract($args, EXTR_SKIP);
 
         $file = "../App/Views/$view"; // Relative to Core directory
+
+        $is_logged_in = Auth::isLoggedIn();
 
         if (is_readable($file)) {
             require $file;
