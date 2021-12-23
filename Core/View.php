@@ -2,8 +2,6 @@
 
 namespace Core;
 
-use App\Auth;
-
 /**
  * View 
  * 
@@ -26,7 +24,9 @@ class View
 
         $file = "../App/Views/$view"; // Relative to Core directory
 
-        $is_logged_in = Auth::isLoggedIn();
+        // $is_logged_in = Auth::isLoggedIn();
+        $current_user = \App\Auth::getUser();
+        $flash_messages = \App\Flash::getMessages();
 
         if (is_readable($file)) {
             require $file;

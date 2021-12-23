@@ -19,3 +19,12 @@
     <a href="http://localhost/PHP/Other/MVC/public/login">Login</a>
     <a href="http://localhost/PHP/Other/MVC/public/signup/new">Sign Up</a>
     <a href="">About</a>
+
+    <?php
+    if (isset($flash_messages)) :
+        foreach ($flash_messages as $message) : ?>
+            <div>
+                <?= htmlspecialchars($message); ?>
+            </div>
+    <?php endforeach;
+    endif; ?>

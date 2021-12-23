@@ -2,6 +2,8 @@
 
 namespace App;
 
+use \App\Models\User;
+
 /**
  * Authentication
  * 
@@ -53,16 +55,6 @@ class Auth
     }
 
     /**
-     * Return indicator of whether a user is logged in or not
-     * 
-     * @return boolean
-     */
-    public static function isLoggedIn()
-    {
-        return isset($_SESSION['user_id']);
-    }
-
-    /**
      * Remember the originally-requested page in the session
      * 
      * @return void
@@ -86,7 +78,7 @@ class Auth
     /**
      * Get the current logged-in user, from the session or the remember-me cookie
      * 
-     * @return mixed The user model or null if not logged in
+     * @return mixed The user model(object) or null if not logged in
      */
     public static function getUser()
     {

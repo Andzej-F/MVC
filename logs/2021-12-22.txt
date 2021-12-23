@@ -1,0 +1,323 @@
+[22-Dec-2021 10:39:04 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "App\User" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(47): App\Auth::getUser()
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Auth.php' on line 95
+=======================================================
+
+
+[22-Dec-2021 10:40:17 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "App\User" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(48): App\Auth::getUser()
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Auth.php' on line 95
+=======================================================
+
+
+[22-Dec-2021 13:14:41 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$name'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(76): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 76)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(43): App\Models\User->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Signup.php(57): App\Models\User->save()
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Signup->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('signup/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 76
+=======================================================
+
+
+[22-Dec-2021 13:38:37 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Items::loginAction()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('items/login')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 124
+=======================================================
+
+
+[22-Dec-2021 23:29:09 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 29
+=======================================================
+
+
+[22-Dec-2021 23:29:09 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:29
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 29
+[22-Dec-2021 23:29:12 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 29
+=======================================================
+
+
+[22-Dec-2021 23:29:12 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:29
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 29
+[22-Dec-2021 23:29:22 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "Core\App\Auth" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 28
+=======================================================
+
+
+[22-Dec-2021 23:29:22 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Class "Core\App\Auth" not found in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:28
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 28
+[22-Dec-2021 23:29:30 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:29:30 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:29:48 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:29:48 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:30:00 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "Core\Auth" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 30
+=======================================================
+
+
+[22-Dec-2021 23:30:00 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Class "Core\Auth" not found in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:30
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 30
+[22-Dec-2021 23:30:10 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php(42): Core\View::render('Login/new.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->newAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:30:10 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:30:19 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:30:19 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:30:21 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:30:21 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:31:09 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 29
+=======================================================
+
+
+[22-Dec-2021 23:31:09 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:29
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 29
+[22-Dec-2021 23:31:16 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "Core\App\Auth" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 28
+=======================================================
+
+
+[22-Dec-2021 23:31:16 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Class "Core\App\Auth" not found in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:28
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 28
+[22-Dec-2021 23:31:21 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "Core\App\Auth" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 29
+=======================================================
+
+
+[22-Dec-2021 23:31:21 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Class "Core\App\Auth" not found in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:29
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 29
+[22-Dec-2021 23:31:29 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 29
+=======================================================
+
+
+[22-Dec-2021 23:31:29 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:29
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 29
+[22-Dec-2021 23:31:50 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:31:50 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:31:57 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Auth::getMessages()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\View.php' on line 31
+=======================================================
+
+
+[22-Dec-2021 23:31:57 Europe/Vilnius] PHP Fatal error:  Uncaught Error: Call to undefined method App\Auth::getMessages() in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php:31
+Stack trace:
+#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Error.php(66): Core\View::render('500.php')
+#1 [internal function]: Core\Error::exceptionHandler(Object(Error))
+#2 {main}
+  thrown in C:\xampp\htdocs\PHP\Other\MVC\Core\View.php on line 31
+[22-Dec-2021 23:32:22 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'foreach() argument must be of type array|object, null given'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\header.php(23): Core\Error::errorHandler(2, 'foreach() argum...', 'C:\\xampp\\htdocs...', 23)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Home\index.php(1): include_once('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(32): require('C:\\xampp\\htdocs...')
+#3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
+#4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
+#5 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('')
+#6 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\header.php' on line 23
+=======================================================
+
+
+[22-Dec-2021 23:43:05 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Class "App\Controllers\Flash" not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Login->createAction()
+#1 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('login/create')
+#2 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Login.php' on line 58
+=======================================================
+
+
