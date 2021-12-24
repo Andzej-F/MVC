@@ -1,6 +1,15 @@
 <?php
+$var = NULL;
+if (!$var) {
+    echo 'Not null';
+}
 
-echo $_SERVER['REQUEST_URI'] . '<br>'; // /PHP/Other/MVC/z%20else/example.php
-echo $_SERVER['SERVER_NAME'] . '<br>'; // 
-echo $_SERVER['HTTP_HOST'] . '<br>'; // localhost
-echo 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+class Example2
+{
+}
+echo '<hr>';
+$example2 = new Example2();
+
+if ($example2) {
+    echo 'There is an object';
+}

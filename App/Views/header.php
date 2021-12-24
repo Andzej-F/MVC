@@ -6,8 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MVC</title>
-
-    <!-- <link rel="stylesheet" href="/PHP/Bandymai/library_mirage/public/css/style.css" type="text/css"> -->
+    <link rel="stylesheet" href="http://localhost/PHP/Other/MVC/public/css/style.css" type="text/css">
 
 </head>
 
@@ -23,8 +22,8 @@
     <?php
     if (isset($flash_messages)) :
         foreach ($flash_messages as $message) : ?>
-            <div>
-                <?= htmlspecialchars($message); ?>
+            <div class="alert alert-<?= $message['type'] ?>">
+                <?= htmlspecialchars($message['body']); ?>
             </div>
     <?php endforeach;
     endif; ?>

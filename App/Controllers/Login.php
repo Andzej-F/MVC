@@ -61,7 +61,7 @@ class Login extends \Core\Controller
             $this->redirect(Auth::getReturnToPage());
         } else {
 
-            Flash::addMessage('Login unsuccessful, please try again');
+            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
             View::render('Login/new.php', [
                 'email' => $_POST['email']

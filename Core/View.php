@@ -18,14 +18,15 @@ class View
      * 
      * @return void
      */
+
     public static function render($view, $args = [])
     {
         extract($args, EXTR_SKIP);
 
         $file = "../App/Views/$view"; // Relative to Core directory
 
-        // $is_logged_in = Auth::isLoggedIn();
         $current_user = \App\Auth::getUser();
+
         $flash_messages = \App\Flash::getMessages();
 
         if (is_readable($file)) {
