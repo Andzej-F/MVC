@@ -1,15 +1,26 @@
 <?php
-$var = NULL;
-if (!$var) {
-    echo 'Not null';
-}
+$sql = 'UPDATE `users`
+                    SET `name` = :name,
+                        `email` = :email,';
 
-class Example2
-{
-}
+// if (isset($this->password)) {
+$sql .= "`password_hash` = :password_hash";
+// }
+
+$sql .= "\nWHERE `id` = :id";
+
+echo $sql;
 echo '<hr>';
-$example2 = new Example2();
 
-if ($example2) {
-    echo 'There is an object';
-}
+$sql = 'UPDATE users
+                    SET name = :name,
+                        email = :email';
+
+// Add password if it's set
+// if (isset($this->password)) {
+$sql .= ', password_hash = :password_hash';
+// }
+
+$sql .= "\nWHERE id = :id";
+
+echo $sql;

@@ -1,0 +1,49 @@
+[24-Dec-2021 15:56:31 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Cannot use object of type App\Models\User as array'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(25): Core\View::render('Profile/show.ph...', Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->showAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/show')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Profile\show.php' on line 7
+=======================================================
+
+
+[24-Dec-2021 15:57:15 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Cannot use object of type App\Models\User as array'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(25): Core\View::render('Profile/show.ph...', Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->showAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/show')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Profile\show.php' on line 7
+=======================================================
+
+
+[24-Dec-2021 15:57:16 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Cannot use object of type App\Models\User as array'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(25): Core\View::render('Profile/show.ph...', Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->showAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/show')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Profile\show.php' on line 7
+=======================================================
+
+
+[24-Dec-2021 15:58:59 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $user'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Profile\show.php(7): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 7)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(25): Core\View::render('Profile/show.ph...')
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->showAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/show')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Profile\show.php' on line 7
+=======================================================
+
+

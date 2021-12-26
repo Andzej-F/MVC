@@ -1,0 +1,219 @@
+[26-Dec-2021 00:04:21 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(227): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 227
+=======================================================
+
+
+[26-Dec-2021 00:05:58 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(203): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 203)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 203
+=======================================================
+
+
+[26-Dec-2021 00:06:40 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$password_confirmation'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(95): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 95)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(208): App\Models\User->validate('update')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 95
+=======================================================
+
+
+[26-Dec-2021 16:39:32 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[26-Dec-2021 16:40:45 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[26-Dec-2021 16:41:00 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[26-Dec-2021 16:41:44 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$password_confirmation'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(89): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 89)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(202): App\Models\User->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 89
+=======================================================
+
+
+[26-Dec-2021 16:42:54 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[26-Dec-2021 16:43:26 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$password_confirmation'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(89): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 89)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(202): App\Models\User->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 89
+=======================================================
+
+
+[26-Dec-2021 16:43:50 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[26-Dec-2021 19:52:52 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(246): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 246
+=======================================================
+
+
+[26-Dec-2021 19:56:32 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(251): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 251
+=======================================================
+
+
+[26-Dec-2021 19:57:21 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(251): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 251
+=======================================================
+
+
+[26-Dec-2021 20:11:56 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(251): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(61): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 251
+=======================================================
+
+
+[26-Dec-2021 20:14:20 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(251): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(67): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 251
+=======================================================
+
+
+[26-Dec-2021 20:16:34 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(259): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(67): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 259
+=======================================================
+
+
+[26-Dec-2021 20:17:46 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(259): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(67): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 259
+=======================================================
+
+
+[26-Dec-2021 20:19:27 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(261): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(67): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 261
+=======================================================
+
+

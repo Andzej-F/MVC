@@ -1,0 +1,38 @@
+[25-Dec-2021 23:44:18 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$password_confirmation'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(89): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 89)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(201): App\Models\User->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 89
+=======================================================
+
+
+[25-Dec-2021 23:45:47 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(197): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 197)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 197
+=======================================================
+
+
+[25-Dec-2021 23:46:03 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\User::$password_confirmation'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(89): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 89)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php(201): App\Models\User->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Profile.php(60): App\Models\User->updateProfile(Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('profile/update')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\User.php' on line 89
+=======================================================
+
+
