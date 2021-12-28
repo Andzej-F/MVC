@@ -2,6 +2,8 @@
 
 <h1>Log in</h1>
 
+<?php include_once '../App/Views/navigation.php'; ?>
+
 <form method="post" action="http://localhost/PHP/Other/MVC/public/login/create">
 
     <div>

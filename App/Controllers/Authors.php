@@ -2,6 +2,10 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+use \App\Flash;
+use \App\Models\Author;
+
 /**
  * Authors controller
  * 
@@ -10,40 +14,13 @@ namespace App\Controllers;
 class Authors extends \Core\Controller
 {
     /**
-     * Before filter
-     * 
-     * @return void
-     */
-    protected function before()
-    {
-        echo "(before)";
-        // return true;
-    }
-
-    /**
-     * After filter
-     * 
-     * @return void
-     */
-    protected function after()
-    {
-        echo "(after)";
-        // return true;
-    }
-    /**
      * Show the index page
      * 
      * @return void
      */
     public function indexAction()
     {
-        $this->before();
-
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-        echo '<p>Route parameters: <pre>' .
-            htmlspecialchars(print_r($this->route_params, true)) . '</pre></p>';
-
-        $this->after();
+        View::render('Authors/index.php');
     }
 
     /**
@@ -51,9 +28,23 @@ class Authors extends \Core\Controller
      * 
      * @return void
      */
-    public function add()
+    public function createAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        // TODO create method $this->requireLibrarianLogin();
+        $this->requireLogin();
+
+        $author = new Author($_POST);
+
+        if ($author->save()) {
+
+            Flash::addMessage('Author successfully added');
+
+            $this->redirect('/authors/index');
+        } else {
+            View::render('Authors/create.php', [
+                'author' => $author
+            ]);
+        }
     }
 
     /**
@@ -61,9 +52,11 @@ class Authors extends \Core\Controller
      * 
      * @return void
      */
-    public function edit()
+    public function editAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        $this->requireLogin();
+
+        View::render('Authors/edit.php');
     }
 
     /**
@@ -71,18 +64,10 @@ class Authors extends \Core\Controller
      * 
      * @return void
      */
-    public function delete()
+    public function deleteAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-    }
+        $this->requireLogin();
 
-    /**
-     * Rate the author from 1 to 10
-     * 
-     * @return void
-     */
-    public function rating()
-    {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        View::render('Authors/delete.php');
     }
 }

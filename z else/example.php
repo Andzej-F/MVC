@@ -1,7 +1,7 @@
 <?php
 $sql = 'UPDATE `users`
-                    SET `name` = :name,
-                        `email` = :email,';
+        SET `name` = :name,
+        `email` = :email,';
 
 // if (isset($this->password)) {
 $sql .= "`password_hash` = :password_hash";

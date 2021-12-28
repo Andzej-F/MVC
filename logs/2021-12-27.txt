@@ -1,0 +1,29 @@
+[27-Dec-2021 21:37:02 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Posts::before()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Posts->addNewAction()
+#1 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('posts/addnew')
+#2 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Posts.php' on line 38
+=======================================================
+
+
+[27-Dec-2021 21:37:06 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Posts::before()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Posts->addNewAction()
+#1 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('posts/add-new')
+#2 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Posts.php' on line 38
+=======================================================
+
+
+[27-Dec-2021 21:58:28 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Controller class App\Controllers\Authors not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 130
+=======================================================
+
+

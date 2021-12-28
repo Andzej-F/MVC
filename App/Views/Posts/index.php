@@ -1,4 +1,5 @@
 <?php include_once '../App/Views/header.php'; ?>
+<?php include_once '../App/Views/navigation.php'; ?>
 
 <h1>Posts</h1>
 

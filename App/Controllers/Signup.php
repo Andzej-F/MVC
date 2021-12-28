@@ -13,35 +13,13 @@ use \App\Models\User;
 class Signup extends \Core\Controller
 {
     /**
-     * Before action filter
-     * 
-     * @return void;
-     */
-    protected function before()
-    {
-    }
-
-    /**
-     * After action filter
-     * 
-     * @return void;
-     */
-    protected function after()
-    {
-    }
-
-    /**
      * Show the signup page
      * 
      * @return void;
      */
     public function newAction()
     {
-        $this->before();
-
         View::render('Signup/new.php');
-
-        $this->after();
     }
 
     /**
