@@ -214,14 +214,10 @@ class User extends \Core\Model
 
         if (empty($this->errors)) {
 
-            $sql = "UPDATE `users`
-                    SET `name` = :name,";
-            // `email` = :email";
+            $sql = 'UPDATE `users`
+                    SET `name` = :name,
+                	`email` = :email';
 
-            // Add email if it'set
-            if (isset($this->email)) {
-                $sql .= "`email`= :email,";
-            }
 
             // Add password if it'set
             if (isset($this->password)) {

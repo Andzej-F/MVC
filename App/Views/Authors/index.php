@@ -1,14 +1,42 @@
 <?php include_once '../App/Views/header.php'; ?>
+
 <?php include_once '../App/Views/navigation.php'; ?>
 
 <h1>Authors</h1>
 
-<ul>
-    <li>Author 1</li>
-    <li>Author 2</li>
-    <li>Author 3</li>
-    <li>Author 4</li>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <?php if ($current_user) : ?>
+                <th>Update</th>
+                <th>Delete</th>
+            <?php endif; ?>
+        </tr>
+    </thead>
+    <tbody>
+        <?php if ($authors) : ?>
+            <?php foreach ($authors as $author) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($author->name); ?></td>
+                    <td><?= htmlspecialchars($author->surname); ?></td>
+                    <?php if ($current_user) : ?>
+                        <td>
+                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->id/edit"; ?>>EDIT</a>
+                        </td>
+                        <td>
+                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->id/delete"; ?>>DELETE</a>
+                        </td>
+                    <?php endif; ?>
+                </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </tbody>
+</table>
+<?php if ($current_user) : ?>
+    <a href="http://localhost/PHP/Other/MVC/public/authors/new">Add a new author</a>
+<?php endif; ?>
 </body>
 
 </html>

@@ -2,6 +2,8 @@
 
 <h1>Profile</h1>
 
+<?php include_once '../App/Views/navigation.php'; ?>
+
 <?php
 if (!empty($user->errors)) { ?>
     <p>Errors: </p>

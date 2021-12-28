@@ -59,19 +59,7 @@ class Profile extends \Core\Controller
         // Get the user object
         $user = Auth::getUser();
 
-        //TODO Debug
-        echo '<pre>';
-        print_r($user);
-        var_dump($user);
-        echo '</pre>';
-
         if ($user->updateProfile($_POST)) {
-
-            //TODO Debug
-            echo '<pre>';
-            print_r($_POST);
-            var_dump($_POST);
-            echo '</pre>';
 
             Flash::addMessage('Changes saved');
 

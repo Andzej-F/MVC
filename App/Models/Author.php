@@ -34,13 +34,55 @@ class Author extends \Core\Model
     }
 
     /**
+     * Display the list of authors available in database
+     * 
+     * @return array Return array of authors
+     */
+    public static function getAll()
+    {
+        $sql = 'SELECT * FROM `authors` WHERE 1
+                ORDER BY `surname`';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
+        return $result;
+    }
+
+    /**
+     * Display the authors available in database
+     * 
+     * @return array Return array of authors
+     */
+    public static function getAuthor($id)
+    {
+        $sql = 'SELECT * FROM `authors` WHERE `id` =:id';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        // $result = $stmt->fetchAll();
+
+        return $stmt->fetch();;
+    }
+
+    /**
      * Save the author model with the current property values
      * 
-     * @return void
+     * @return boolean Return true on success or false on failure.
      */
     public function save()
     {
-
         $this->validate();
 
         if (empty($this->errors)) {
@@ -55,7 +97,7 @@ class Author extends \Core\Model
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
 
-            // Returns true on success or false on failure.
+            // "PDOStatement::execute" method returns true on success or false on failure.
             return $stmt->execute();
         }
 
@@ -71,57 +113,70 @@ class Author extends \Core\Model
     public function validate()
     {
         // Name
+        $this->name = trim($this->name);
+
         if ($this->name == '') {
-            $this->errors[] = 'Name is required';
+            $this->errors[] = 'Error: Name is required';
         }
 
-
-        if ($this->password != $this->password_confirmation) {
-            $this->errors[] = 'Password must match confirmation';
+        if (!preg_match('/^[a-zA-z ,.!().?";\'-]+$/i', $this->name)) {
+            $this->errors[] = 'Error: Name contains not valid characters';
         }
 
-        if (strlen($this->password) < 6) {
-            $this->errors[] = 'Please enter at least 6 characters for the password';
+        if ($this->name != ucwords($this->name, " \t\r\n\f\v")) {
+            $this->errors[] = 'Error: Name must begin with a capital letter';
         }
 
-        if (preg_match('/[a-z]+/i', $this->password) == 0) {
-            $this->errors[] = 'Password needs at least one letter';
+        if (mb_strlen($this->name) > 64) {
+            $this->errors[] = 'Error: Name is too long';
         }
 
-        if (preg_match('/\d+/i', $this->password) == 0) {
-            $this->errors[] = 'Password needs at least one number';
+        // Surname
+        $this->surname = trim($this->surname);
+
+        if ($this->surname == '') {
+            $this->errors[] = 'Error: Surname is required';
+        }
+
+        if (!preg_match('/^[a-zA-z ,.!().?";\'-]+$/i', $this->surname)) {
+            $this->errors[] = 'Error: Surname contains not valid characters';
+        }
+
+        if ($this->surname != ucwords($this->surname, " \t\r\n\f\v")) {
+            $this->errors[] = 'Error: Surname must begin with a capital letter';
+        }
+
+        if (mb_strlen($this->surname) > 64) {
+            $this->errors[] = 'Error: Surname is too long';
+        }
+
+        // Author
+        if ($this->authorExists($this->name, $this->surname)) {
+            $this->errors[] = 'Error: Author is present in the records ';
         }
     }
 
     /**
-     * See if a user record already exists with the specified email
+     * See if a author record already exists with the specified name and surname
      * 
-     * @param string $email address to search for
+     * @param string $name name to search for
+     * @param string $surname surname to search for
      * 
-     * @return boolean True if a record already exists with the specified email,
+     * @return boolean True if a record already exists with the specified name and surname,
      * false otherwise
      */
-    public static function emailExists($email)
+    public static function authorExists($name, $surname)
     {
-        return static::findByEmail($email) !== false;
-    }
-
-    /**
-     * Find a user model by email address
-     * 
-     * @param string $email email address to search for
-     * 
-     * @return mixed User object if found, false otherwise
-     */
-    public static function findByEmail($email)
-    {
-        $sql = 'SELECT * FROM `users` WHERE email = :email';
+        $sql = 'SELECT * FROM `authors` 
+                WHERE `name` = :name
+                AND `surname` = :surname';
 
         $db = static::getDB();
 
         $stmt = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':surname', $surname, PDO::PARAM_STR);
 
         // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
@@ -131,37 +186,17 @@ class Author extends \Core\Model
         return $stmt->fetch();
     }
 
-    /**
-     * Authenticate a user by email and password
-     * 
-     * @param string $email email address
-     * @param string $password password
-     * 
-     * @return mixed The user object or false if authentication fails
-     */
-    public static function authenticate($email, $password)
-    {
-        $user = static::findByEmail($email);
-
-        if ($user) {
-            if (password_verify($password, $user->password_hash)) {
-                return $user;
-            }
-        }
-
-        return false;
-    }
 
     /**
-     * Find a user model by ID
+     * Find a author model by ID
      * 
-     * @param string $id The user ID
+     * @param string $id The author ID
      * 
-     * @return mixed User object if found, false otherwise
+     * @return mixed Author object if found, false otherwise
      */
     public static function findByID($id)
     {
-        $sql = 'SELECT * FROM `users` WHERE id = :id';
+        $sql = 'SELECT * FROM `authors` WHERE id = :id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
@@ -175,70 +210,36 @@ class Author extends \Core\Model
     }
 
     /**
-     * Update the user's profile
+     * Update the authors's profile
      * 
      * @param array $data Data from the edit profile form
      * 
      * @return boolean True if the data was updated, false otherwise
      */
-    public function updateProfile($data)
+    public function updateAuthor($data)
     {
         // Assign the values from the form to properties of the user
         $this->name = $data['name'];
 
-        // Only validate and update the email if a value provided
-        if ($data['email'] != '') {
-            $this->email = $data['email'];
-        }
-
-        // Only validate and update the password if a value provided
-        if ($data['password'] != '') {
-            $this->password = $data['password'];
-        }
-        $this->password_confirmation = $data['password_confirmation'];
+        $this->surname = $data['surname'];
 
         $this->validate();
 
         if (empty($this->errors)) {
 
-            $sql = "UPDATE `users`
-                    SET `name` = :name,";
-            // `email` = :email";
+            $sql = 'UPDATE `authors`
+                    SET `name` = :name,
+                        `surname` = :surname
+                    WHERE `id` = :id';
 
-            // Add email if it'set
-            if (isset($this->email)) {
-                $sql .= "`email`= :email,";
-            }
-
-            // Add password if it'set
-            if (isset($this->password)) {
-                $sql .= ", `password_hash` = :password_hash";
-            }
-
-            $sql .= "\nWHERE `id` = :id";
 
             $db = static::getDB();
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
-            $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+            $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
             $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 
-            // Add password if it's set
-            if (isset($this->password)) {
-                $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
-                $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
-            }
-            // TODO Debug
-            // echo '<pre>';
-            // print_r($stmt);
-            // var_dump($stmt);
-            // echo '</pre>';
-            // $kuku = $stmt->execute();
-            // echo '<pre>';
-            // print_r($kuku);
-            // var_dump($kuku);
-            // echo '</pre>';
             return $stmt->execute();
         }
 

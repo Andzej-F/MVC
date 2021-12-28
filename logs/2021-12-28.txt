@@ -1,0 +1,103 @@
+[28-Dec-2021 15:14:40 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $result'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Authors\index.php(18): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 18)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(23): Core\View::render('Authors/index.p...')
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->indexAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Authors\index.php' on line 18
+=======================================================
+
+
+[28-Dec-2021 15:15:56 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $author'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(24): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 24)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php' on line 24
+=======================================================
+
+
+[28-Dec-2021 15:17:19 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $author'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(24): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 24)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php' on line 24
+=======================================================
+
+
+[28-Dec-2021 15:20:29 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $author'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(24): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 24)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php' on line 24
+=======================================================
+
+
+[28-Dec-2021 15:22:03 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$name'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(74): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 74)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(44): App\Models\Author->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(37): App\Models\Author->save()
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php' on line 74
+=======================================================
+
+
+[28-Dec-2021 15:22:18 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$name'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(74): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 74)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(44): App\Models\Author->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(37): App\Models\Author->save()
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php' on line 74
+=======================================================
+
+
+[28-Dec-2021 15:22:24 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$name'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(74): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 74)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php(44): App\Models\Author->validate()
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Authors.php(37): App\Models\Author->save()
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Authors->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Author.php' on line 74
+=======================================================
+
+
+[28-Dec-2021 15:28:23 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Authors::indexAction()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 124
+=======================================================
+
+
+[28-Dec-2021 15:28:28 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Authors::indexAction()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('authors/index')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 124
+=======================================================
+
+
