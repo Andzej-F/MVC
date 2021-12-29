@@ -36,7 +36,7 @@ class User extends \Core\Model
     /**
      * Save the user model with the current property values
      * 
-     * @return void
+     * @return boolean
      */
     public function save()
     {
@@ -47,7 +47,7 @@ class User extends \Core\Model
             $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
 
             $sql = 'INSERT INTO `users`(`name`, `email`, `password_hash`)
-              VALUES (:name, :email, :password_hash)';
+                    VALUES (:name, :email, :password_hash)';
 
             $db = static::getDB();
 

@@ -53,7 +53,9 @@ class Authors extends \Core\Controller
         if ($author->save()) {
 
             // Redirect to avoid form resubmission
-            $this->redirect('/authors/success');
+            Flash::addMessage('Author successfully added');
+
+            $this->redirect('/authors/index');
         } else {
 
             View::render('Authors/new.php', [
@@ -61,28 +63,6 @@ class Authors extends \Core\Controller
             ]);
         }
     }
-
-    /**
-     * Show the create author success page
-     * 
-     * @return void
-     */
-    public function successAction()
-    {
-        View::render('Authors/success.php');
-    }
-
-    // if ($author->save()) {
-
-    //     Flash::addMessage('Author successfully added');
-
-    //     $this->redirect('/authors/index');
-    // } else {
-    //     View::render('Authors/create.php', [
-    //         'author' => $author
-    //     ]);
-    // }
-    // }
 
     /**
      * Edit the author
@@ -95,12 +75,7 @@ class Authors extends \Core\Controller
 
         $id = $this->route_params['id'];
 
-        // Get the author object
         $author = Author::getAuthor($id);
-
-        echo '<pre>';
-        print_r($author);
-        echo '</pre>';
 
         View::render('Authors/edit.php', [
             'author' => $author
@@ -118,42 +93,46 @@ class Authors extends \Core\Controller
 
         $id = $this->route_params['id'];
 
-        // // // Get the author object
         $author = Author::getAuthor($id);
 
-        echo gettype($author);
+        if ($author->updateAuthor($_POST)) {
 
-        echo '<pre>';
-        print_r($author);
-        echo '</pre>';
+            Flash::addMessage('Changes saved');
 
-        echo '<pre>';
-        print_r($_POST);
-        echo '</pre>';
-
-        // if ($author->updateAuthor($_POST)) {
-
-        //     Flash::addMessage('Changes saved');
-
-        //     $this->redirect("/authors/index");
-        // } else {
-        //     // Redisplay the form passing in the user model as this will contain
-        //     // any validation error messages to display back in the form
-        //     View::render('Authors/edit.php', [
-        //         'author' => $author
-        //     ]);
-        // }
+            $this->redirect("/authors/index");
+        } else {
+            // Redisplay the form passing in the user model as this will contain
+            // any validation error messages to display back in the form
+            View::render('Authors/edit.php', [
+                'author' => $author
+            ]);
+        }
     }
 
-    // /**
-    //  * Delete the author
-    //  * 
-    //  * @return void
-    //  */
-    // public function deleteAction()
-    // {
-    //     $this->requireLogin();
+    /**
+     * Delete the author
+     * 
+     * @return void
+     */
+    public function deleteAction()
+    {
+        $this->requireLogin();
 
-    //     View::render('Authors/delete.php');
-    // }
+        $id = $this->route_params['id'];
+
+        $author = Author::getAuthor($id);
+
+        if ($author->deleteAuthor()) {
+
+            Flash::addMessage('Author was successfully deleted');
+
+            $this->redirect("/authors/index");
+        } else {
+            // Redisplay the form passing in the user model as this will contain
+            // any validation error messages to display back in the form
+            View::render('Authors/delete.php', [
+                'author' => $author
+            ]);
+        }
+    }
 }

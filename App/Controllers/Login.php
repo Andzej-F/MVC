@@ -15,25 +15,6 @@ use \App\Flash;
 class Login extends \Core\Controller
 {
     /**
-     * Before filter
-     * 
-     * @return void
-     */
-    protected function before()
-    {
-    }
-
-    /**
-     * After filter
-     * 
-     * @return void
-     */
-
-    protected function after()
-    {
-    }
-
-    /**
      * Show the login page
      * 
      * @return void

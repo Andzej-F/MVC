@@ -218,7 +218,7 @@ class Author extends \Core\Model
      */
     public function updateAuthor($data)
     {
-        // Assign the values from the form to properties of the user
+        // Assign the values from the form to properties of the author
         $this->name = $data['name'];
 
         $this->surname = $data['surname'];
@@ -244,5 +244,23 @@ class Author extends \Core\Model
         }
 
         return false;
+    }
+
+    /**
+     * Delete the authors's profile
+     *  
+     * @return boolean True if the data was deleted, false otherwise
+     */
+    public function deleteAuthor()
+    {
+        $sql = 'DELETE FROM `authors`
+                    WHERE `id` = :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
     }
 }
