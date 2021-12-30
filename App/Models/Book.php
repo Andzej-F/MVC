@@ -1,0 +1,275 @@
+<?php
+
+namespace App\Models;
+
+use PDO;
+use \App\Models\Author;
+
+/**
+ * Book model
+ * 
+ * PHP version 8.0.7
+ */
+class Book extends \Core\Model
+{
+    /**
+     * Error messages
+     * 
+     * @var array
+     */
+    public $errors = [];
+
+    /**
+     * Class constructor
+     * 
+     * @param array $data Initial property values
+     * 
+     * @return void
+     */
+
+    public function __construct($data = [])
+    {
+        foreach ($data as $key => $value) {
+            $this->$key = $value;
+        }
+    }
+
+    /**
+     * Display the list of books available in database
+     * 
+     * @return array Return the list of books
+     */
+    public static function getAll()
+    {
+        // $sql = 'SELECT * FROM `books` WHERE 1
+        //         ORDER BY `title`';
+
+        $sql = 'SELECT * FROM `books` 
+                INNER JOIN `authors`
+                ON `books`.`author_id` = `authors`.`author_id`
+                ORDER BY `title`';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+
+        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchALL();
+
+        return $result;
+    }
+
+    /**
+     * Display the specific book based on id
+     * 
+     * @return array Returns Book object on success, false on failure
+     */
+    public static function getBook($book_id)
+    {
+        $sql = 'SELECT * FROM `books` WHERE `book_id` =:book_id';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    /**
+     * Save the books model with the current property values
+     * 
+     * @return boolean Return true on success or false on failure.
+     */
+    public function save()
+    {
+        $this->validate();
+
+        if (empty($this->errors)) {
+
+            $sql = 'INSERT INTO `books`(`title`, `author_id`, `stock`)
+                    VALUES (:title, :author_id, :stock)';
+
+            $db = static::getDB();
+
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
+            $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
+            $stmt->bindValue(':stock', $this->stock, PDO::PARAM_INT);
+
+            // "PDOStatement::execute" method returns true on success or false on failure.
+            return $stmt->execute();
+        }
+
+        return false;
+    }
+
+    /**
+     * Validate current property values, adding validation error messages
+     * to the errors array property
+     * 
+     * @return void
+     */
+    public function validate()
+    {
+        // Title
+        $this->title = trim($this->title);
+
+        if ($this->title == '') {
+            $this->errors[] = 'Error: Title is required';
+        }
+
+        if (!preg_match('/^[a-zA-z ,.!().?";\'-]+$/i', $this->title)) {
+            $this->errors[] = 'Error: Title contains not valid characters';
+        }
+
+        if (mb_strlen($this->title) > 255) {
+            $this->errors[] = 'Error: Title is too long';
+        }
+
+        // Author_id
+        if ($this->author_id === 'default') {
+            $this->errors[] = 'Error: Please select the author from the list';
+        } elseif ($this->bookExists($this->title, $this->author_id)) {
+            $this->errors[] = 'Error: This author\'s book is present in the records ';
+        }
+
+        // Stock
+        $this->stock = trim($this->stock);
+
+        if ($this->stock == '') {
+            $this->errors[] = 'Error: Stock number is required';
+        }
+
+        if (!is_numeric($this->stock)) {
+            $this->errors[] = 'Error: Stock number must be of integer type';
+        } elseif ($this->stock < 1) {
+            $this->errors[] = 'Error: Stock number must be positive';
+        } elseif ($this->stock > 999) {
+            $this->errors[] = 'Error: Stock number cannot exceed the 999';
+        }
+    }
+
+    /**
+     * See if a book record already exists with the specified title and author's name and surname
+     * 
+     * @param string $name name to search for
+     * @param string $surname surname to search for
+     * 
+     * @return boolean True if a record already exists with the specified name and surname,
+     * false otherwise
+     */
+    public static function bookExists($title, $author_id)
+    {
+        $author = Author::getAuthor($author_id);
+
+        $sql = 'SELECT * FROM `books` 
+                INNER JOIN `authors`
+                ON `books`.`author_id` = `authors`.`author_id`
+                WHERE `title`= :title
+                AND `name`= :name
+                AND `surname`= :surname';
+
+
+        $db = static::getDB();
+
+        $stmt = static::getDB();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':title', $title, PDO::PARAM_STR);
+        $stmt->bindValue(':name', $author->name, PDO::PARAM_STR);
+        $stmt->bindValue(':surname', $author->surname, PDO::PARAM_STR);
+
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+
+    /**
+     * Find the book model by ID
+     * 
+     * @param string $book_id The book ID
+     * 
+     * @return mixed Book object if found, false otherwise
+     */
+    public static function findByID($book_id)
+    {
+        $sql = 'SELECT * FROM `books` WHERE book_id = :book_id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    /**
+     * Update the books information
+     * 
+     * @param array $data Data from the edit profile form
+     * 
+     * @return boolean True if the data was updated, false otherwise
+     */
+    public function updateBook($data)
+    {
+        // Assign the values from the form to properties of the author
+        $this->title = $data['title'];
+        $this->author_id = $data['author_id'];
+        $this->stock = $data['stock'];
+
+        $this->validate();
+
+        if (empty($this->errors)) {
+
+            $sql = 'UPDATE `books`
+                    SET `name` = :name,
+                        `author_id` = :author_id,
+                        `stock` = :stock
+                    WHERE `book_id` = :book_id';
+
+
+            $db = static::getDB();
+            $stmt = $db->prepare($sql);
+
+            $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
+            $stmt->bindValue(':stock', $this->stock, PDO::PARAM_INT);
+            $stmt->bindValue(':book_id', $this->book_id, PDO::PARAM_INT);
+
+            return $stmt->execute();
+        }
+
+        return false;
+    }
+
+    /**
+     * Delete the book
+     *  
+     * @return boolean True if the data was deleted, false otherwise
+     */
+    public function deleteBook()
+    {
+        $sql = 'DELETE FROM `books`
+                WHERE `book_id` = :book_id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':book_id', $this->book_id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+}

@@ -2,13 +2,14 @@
 
 <?php include_once '../App/Views/navigation.php'; ?>
 
-<h1>Authors</h1>
+<h1>Books</h1>
 
 <table>
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Stock</th>
             <?php if ($current_user) : ?>
                 <th>Update</th>
                 <th>Delete</th>
@@ -16,17 +17,18 @@
         </tr>
     </thead>
     <tbody>
-        <?php if ($authors) : ?>
-            <?php foreach ($authors as $author) : ?>
+        <?php if ($books) : ?>
+            <?php foreach ($books as $book) : ?>
                 <tr>
-                    <td><?= htmlspecialchars($author->name); ?></td>
-                    <td><?= htmlspecialchars($author->surname); ?></td>
+                    <td><?= htmlspecialchars($book->title); ?></td>
+                    <td><?= htmlspecialchars($book->name) . ' ' . htmlspecialchars($book->surname) ?></td>
+                    <td><?= htmlspecialchars($book->stock); ?></td>
                     <?php if ($current_user) : ?>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->author_id/edit"; ?>>EDIT</a>
+                            <a href=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/edit"; ?>>EDIT</a>
                         </td>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->author_id/delete"; ?>>DELETE</a>
+                            <a href=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/delete"; ?>>DELETE</a>
                         </td>
                     <?php endif; ?>
                 </tr>
@@ -35,7 +37,7 @@
     </tbody>
 </table>
 <?php if ($current_user) : ?>
-    <a href="http://localhost/PHP/Other/MVC/public/authors/new">Add a new author</a>
+    <a href="http://localhost/PHP/Other/MVC/public/books/new">Add a new book</a>
 <?php endif; ?>
 </body>
 

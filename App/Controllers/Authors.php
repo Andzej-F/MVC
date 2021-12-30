@@ -73,9 +73,9 @@ class Authors extends \Core\Controller
     {
         $this->requireLogin();
 
-        $id = $this->route_params['id'];
+        $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($id);
+        $author = Author::getAuthor($author_id);
 
         View::render('Authors/edit.php', [
             'author' => $author
@@ -91,9 +91,9 @@ class Authors extends \Core\Controller
     {
         $this->requireLogin();
 
-        $id = $this->route_params['id'];
+        $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($id);
+        $author = Author::getAuthor($author_id);
 
         if ($author->updateAuthor($_POST)) {
 
@@ -118,9 +118,9 @@ class Authors extends \Core\Controller
     {
         $this->requireLogin();
 
-        $id = $this->route_params['id'];
+        $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($id);
+        $author = Author::getAuthor($author_id);
 
         if ($author->deleteAuthor()) {
 

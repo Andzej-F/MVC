@@ -1,0 +1,296 @@
+[29-Dec-2021 23:20:05 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $authors'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php(27): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 27)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(88): Core\View::render('Books/new.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php' on line 27
+=======================================================
+
+
+[29-Dec-2021 23:21:31 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $authors'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php(26): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 26)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(88): Core\View::render('Books/new.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php' on line 26
+=======================================================
+
+
+[29-Dec-2021 23:21:45 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $authors'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php(27): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 27)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(88): Core\View::render('Books/new.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php' on line 27
+=======================================================
+
+
+[29-Dec-2021 23:23:03 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $authors'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(35): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 35)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->indexAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/index')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php' on line 35
+=======================================================
+
+
+[29-Dec-2021 23:24:26 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $authors'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(87): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 87)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#2 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#3 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php' on line 87
+=======================================================
+
+
+[29-Dec-2021 23:25:30 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(201): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(139): App\Models\Book::bookExists('The Green Mile', '19')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(91): App\Models\Book->validate()
+#3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(79): App\Models\Book->save()
+#4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#5 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#6 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 201
+=======================================================
+
+
+[29-Dec-2021 23:29:04 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $author'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(195): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 195)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(139): App\Models\Book::bookExists('The Green Mile', '19')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(91): App\Models\Book->validate()
+#3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(79): App\Models\Book->save()
+#4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#5 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#6 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 195
+=======================================================
+
+
+[29-Dec-2021 23:29:35 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(201): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(139): App\Models\Book::bookExists('The Green Mile', '19')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(91): App\Models\Book->validate()
+#3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(79): App\Models\Book->save()
+#4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#5 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#6 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 201
+=======================================================
+
+
+[29-Dec-2021 23:31:08 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(202): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(139): App\Models\Book::bookExists('The Green Mile', '19')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(91): App\Models\Book->validate()
+#3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(79): App\Models\Book->save()
+#4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->createAction()
+#5 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/create')
+#6 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 202
+=======================================================
+
+
+[29-Dec-2021 23:32:42 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to a member function deleteBook() on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->deleteAction()
+#1 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/delete')
+#2 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php' on line 152
+=======================================================
+
+
+[29-Dec-2021 23:36:54 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined variable $author'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Undefined varia...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(97): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:40:08 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:40:15 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:41:34 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:42:51 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:43:17 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:44:04 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:44:40 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:46:03 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/18/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:46:40 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/16/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:46:42 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/16/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:47:30 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/19/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+
+[29-Dec-2021 23:47:54 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Attempt to read property "id" on bool'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(16): Core\Error::errorHandler(2, 'Attempt to read...', 'C:\\xampp\\htdocs...', 16)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(99): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/16/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 16
+=======================================================
+
+

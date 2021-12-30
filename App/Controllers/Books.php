@@ -2,6 +2,11 @@
 
 namespace App\Controllers;
 
+use \Core\View;
+use \App\Flash;
+use \App\Models\Author;
+use \App\Models\Book;
+
 /**
  * Books controller
  * 
@@ -14,19 +19,65 @@ class Books extends \Core\Controller
      * 
      * @return void
      */
-    public function index()
+    public function indexAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        $books = Book::getAll();
+
+        View::render('Books/index.php', [
+            'books' => $books
+        ]);
     }
 
     /**
-     * Add a book
+     * Show the create new book page
      * 
      * @return void
      */
-    public function add()
+    public function newAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        $this->requireLogin();
+
+        $authors = Author::getAll();
+
+        View::render('Books/new.php', [
+            'authors' => $authors
+        ]);
+    }
+
+    /**
+     * Add a new book
+     * 
+     * @return void
+     */
+    public function createAction()
+    {
+        $this->requireLogin();
+
+        // echo '<pre>';
+        // print_r($_POST);
+        // echo '</pre>';
+
+        // [title] => The Green Mile
+        // [author_id] => default
+        // [stock] => 3
+
+        $book = new Book($_POST);
+
+        $authors = Author::getAll();
+
+        if ($book->save()) {
+
+            // Redirect to avoid form resubmission
+            Flash::addMessage('Book successfully added');
+
+            $this->redirect('/books/index');
+        } else {
+
+            View::render('Books/new.php', [
+                'book' => $book,
+                'authors' => $authors
+            ]);
+        }
     }
 
     /**
@@ -34,9 +85,64 @@ class Books extends \Core\Controller
      * 
      * @return void
      */
-    public function edit()
+    public function editAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        $this->requireLogin();
+
+        $id = $this->route_params['id'];
+
+        // echo '<pre>';
+        // print_r($this->route_params);
+        // echo '</pre>';
+        // echo $id;
+        // echo '<hr>';
+        // echo 'kuku';
+
+        $authors = Author::getAll();
+        $book = Book::findByID($id);
+        // $miau = $book->author_id;
+        // $author = Author::getAuthor($book->author_id);
+
+        // echo '<pre>';
+        // print_r($book);
+        // print_r($authors);
+        // echo '</pre>';
+
+        View::render('Books/edit.php', [
+            'book' => $book,
+            'authors' => $authors
+        ]);
+    }
+
+    /**
+     * Update the book information
+     * 
+     * @return void
+     */
+    public function updateAction()
+    {
+        $this->requireLogin();
+
+        $id = $this->route_params['id'];
+
+        $book = Book::getBook($id);
+
+        echo '<pre>';
+        print_r($book);
+        echo '</pre>';
+
+        // if ($book->updateBook($_POST)) {
+
+        //     Flash::addMessage('Changes saved');
+
+        //     $this->redirect("/books/index");
+        // } else {
+        //     // Redisplay the form passing in the user model as this will contain
+        //     // any validation error messages to display back in the form
+        //     View::render('Books/edit.php', [
+        //         'book' => $book
+        //     ]);
+        // }
     }
 
     /**
@@ -44,28 +150,25 @@ class Books extends \Core\Controller
      * 
      * @return void
      */
-    public function delete()
+    public function deleteAction()
     {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-    }
+        $this->requireLogin();
 
-    /**
-     * Write the book's review
-     * 
-     * @return void
-     */
-    public function review()
-    {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
-    }
+        $id = $this->route_params['id'];
 
-    /**
-     * Rate the book from 1 to 10
-     * 
-     * @return void
-     */
-    public function rating()
-    {
-        echo "Hello from the " . __FUNCTION__ . " action in the " . __CLASS__ . " controller!";
+        $book = Book::getBook($id);
+
+        if ($book->deleteBook()) {
+
+            Flash::addMessage('Book was successfully deleted');
+
+            $this->redirect("/boooks/index");
+        } else {
+            // Redisplay the form passing in the user model as this will contain
+            // any validation error messages to display back in the form
+            View::render('Books/delete.php', [
+                'book' => $book
+            ]);
+        }
     }
 }

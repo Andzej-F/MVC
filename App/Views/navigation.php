@@ -3,7 +3,7 @@
             <li><a href="http://localhost/PHP/Other/MVC/public/">Home</a></li>
             <li><a href="http://localhost/PHP/Other/MVC/public/posts">Posts</a></li>
             <li><a href="http://localhost/PHP/Other/MVC/public/authors/index">Authors</a></li>
-            <li><a href="">Books</a></li>
+            <li><a href="http://localhost/PHP/Other/MVC/public/books/index">Books</a></li>
             <li><a href="http://localhost/PHP/Other/MVC/public/login">Login</a></li>
             <?php if ($current_user) : ?>
                 <li><a href="http://localhost/PHP/Other/MVC/public/logout">Logout</a></li>

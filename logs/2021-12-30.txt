@@ -1,0 +1,61 @@
+[30-Dec-2021 00:25:30 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$id'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php(29): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 29)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(43): Core\View::render('Books/new.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->newAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/new')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\new.php' on line 29
+=======================================================
+
+
+[30-Dec-2021 00:35:01 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$id'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(29): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 29)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(113): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/2/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 29
+=======================================================
+
+
+[30-Dec-2021 00:37:59 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$id'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(38): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 38)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(113): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/9/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 38
+=======================================================
+
+
+[30-Dec-2021 00:38:10 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Author::$id'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php(38): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 38)
+#1 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(33): require('C:\\xampp\\htdocs...')
+#2 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(113): Core\View::render('Books/edit.php', Array)
+#3 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->editAction()
+#4 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/9/edit')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Views\Books\edit.php' on line 38
+=======================================================
+
+
+[30-Dec-2021 00:38:44 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Controller class App\Controllers\Boooks not found'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('boooks/index')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 130
+=======================================================
+
+

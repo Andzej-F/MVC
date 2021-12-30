@@ -1,6 +1,6 @@
 <?php include_once '../App/Views/header.php'; ?>
 
-<h1>Add a new author</h1>
+<h1>Edit new author</h1>
 
 <?php include_once '../App/Views/navigation.php'; ?>
 
@@ -13,7 +13,7 @@
     <?php endif; ?>
 
     </ul>
-    <form method="post" action="<?= "http://localhost/PHP/Other/MVC/public/authors/$author->id/update"; ?>">
+    <form method="post" action="<?= "http://localhost/PHP/Other/MVC/public/authors/$author->author_id/update"; ?>">
 
         <div>
             <label for="authorName">Name</label>

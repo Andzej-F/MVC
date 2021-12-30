@@ -5,7 +5,7 @@ namespace App\Models;
 use PDO;
 
 /**
- * Example user model
+ * Author model
  * 
  * PHP version 8.0.7
  */
@@ -55,25 +55,23 @@ class Author extends \Core\Model
     }
 
     /**
-     * Display the authors available in database
+     * Display the specific author's information selected by id value
      * 
-     * @return array Return array of authors
+     * @return mixed Author object on success or false on failure
      */
-    public static function getAuthor($id)
+    public static function getAuthor($author_id)
     {
-        $sql = 'SELECT * FROM `authors` WHERE `id` =:id';
+        $sql = 'SELECT * FROM `authors` WHERE `author_id` =:author_id';
 
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':author_id', $author_id, PDO::PARAM_INT);
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
         $stmt->execute();
 
-        // $result = $stmt->fetchAll();
-
-        return $stmt->fetch();;
+        return $stmt->fetch();
     }
 
     /**
@@ -88,7 +86,7 @@ class Author extends \Core\Model
         if (empty($this->errors)) {
 
             $sql = 'INSERT INTO `authors`(`name`, `surname`)
-              VALUES (:name, :surname)';
+                    VALUES (:name, :surname)';
 
             $db = static::getDB();
 
@@ -157,13 +155,13 @@ class Author extends \Core\Model
     }
 
     /**
-     * See if a author record already exists with the specified name and surname
+     * See if the author record already exists with the specified name and surname
      * 
-     * @param string $name name to search for
-     * @param string $surname surname to search for
+     * @param string $name author's name to search for
+     * @param string $surname author's surname to search for
      * 
-     * @return boolean True if a record already exists with the specified name and surname,
-     * false otherwise
+     * @return mixed Returns an instance of Author class if a record already exists,
+     *  false otherwise
      */
     public static function authorExists($name, $surname)
     {
@@ -190,17 +188,17 @@ class Author extends \Core\Model
     /**
      * Find a author model by ID
      * 
-     * @param string $id The author ID
+     * @param string $author_id The author ID
      * 
      * @return mixed Author object if found, false otherwise
      */
-    public static function findByID($id)
+    public static function findByID($author_id)
     {
-        $sql = 'SELECT * FROM `authors` WHERE id = :id';
+        $sql = 'SELECT * FROM `authors` WHERE author_id = :author_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':author_id', $author_id, PDO::PARAM_INT);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
@@ -220,7 +218,6 @@ class Author extends \Core\Model
     {
         // Assign the values from the form to properties of the author
         $this->name = $data['name'];
-
         $this->surname = $data['surname'];
 
         $this->validate();
@@ -230,7 +227,7 @@ class Author extends \Core\Model
             $sql = 'UPDATE `authors`
                     SET `name` = :name,
                         `surname` = :surname
-                    WHERE `id` = :id';
+                    WHERE `author_id` = :author_id';
 
 
             $db = static::getDB();
@@ -238,7 +235,7 @@ class Author extends \Core\Model
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
-            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
 
             return $stmt->execute();
         }
@@ -254,12 +251,12 @@ class Author extends \Core\Model
     public function deleteAuthor()
     {
         $sql = 'DELETE FROM `authors`
-                    WHERE `id` = :id';
+                    WHERE `author_id` = :author_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
 
         return $stmt->execute();
     }
