@@ -1,6 +1,6 @@
 <?php include_once '../App/Views/header.php'; ?>
 
-<h1>Edit new book</h1>
+<h1>Edit the book</h1>
 
 <?php include_once '../App/Views/navigation.php'; ?>
 
@@ -17,7 +17,6 @@
     // // print_r($authors);
     // echo '</pre>';
     ?>
-    <p>Iki cia spausdina</p>
     </ul>
     <form method="post" action=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/update"; ?>>
 
@@ -45,7 +44,7 @@
             <input id="bookStock" name="stock" placeholder="Stock" value="<?= (isset($book->stock) ? htmlspecialchars($book->stock) : ''); ?>">
         </div>
 
-        <button type="submit">Add</button>
+        <button type="submit">Edit</button>
 
     </form>
 

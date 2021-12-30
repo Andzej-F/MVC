@@ -25,7 +25,7 @@
             <input id="authorSurname" name="surname" placeholder="Surname" value="<?= (isset($author->surname) ? htmlspecialchars($author->surname) : ''); ?>">
         </div>
 
-        <button type="submit">Edit</button>
+        <button type="submit">Add</button>
 
     </form>
 

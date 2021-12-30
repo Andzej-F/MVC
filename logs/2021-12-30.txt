@@ -59,3 +59,39 @@ Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php' on line 130
 =======================================================
 
 
+[30-Dec-2021 12:35:44 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Book::$name'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(247): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 247)
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(149): App\Models\Book->updateBook(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/7/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 247
+=======================================================
+
+
+[30-Dec-2021 12:36:12 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(252): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(149): App\Models\Book->updateBook(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/7/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 252
+=======================================================
+
+
+[30-Dec-2021 12:37:36 Europe/Vilnius] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY093]: Invalid parameter number: parameter was not defined'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php(252): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Books.php(149): App\Models\Book->updateBook(Array)
+#2 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Books->updateAction()
+#3 C:\xampp\htdocs\PHP\Other\MVC\public\index.php(79): Core\Router->dispatch('books/7/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\Other\MVC\App\Models\Book.php' on line 252
+=======================================================
+
+

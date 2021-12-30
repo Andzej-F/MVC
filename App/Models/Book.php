@@ -225,7 +225,7 @@ class Book extends \Core\Model
      */
     public function updateBook($data)
     {
-        // Assign the values from the form to properties of the author
+        // Assign the values from the form to properties of the book
         $this->title = $data['title'];
         $this->author_id = $data['author_id'];
         $this->stock = $data['stock'];
@@ -235,7 +235,7 @@ class Book extends \Core\Model
         if (empty($this->errors)) {
 
             $sql = 'UPDATE `books`
-                    SET `name` = :name,
+                    SET `title` = :title,
                         `author_id` = :author_id,
                         `stock` = :stock
                     WHERE `book_id` = :book_id';
@@ -244,7 +244,7 @@ class Book extends \Core\Model
             $db = static::getDB();
             $stmt = $db->prepare($sql);
 
-            $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
             $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
             $stmt->bindValue(':stock', $this->stock, PDO::PARAM_INT);
             $stmt->bindValue(':book_id', $this->book_id, PDO::PARAM_INT);

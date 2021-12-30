@@ -53,14 +53,6 @@ class Books extends \Core\Controller
     {
         $this->requireLogin();
 
-        // echo '<pre>';
-        // print_r($_POST);
-        // echo '</pre>';
-
-        // [title] => The Green Mile
-        // [author_id] => default
-        // [stock] => 3
-
         $book = new Book($_POST);
 
         $authors = Author::getAll();
@@ -96,7 +88,6 @@ class Books extends \Core\Controller
         // echo '</pre>';
         // echo $id;
         // echo '<hr>';
-        // echo 'kuku';
 
         $authors = Author::getAll();
         $book = Book::findByID($id);
@@ -123,26 +114,23 @@ class Books extends \Core\Controller
     {
         $this->requireLogin();
 
-        $id = $this->route_params['id'];
+        $book_id = $this->route_params['id'];
+        $authors = Author::getAll();
+        $book = Book::getBook($book_id);
 
-        $book = Book::getBook($id);
+        if ($book->updateBook($_POST, $book_id)) {
 
-        echo '<pre>';
-        print_r($book);
-        echo '</pre>';
+            Flash::addMessage('Changes saved');
 
-        // if ($book->updateBook($_POST)) {
-
-        //     Flash::addMessage('Changes saved');
-
-        //     $this->redirect("/books/index");
-        // } else {
-        //     // Redisplay the form passing in the user model as this will contain
-        //     // any validation error messages to display back in the form
-        //     View::render('Books/edit.php', [
-        //         'book' => $book
-        //     ]);
-        // }
+            $this->redirect("/books/index");
+        } else {
+            // Redisplay the form passing in the user model as this will contain
+            // any validation error messages to display back in the form
+            View::render('Books/edit.php', [
+                'book' => $book,
+                'authors' => $authors
+            ]);
+        }
     }
 
     /**
@@ -162,7 +150,7 @@ class Books extends \Core\Controller
 
             Flash::addMessage('Book was successfully deleted');
 
-            $this->redirect("/boooks/index");
+            $this->redirect("/books/index");
         } else {
             // Redisplay the form passing in the user model as this will contain
             // any validation error messages to display back in the form
