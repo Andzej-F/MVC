@@ -10,7 +10,7 @@
             <th>Name</th>
             <th>Surname</th>
             <?php if ($current_user) : ?>
-                <th>Update</th>
+                <th>Edit</th>
                 <th>Delete</th>
             <?php endif; ?>
         </tr>

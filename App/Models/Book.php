@@ -92,8 +92,8 @@ class Book extends \Core\Model
 
         if (empty($this->errors)) {
 
-            $sql = 'INSERT INTO `books`(`title`, `author_id`, `stock`)
-                    VALUES (:title, :author_id, :stock)';
+            $sql = 'INSERT INTO `books`(`title`, `author_id`, `genre`, `available`, `borrowed`)
+                    VALUES (:title, :author_id, :genre, :available, :borrowed)';
 
             $db = static::getDB();
 
@@ -101,7 +101,9 @@ class Book extends \Core\Model
 
             $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
             $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
-            $stmt->bindValue(':stock', $this->stock, PDO::PARAM_INT);
+            $stmt->bindValue(':genre', $this->genre, PDO::PARAM_STR);
+            $stmt->bindValue(':available', $this->available, PDO::PARAM_INT);
+            $stmt->bindValue(':borrowed', $this->borrowed, PDO::PARAM_INT);
 
             // "PDOStatement::execute" method returns true on success or false on failure.
             return $stmt->execute();
@@ -140,19 +142,58 @@ class Book extends \Core\Model
             $this->errors[] = 'Error: This author\'s book is present in the records ';
         }
 
-        // Stock
-        $this->stock = trim($this->stock);
+        // Genre
+        $this->genre = trim($this->genre);
 
-        if ($this->stock == '') {
-            $this->errors[] = 'Error: Stock number is required';
+        if (
+            $this->genre == ''
+        ) {
+            $this->errors[] = 'Error: Genre is required';
         }
 
-        if (!is_numeric($this->stock)) {
-            $this->errors[] = 'Error: Stock number must be of integer type';
-        } elseif ($this->stock < 1) {
-            $this->errors[] = 'Error: Stock number must be positive';
-        } elseif ($this->stock > 999) {
-            $this->errors[] = 'Error: Stock number cannot exceed the 999';
+        if (!preg_match('/^[a-zA-z ,.!().?";\'-]+$/i', $this->genre)) {
+            $this->errors[] = 'Error: Genre contains not valid characters';
+        }
+
+        if (mb_strlen($this->genre) > 64) {
+            $this->errors[] = 'Error: Genre name is too long';
+        }
+
+        // Author_id
+        if ($this->author_id === 'default') {
+            $this->errors[] = 'Error: Please select the author from the list';
+        } elseif ($this->bookExists($this->title, $this->author_id)) {
+            $this->errors[] = 'Error: This author\'s book is present in the records ';
+        }
+
+        // Available
+        $this->available = trim($this->available);
+
+        if ($this->available == '') {
+            $this->errors[] = 'Error: Available number is required';
+        }
+
+        if (!is_numeric($this->available)) {
+            $this->errors[] = 'Error: Available number must be of integer type';
+        } elseif ($this->available < 0) {
+            $this->errors[] = 'Error: Available number must be positive';
+        } elseif ($this->available > 99) {
+            $this->errors[] = 'Error: Available number cannot exceed the 99';
+        }
+
+        // Borrowed
+        $this->borrowed = trim($this->borrowed);
+
+        if ($this->borrowed == '') {
+            $this->errors[] = 'Error: Borrowed number is required';
+        }
+
+        if (!is_numeric($this->borrowed)) {
+            $this->errors[] = 'Error: Borrowed number must be of integer type';
+        } elseif ($this->borrowed < 0) {
+            $this->errors[] = 'Error: Borrowed number must be positive';
+        } elseif ($this->borrowed > 99) {
+            $this->errors[] = 'Error: Borrowed number cannot exceed the 99';
         }
     }
 
@@ -228,7 +269,9 @@ class Book extends \Core\Model
         // Assign the values from the form to properties of the book
         $this->title = $data['title'];
         $this->author_id = $data['author_id'];
-        $this->stock = $data['stock'];
+        $this->genre = $data['genre'];
+        $this->available = $data['available'];
+        $this->borrowed = $data['borrowed'];
 
         $this->validate();
 
@@ -237,7 +280,9 @@ class Book extends \Core\Model
             $sql = 'UPDATE `books`
                     SET `title` = :title,
                         `author_id` = :author_id,
-                        `stock` = :stock
+                        `genre` = :genre,
+                        `available` = :available,
+                        `borrowed` = :borrowed
                     WHERE `book_id` = :book_id';
 
 
@@ -246,7 +291,9 @@ class Book extends \Core\Model
 
             $stmt->bindValue(':title', $this->title, PDO::PARAM_STR);
             $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
-            $stmt->bindValue(':stock', $this->stock, PDO::PARAM_INT);
+            $stmt->bindValue(':genre', $this->genre, PDO::PARAM_STR);
+            $stmt->bindValue(':available', $this->available, PDO::PARAM_INT);
+            $stmt->bindValue(':borrowed', $this->borrowed, PDO::PARAM_INT);
             $stmt->bindValue(':book_id', $this->book_id, PDO::PARAM_INT);
 
             return $stmt->execute();

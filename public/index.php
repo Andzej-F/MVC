@@ -3,28 +3,28 @@
 /**
  * Front controller
  *
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
-
-/**
- * Twig
- */
-// require_once dirname(__DIR__) . '/vendor/autoload.php';
 
 /**
  * Autoloader
  */
-spl_autoload_register('myAutoloader', true, false);
+require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+/**
+ * Autoloader
+ */
+// spl_autoload_register('myAutoloader', true, false);
 
 // "myAutoloader" will run when autoloader is needed
-function myAutoloader($className)
-{
-    $root = dirname(__DIR__, 1); // get the parent directory
-    $file = $root . '/' . str_replace('\\', '/', $className) . '.php';
-    if (is_readable($file)) {
-        require $file;
-    }
-}
+// function myAutoloader($className)
+// {
+//     $root = dirname(__DIR__, 1); // get the parent directory
+//     $file = $root . '/' . str_replace('\\', '/', $className) . '.php';
+//     if (is_readable($file)) {
+//         require $file;
+//     }
+// }
 // require dirname(__DIR__) . '/vendor/autoload.php';
 
 

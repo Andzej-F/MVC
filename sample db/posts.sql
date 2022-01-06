@@ -2,9 +2,9 @@
 -- SQL for sample database
 -- -------------------------------------
 
--- 
--- Table structure
--- 
+--
+-- Table structure for table `authors`
+--
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

@@ -37,25 +37,27 @@ class View
         }
     }
 
-    // /**
-    //  * Render a view template using Twig
-    //  * 
-    //  * @param string $template The template file
-    //  * @param array $args Associative array of datta to display in the view (optional)
-    //  * 
-    //  * @return void
-    //  */
-    // public static function renderTemplate($template, $args = [])
-    // {
-    //     static $twig = null;
+    /**
+     * Render a view template using Twig
+     * 
+     * @param string $template The template file
+     * @param array $args Associative array of datta to display in the view (optional)
+     * 
+     * @return void
+     */
+    public static function renderTemplate($template, $args = [])
+    {
+        static $twig = null;
 
-    //     if ($twig === null) {
-    //         $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/App/Views');
-    //         // $loader = new \Twig\Loader\FilesystemLoader(C:\xampp\htdocs\PHP\Other\MVC/App/Views');
+        if ($twig === null) {
+            // Twig uses a loader (\Twig\Loader\ArrayLoader) to locate templates
+            $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/App/Views');
+            // $loader = new \Twig\Loader\FilesystemLoader(C:\xampp\htdocs\PHP\Other\MVC/App/Views');
 
-    //         $twig = new \Twig\Environment($loader);
-    //     }
+            //An environment (\Twig\Environment) to store templates configuration
+            $twig = new \Twig\Environment($loader);
+        }
 
-    //     echo $twig->render($template, $args);
-    // }
+        echo $twig->render($template, $args);
+    }
 }

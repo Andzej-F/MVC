@@ -3,15 +3,18 @@
 <?php include_once '../App/Views/navigation.php'; ?>
 
 <h1>Books</h1>
-
+<h2>Search for a book or author</h2>
 <table>
     <thead>
+        <tr>Sort by:</tr>
         <tr>
             <th>Title</th>
             <th>Author</th>
-            <th>Stock</th>
+            <th>Genre</th>
+            <th>Available</th>
+            <th>Borrowed</th>
             <?php if ($current_user) : ?>
-                <th>Update</th>
+                <th>Edit</th>
                 <th>Delete</th>
             <?php endif; ?>
         </tr>
@@ -22,7 +25,9 @@
                 <tr>
                     <td><?= htmlspecialchars($book->title); ?></td>
                     <td><?= htmlspecialchars($book->name) . ' ' . htmlspecialchars($book->surname) ?></td>
-                    <td><?= htmlspecialchars($book->stock); ?></td>
+                    <td><?= htmlspecialchars($book->genre); ?></td>
+                    <td><?= htmlspecialchars($book->available); ?></td>
+                    <td><?= htmlspecialchars($book->borrowed); ?></td>
                     <?php if ($current_user) : ?>
                         <td>
                             <a href=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/edit"; ?>>EDIT</a>

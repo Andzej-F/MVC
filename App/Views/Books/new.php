@@ -35,8 +35,18 @@
         </div>
 
         <div>
-            <label for="bookStock">Stock</label>
-            <input id="bookStock" name="stock" placeholder="Stock" value="<?= (isset($book->stock) ? htmlspecialchars($book->stock) : ''); ?>">
+            <label for="bookGenre">Genre</label>
+            <input id="bookGenre" name="genre" placeholder="Genre" value="<?= (isset($book->genre) ? htmlspecialchars($book->genre) : ''); ?>">
+        </div>
+
+        <div>
+            <label for="bookAvailable">Available</label>
+            <input id="bookAvailable" name="available" placeholder="Available" value="<?= (isset($book->available) ? htmlspecialchars($book->available) : ''); ?>">
+        </div>
+
+        <div>
+            <label for="bookBorrowed">Borrowed</label>
+            <input id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="<?= (isset($book->borrowe) ? htmlspecialchars($book->borrowe) : ''); ?>">
         </div>
 
         <button type="submit">Add</button>
