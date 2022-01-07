@@ -14,7 +14,7 @@ if (!empty($user->errors)) { ?>
     </ul>
 <?php } ?>
 
-<form method="post" action="http://localhost/PHP/Other/MVC/public/signup/create">
+<form method="post" action="http://localhost/PHP/lbm2/public/signup/create">
 
     <div>
         <label for="inputName">Name</label>

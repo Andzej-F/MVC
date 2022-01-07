@@ -11,6 +11,6 @@
     <dd><?= htmlspecialchars($user->email); ?></dd>
 </dl>
 
-<a href="http://localhost/PHP/Other/MVC/public/profile/edit">Edit</a>
+<a href="http://localhost/PHP/lbm2/public/profile/edit">Edit</a>
 
 <?php include_once '../App/Views/footer.php'; ?>

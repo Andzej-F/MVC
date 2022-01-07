@@ -4,7 +4,7 @@
 
 <?php include_once '../App/Views/navigation.php'; ?>
 
-<form method="post" action="http://localhost/PHP/Other/MVC/public/login/create">
+<form method="post" action="http://localhost/PHP/lbm2/public/login/create">
 
     <div>
         <label for="inputEmail">Email address</label>

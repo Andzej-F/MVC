@@ -23,10 +23,10 @@
                     <td><?= htmlspecialchars($author->surname); ?></td>
                     <?php if ($current_user) : ?>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->author_id/edit"; ?>>EDIT</a>
+                            <a href=<?= "http://localhost/PHP/lbm2/public/authors/$author->author_id/edit"; ?>>EDIT</a>
                         </td>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/authors/$author->author_id/delete"; ?>>DELETE</a>
+                            <a href=<?= "http://localhost/PHP/lbm2/public/authors/$author->author_id/delete"; ?>>DELETE</a>
                         </td>
                     <?php endif; ?>
                 </tr>
@@ -35,7 +35,7 @@
     </tbody>
 </table>
 <?php if ($current_user) : ?>
-    <a href="http://localhost/PHP/Other/MVC/public/authors/new">Add a new author</a>
+    <a href="http://localhost/PHP/lbm2/public/authors/new">Add a new author</a>
 <?php endif; ?>
 </body>
 

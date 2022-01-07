@@ -1,0 +1,27 @@
+[07-Jan-2022 19:04:39 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Method indexaction in controller App\Controllers\Books cannot be called directly - remove the Action suffix to call this method'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/indexacti...')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 126
+=======================================================
+
+
+[07-Jan-2022 19:04:45 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Method indexAction in controller App\Controllers\Books cannot be called directly - remove the Action suffix to call this method'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/indexActi...')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 126
+=======================================================
+
+
+[07-Jan-2022 19:04:48 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'Method indexaction in controller App\Controllers\Books cannot be called directly - remove the Action suffix to call this method'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/indexacti...')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 126
+=======================================================
+
+

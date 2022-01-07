@@ -14,7 +14,7 @@ if (!empty($user->errors)) { ?>
     </ul>
 <?php } ?>
 
-<form method="post" action="http://localhost/PHP/Other/MVC/public/profile/update">
+<form method="post" action="http://localhost/PHP/lbm2/public/profile/update">
 
     <div>
         <label for="inputName">Name</label>
@@ -37,7 +37,7 @@ if (!empty($user->errors)) { ?>
     </div>
 
     <button type="submit">Save</button>
-    <a href="http://localhost/PHP/Other/MVC/public/profile/show">Cancel</a>
+    <a href="http://localhost/PHP/lbm2/public/profile/show">Cancel</a>
 
 </form>
 

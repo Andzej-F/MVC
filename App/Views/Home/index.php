@@ -6,7 +6,7 @@
 
 <?php if ($current_user) : ?>
     Hello <?= htmlspecialchars($current_user->name); ?>
-    <a href="http://localhost/PHP/Other/MVC/public/login/destroy">Log out</a>
+    <a href="http://localhost/PHP/lbm2/public/login/destroy">Log out</a>
 <?php endif; ?>
 </body>
 

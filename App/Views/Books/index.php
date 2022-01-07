@@ -30,10 +30,10 @@
                     <td><?= htmlspecialchars($book->borrowed); ?></td>
                     <?php if ($current_user) : ?>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/edit"; ?>>EDIT</a>
+                            <a href=<?= "http://localhost/PHP/lbm2/public/books/$book->book_id/edit"; ?>>EDIT</a>
                         </td>
                         <td>
-                            <a href=<?= "http://localhost/PHP/Other/MVC/public/books/$book->book_id/delete"; ?>>DELETE</a>
+                            <a href=<?= "http://localhost/PHP/lbm2/public/books/$book->book_id/delete"; ?>>DELETE</a>
                         </td>
                     <?php endif; ?>
                 </tr>
@@ -42,7 +42,7 @@
     </tbody>
 </table>
 <?php if ($current_user) : ?>
-    <a href="http://localhost/PHP/Other/MVC/public/books/new">Add a new book</a>
+    <a href="http://localhost/PHP/lbm2/public/books/new">Add a new book</a>
 <?php endif; ?>
 </body>
 

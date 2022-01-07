@@ -30,24 +30,24 @@ abstract class Controller
         $this->route_params = $route_params;
     }
 
-    /**
-     * 
-     * 
-     * @return void
-     */
-    public function __call($name, $args)
-    {
-        $method = $name . 'Action';
+    // /**
+    //  * 
+    //  * 
+    //  * @return void
+    //  */
+    // public function __call($name, $args)
+    // {
+    //     $method = $name . 'Action';
 
-        if (method_exists($this, $method)) {
-            if ($this->before() !== false) {
-                call_user_func_array([$this, $method], $args);
-                $this->after();
-            }
-        } else {
-            echo "Method $method not found in controller " . get_class($this);
-        }
-    }
+    //     if (method_exists($this, $method)) {
+    //         if ($this->before() !== false) {
+    //             call_user_func_array([$this, $method], $args);
+    //             $this->after();
+    //         }
+    //     } else {
+    //         echo "Method $method not found in controller " . get_class($this);
+    //     }
+    // }
 
     /**
      * Before filter - called before an action method.
@@ -79,7 +79,7 @@ abstract class Controller
     //  */
     public function redirect($url)
     {
-        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/PHP/Other/MVC/public' . $url, true, 303);
+        header('Location: http://' . $_SERVER['HTTP_HOST'] . '/PHP/lbm2/public' . $url, true, 303);
         exit;
     }
 

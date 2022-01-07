@@ -138,9 +138,11 @@ class Book extends \Core\Model
         // Author_id
         if ($this->author_id === 'default') {
             $this->errors[] = 'Error: Please select the author from the list';
-        } elseif ($this->bookExists($this->title, $this->author_id)) {
-            $this->errors[] = 'Error: This author\'s book is present in the records ';
         }
+
+        // elseif ($this->bookExists($this->title, $this->author_id)) {
+        //     $this->errors[] = 'Error: This author\'s book is present in the records ';
+        // }
 
         // Genre
         $this->genre = trim($this->genre);
@@ -162,9 +164,10 @@ class Book extends \Core\Model
         // Author_id
         if ($this->author_id === 'default') {
             $this->errors[] = 'Error: Please select the author from the list';
-        } elseif ($this->bookExists($this->title, $this->author_id)) {
-            $this->errors[] = 'Error: This author\'s book is present in the records ';
         }
+        //  elseif ($this->bookExists($this->title, $this->author_id)) {
+        //     $this->errors[] = 'Error: This author\'s book is present in the records ';
+        // }
 
         // Available
         $this->available = trim($this->available);

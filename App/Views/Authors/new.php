@@ -13,7 +13,7 @@
     <?php endif; ?>
 
     </ul>
-    <form method="post" action=<?= "http://localhost/PHP/Other/MVC/public/authors/create"; ?>>
+    <form method="post" action=<?= "http://localhost/PHP/lbm2/public/authors/create"; ?>>
 
         <div>
             <label for="authorName">Name</label>
