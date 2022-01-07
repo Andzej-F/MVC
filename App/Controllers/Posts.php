@@ -12,7 +12,6 @@ use \App\Models\Post;
  */
 class Posts extends \Core\Controller
 {
-
     /**
      * Show the index page
      * 
@@ -20,12 +19,16 @@ class Posts extends \Core\Controller
      */
     public function indexAction()
     {
+        $this->before();
 
         $posts = Post::getAll();
+
 
         View::render('Posts/index.php', [
             'posts' => $posts
         ]);
+
+        $this->after();
     }
 
     /**
