@@ -5,7 +5,7 @@ namespace App\Controllers;
 /**
  * Readers controller
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Readers extends \Core\Controller
 {

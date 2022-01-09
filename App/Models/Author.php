@@ -7,7 +7,7 @@ use PDO;
 /**
  * Author model
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Author extends \Core\Model
 {

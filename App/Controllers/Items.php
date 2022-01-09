@@ -8,7 +8,7 @@ use \App\Auth;
 /**
  * Items controller (example)
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Items extends \Core\Controller
 {

@@ -9,7 +9,7 @@ use \App\Models\Author;
 /**
  * Authors controller
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Authors extends \Core\Controller
 {

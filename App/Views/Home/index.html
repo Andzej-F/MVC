@@ -1,21 +1,11 @@
 {% extends "base.html" %}
 
-{# {{ include('navigation.html') }} #}
-
 {% block title %}Home{% endblock %}
 
 {% block body %}
 
-{% block navigation %}{% endblock %}
-
     <h1>Welcome</h1>
 
     <p>Hello from a Twig template, {{ name }}</p>
-
-    <ul>
-        {% for colour in colours %}
-        <li>{{colour}}</li>
-        {% endfor %}
-    </ul>
 
 {% endblock %}

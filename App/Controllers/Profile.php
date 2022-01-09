@@ -9,7 +9,7 @@ use \App\Flash;
 /**
  * Profile controller
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Profile extends \Core\Controller
 {

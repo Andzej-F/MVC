@@ -5,7 +5,7 @@ namespace Core;
 /**
  * Error and exception handler
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Error
 {

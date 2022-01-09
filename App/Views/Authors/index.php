@@ -1,6 +1,6 @@
-<?php include_once '../App/Views/header.php'; ?>
+<?php require_once '../App/Views/header.php'; ?>
 
-<?php include_once '../App/Views/navigation.php'; ?>
+<?php require_once '../App/Views/navigation.php'; ?>
 
 <h1>Authors</h1>
 
@@ -41,4 +41,4 @@
 
 </html>
 
-<?php include_once '../App/Views/footer.php'; ?>
+<?php require_once '../App/Views/footer.php'; ?>

@@ -1,8 +1,8 @@
-<?php include_once '../App/Views/header.php'; ?>
+<?php require_once '../App/Views/header.php'; ?>
 
 <h1>Log in</h1>
 
-<?php include_once '../App/Views/navigation.php'; ?>
+<?php require_once '../App/Views/navigation.php'; ?>
 
 <form method="post" action="http://localhost/PHP/lbm2/public/login/create">
 
@@ -20,4 +20,4 @@
 
 </form>
 
-<?php include_once '../App/Views/footer.php'; ?>
+<?php require_once '../App/Views/footer.php'; ?>

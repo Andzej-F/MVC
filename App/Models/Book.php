@@ -8,7 +8,7 @@ use \App\Models\Author;
 /**
  * Book model
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Book extends \Core\Model
 {

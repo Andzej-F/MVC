@@ -7,7 +7,7 @@ use PDO;
 /**
  * Example user model
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class User extends \Core\Model
 {
@@ -46,14 +46,16 @@ class User extends \Core\Model
 
             $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
 
-            $sql = 'INSERT INTO `users`(`name`, `email`, `password_hash`)
-                    VALUES (:name, :email, :password_hash)';
+            $sql = 'INSERT INTO `users`(`name`, `surname`, `role`,`email`, `password_hash`)
+                    VALUES (:name, :surname, :role, :email, :password_hash)';
 
             $db = static::getDB();
 
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
+            $stmt->bindValue(':role', $this->role, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
 
@@ -77,12 +79,17 @@ class User extends \Core\Model
             $this->errors[] = 'Name is required';
         }
 
+        // Surname
+        if ($this->surname == '') {
+            $this->errors[] = 'Surname is required';
+        }
+
         // Email
         if (filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
             $this->errors[] = 'Invalid email';
         }
 
-        if ($this->emailExists($this->email)) {
+        if (static::emailExists($this->email)) {
             $this->errors[] = 'email already taken';
         }
 
@@ -136,7 +143,6 @@ class User extends \Core\Model
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
 
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
         $stmt->execute();
@@ -198,6 +204,8 @@ class User extends \Core\Model
     {
         // Assign the values from the form to properties of the user
         $this->name = $data['name'];
+        $this->surname = $data['surname'];
+        $this->role = $data['role'];
 
         // Only validate and update the email if a value provided
         if ($data['email'] != '') {
@@ -216,7 +224,9 @@ class User extends \Core\Model
 
             $sql = 'UPDATE `users`
                     SET `name` = :name,
-                	`email` = :email';
+                	    `surname` = :surname,
+                	    `role` = :role,
+                	    `email` = :email';
 
 
             // Add password if it'set
@@ -230,6 +240,8 @@ class User extends \Core\Model
             $stmt = $db->prepare($sql);
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
+            $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
+            $stmt->bindValue(':role', $this->role, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 
@@ -238,16 +250,6 @@ class User extends \Core\Model
                 $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
                 $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
             }
-            // TODO Debug
-            // echo '<pre>';
-            // print_r($stmt);
-            // var_dump($stmt);
-            // echo '</pre>';
-            // $kuku = $stmt->execute();
-            // echo '<pre>';
-            // print_r($kuku);
-            // var_dump($kuku);
-            // echo '</pre>';
             return $stmt->execute();
         }
 

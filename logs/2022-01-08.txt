@@ -1,0 +1,12 @@
+[08-Jan-2022 08:21:30 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'tim@suns.com' for key 'email''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\User.php(61): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Signup.php(36): App\Models\User->save()
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Signup->createAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('signup/create')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\User.php' on line 61
+=======================================================
+
+

@@ -10,7 +10,7 @@ use \App\Flash;
 /**
  * Login controller
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Login extends \Core\Controller
 {
@@ -21,7 +21,7 @@ class Login extends \Core\Controller
      */
     public function newAction()
     {
-        View::render('Login/new.php');
+        View::renderTemplate('Login/new.html');
     }
 
     /**
@@ -31,22 +31,35 @@ class Login extends \Core\Controller
      */
     public function createAction()
     {
+        // echo '<pre>';
+        // print_r($user);
+        // var_dump($user);
+        // echo get_class($user);
+        // echo '</pre>';
+
         $user = User::authenticate($_POST['email'], $_POST['password']);
 
         if ($user) {
 
-            Auth::login($user);
+            $this->redirect('/');
 
-            Flash::addMessage('Login successful');
+            $_SESSION['user_id'] = $user->id;
 
-            $this->redirect(Auth::getReturnToPage());
+            // Auth::login($user);
+
+            // Flash::addMessage('Login successful');
+
+            // $this->redirect(Auth::getReturnToPage());
         } else {
 
-            Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
+            // Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
-            View::render('Login/new.php', [
-                'email' => $_POST['email']
-            ]);
+            View::renderTemplate(
+                'Login/new.html',
+                [
+                    'email' => $_POST['email']
+                ]
+            );
         }
     }
 

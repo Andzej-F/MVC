@@ -8,7 +8,7 @@ use \App\Models\User;
 /**
  * Signup controller
  * 
- * PHP version 8.0.7
+ * PHP version 8.1.1
  */
 class Signup extends \Core\Controller
 {
@@ -19,7 +19,8 @@ class Signup extends \Core\Controller
      */
     public function newAction()
     {
-        View::render('Signup/new.php');
+        // View::render('Signup/new.php');
+        View::renderTemplate('Signup/new.html');
     }
 
     /**
@@ -33,11 +34,12 @@ class Signup extends \Core\Controller
         $user = new User($_POST);
 
         if ($user->save()) {
-            // View::render('Signup/success.php');
+            // header('Location: http://localhost/PHP/lbm2/public/signup/success', true, 303);
+            // exit;
             $this->redirect('/signup/success');
         } else {
 
-            View::render('Signup/new.php', [
+            View::renderTemplate('Signup/new.html', [
                 'user' => $user
             ]);
         }
@@ -50,6 +52,6 @@ class Signup extends \Core\Controller
      */
     public function successAction()
     {
-        View::render('Signup/success.php');
+        View::renderTemplate('Signup/success.html');
     }
 }

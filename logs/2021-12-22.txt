@@ -301,7 +301,7 @@ Stack trace:
 =======================================================
 Uncaught exception: 'ErrorException' with message: 'foreach() argument must be of type array|object, null given'
 Stack trace:<pre>#0 C:\xampp\htdocs\PHP\Other\MVC\App\Views\header.php(23): Core\Error::errorHandler(2, 'foreach() argum...', 'C:\\xampp\\htdocs...', 23)
-#1 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Home\index.php(1): include_once('C:\\xampp\\htdocs...')
+#1 C:\xampp\htdocs\PHP\Other\MVC\App\Views\Home\index.php(1): require_once('C:\\xampp\\htdocs...')
 #2 C:\xampp\htdocs\PHP\Other\MVC\Core\View.php(32): require('C:\\xampp\\htdocs...')
 #3 C:\xampp\htdocs\PHP\Other\MVC\App\Controllers\Home.php(45): Core\View::render('Home/index.php')
 #4 C:\xampp\htdocs\PHP\Other\MVC\Core\Router.php(124): App\Controllers\Home->indexAction()
