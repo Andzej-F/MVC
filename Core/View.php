@@ -56,6 +56,7 @@ class View
 
             //An environment (\Twig\Environment) to store templates configuration
             $twig = new \Twig\Environment($loader);
+            $twig->addGlobal('session', $_SESSION);
         }
 
         echo $twig->render($template, $args);

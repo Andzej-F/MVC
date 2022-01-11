@@ -31,19 +31,27 @@ class Login extends \Core\Controller
      */
     public function createAction()
     {
-        // echo '<pre>';
-        // print_r($user);
-        // var_dump($user);
-        // echo get_class($user);
-        // echo '</pre>';
+
 
         $user = User::authenticate($_POST['email'], $_POST['password']);
+        // echo '<pre>';
+        // print_r($_POST);
+        // print_r($user);
+        // var_dump($user);
+        // echo '</pre>';
+        // exit;
 
         if ($user) {
 
+            $_SESSION['user_id'] = $user->id;
+
             $this->redirect('/');
 
-            $_SESSION['user_id'] = $user->id;
+            // echo '<pre>';
+            // print_r($user);
+            // var_dump($user);
+            // print_r($_SESSION);
+            // echo '</pre>';
 
             // Auth::login($user);
 
@@ -54,12 +62,9 @@ class Login extends \Core\Controller
 
             // Flash::addMessage('Login unsuccessful, please try again', Flash::WARNING);
 
-            View::renderTemplate(
-                'Login/new.html',
-                [
-                    'email' => $_POST['email']
-                ]
-            );
+            View::renderTemplate('Login/new.html', [
+                'email' => $_POST['email']
+            ]);
         }
     }
 
