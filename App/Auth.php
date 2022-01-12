@@ -26,7 +26,7 @@ class Auth
     }
 
     /**
-     * Logoutn the user
+     * Logout the user
      * 
      * @return void
      */
@@ -85,8 +85,10 @@ class Auth
         if (isset($_SESSION['user_id'])) {
             // Look up the user based on "id" stored in the session
             return User::findByID($_SESSION['user_id']);
-        } else {
-            return NULL;
         }
+
+        // else {
+        //     return NULL;
+        // }
     }
 }

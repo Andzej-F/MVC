@@ -6,8 +6,10 @@
 
     <h1>Welcome</h1>
 
-    {% if session.user_id %}
-        User with ID {{ session.user_id }} is logged in.
+    {#% if session.user_id %#}
+    {% if current_user %}
+       Hello {{ user.name }}.
+       Hello {{ current_user.name }}.
     {% endif %}
 
 {% endblock %}

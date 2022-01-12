@@ -13,41 +13,16 @@ use \App\Auth;
 class Items extends \Core\Controller
 {
     /**
-     * Before filter
-     * 
-     * @return void
-     */
-    protected function before()
-    {
-    }
-
-    /**
-     * After filter
-     * 
-     * @return void
-     */
-
-    protected function after()
-    {
-    }
-
-    /**
      * Items index
      * 
      * @return void
      */
     public function indexAction()
     {
-        // if (!Auth::isLoggedIn()) {
-        //     // exit("access denied");
 
-        //     Auth::rememberRequestedPage();
-
-        //     $this->redirect('/login');
-        // }
         $this->requireLogin();
 
-        View::render('Items/index.php');
+        View::renderTemplate('Items/index.html');
     }
 
     /**
