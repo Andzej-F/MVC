@@ -55,9 +55,12 @@ class View
             // $loader = new \Twig\Loader\FilesystemLoader(C:\xampp\htdocs\PHP\Other\MVC/App/Views');
 
             //An environment (\Twig\Environment) to store templates configuration
-            $twig = new \Twig\Environment($loader);
+            $twig = new \Twig\Environment($loader, [
+                'debug' => true
+            ]);
             $twig->addGlobal('current_user', \App\Auth::getUser());
             $twig->addGlobal('flash_messages', \App\Flash::getMessages());
+            $twig->addExtension(new \Twig\Extension\DebugExtension());
         }
 
         echo $twig->render($template, $args);

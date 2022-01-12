@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \Core\View;
 use \App\Models\User;
+use \App\Flash;
 
 /**
  * Signup controller
@@ -34,9 +35,10 @@ class Signup extends \Core\Controller
         $user = new User($_POST);
 
         if ($user->save()) {
-            // header('Location: http://localhost/PHP/lbm2/public/signup/success', true, 303);
-            // exit;
-            $this->redirect('/signup/success');
+
+            Flash::addMessage('Signup successful, please login to your newly created account');
+
+            $this->redirect('/login/new');
         } else {
 
             View::renderTemplate('Signup/new.html', [
@@ -52,6 +54,7 @@ class Signup extends \Core\Controller
      */
     public function successAction()
     {
-        View::renderTemplate('Signup/success.html');
+        // View::renderTemplate('Signup/success.html');
+        View::renderTemplate('Login/new.html');
     }
 }

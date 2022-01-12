@@ -86,9 +86,5 @@ class Auth
             // Look up the user based on "id" stored in the session
             return User::findByID($_SESSION['user_id']);
         }
-
-        // else {
-        //     return NULL;
-        // }
     }
 }

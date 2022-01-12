@@ -12,29 +12,6 @@ use \App\Auth;
  */
 class Home extends \Core\Controller
 {
-
-    /**
-     * Before filter
-     * 
-     * @return void
-     */
-    protected function before()
-    {
-        echo "(before) <br>";
-        // return false
-    }
-
-    /**
-     * After filter
-     * 0
-     * @return void
-     */
-    protected function after()
-    {
-        echo "(after)<br>";
-        // return false
-    }
-
     /**
      * Show the index page
      * 
@@ -42,7 +19,6 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        // View::render('Home/index.php');
         View::renderTemplate('Home/index.html');
     }
 }

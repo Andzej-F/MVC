@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Authors{% endblock %}
+
+{%  block body %}
+
+<h1>Books</h1>
+
+<h2>Search for a book or author</h2>
+
+<table>
+    <thead>
+        <tr>Sort by:</tr>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Available</th>
+            <th>Borrowed</th>
+            {% if current_user.role is same as "librarian" %}
+                <th>Edit</th>
+                <th>Delete</th>
+            {% endif %}
+        </tr>
+    </thead>
+    <tbody>
+        {% if books %}
+            {% for book in books %}
+                <tr>
+                    <td> {{ book.title}}</td>
+                    <td> {{book.name }} {{ book.surname}}</td>
+                    <td> {{book.genre}}</td>
+                    <td> {{book.available}}</td>
+                    <td> {{book.borrowed}}></td>
+            {% if current_user.role is same as "librarian" %}
+                        <td>
+                            <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/edit">EDIT</a>
+                        </td>
+                        <td>
+                            <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/delete">DELETE</a>
+                        </td>
+                     {% endif %}
+                </tr>
+            {% endfor %}
+         {% endif %}
+    </tbody>
+</table>
+{% if current_user.role is same as "librarian" %}
+    <a href="http://localhost/PHP/lbm2/public/books/new">Add a new book</a>
+ {% endif %}
+</body>
+
+</html>
+
+{% endblock %}

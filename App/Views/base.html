@@ -10,28 +10,37 @@
 
 </head>
 <body>
-    
+    <pre>
+        {#{ dump(flash_messages)}#}
+    </pre>
     {% for message in flash_messages %}
-        <div>
-            {{ message}}
+        <div class="alert alert-{{ message.type}}">
+            {{ message.body }}
         </div>
     {% endfor %}
 
-        <nav>
-        <ul>
-            <li><a href="http://localhost/PHP/lbm2/public/">Home</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/posts">Posts</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/authors/index">Authors</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/books/index">Books</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/login">Login</a></li>
-            {% if current_user %}
-            <li><a href="http://localhost/PHP/lbm2/public/logout">Logout</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/profile/show">Profile</a></li>
-            <li><a href="http://localhost/PHP/lbm2/public/items/index">Items</a></li>
-            {% endif %}
-            <li><a href="http://localhost/PHP/lbm2/public/signup/new">Signup</a></li>
+    <nav>   
+        <pre>
+            {#{dump (current_user) }}
+            {{dump (user) }#}
+        </pre>
 
-            <li><a href="">About</a></li>
+        <ul>
+                <li><a href="http://localhost/PHP/lbm2/public/">Home</a></li>
+                <li><a href="http://localhost/PHP/lbm2/public/posts">Posts</a></li>
+                <li><a href="http://localhost/PHP/lbm2/public/authors/index">Authors</a></li>
+                <li><a href="http://localhost/PHP/lbm2/public/books/index">Books</a></li>
+            {% if current_user is same as false %}
+                <li><a href="http://localhost/PHP/lbm2/public/login">Login</a></li>
+            {% endif %}
+
+            {% if current_user %}
+                <li><a href="http://localhost/PHP/lbm2/public/logout">Logout</a></li>
+                <li><a href="http://localhost/PHP/lbm2/public/profile/show">Profile</a></li>
+                <li><a href="http://localhost/PHP/lbm2/public/items/index">Items</a></li>
+            {% endif %}
+                <li><a href="http://localhost/PHP/lbm2/public/signup/new">Signup</a></li>
+                <li><a href="">About</a></li>
         </ul>
     </nav>
     

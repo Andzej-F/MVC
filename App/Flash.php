@@ -65,7 +65,7 @@ class Flash
             // Unset that value in the session
             unset($_SESSION['flash_notifications']);
 
-            // Return the variable
+            // Return the variable, so the message would last for one request
             return $messages;
         }
     }

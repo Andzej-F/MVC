@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Authors{% endblock %}
+
+{%  block body %}
+
+    <h1>Edit the book</h1>
+
+{% if book.errors %}
+    <p>Errors</p>
+    <ul>
+        {% for error in book.errors %}
+           <li>{{ error }}</li>
+        {% endfor %}
+{% endif %}
+
+    </ul>
+    <form method="post" action="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/update">
+
+        <div>
+            <label for="bookTitle">Title</label>
+            <input id="bookTitle" name="title" placeholder="Title" value={{ book.title }}>
+        </div>
+
+        <div>
+            <label for="bookAuthor">Author</label>
+            <select name="author_id" id="author_id">
+                <option value="default">Select the author</option>
+                {% if authors %}
+                    {% for author in authors %}
+                        <option value="{{author.author_id}}">
+                            {{author.name}} {{author.surname}}>
+                        </option>
+                    {% endfor %}
+                {% endif %}
+            </select>
+        </div>
+
+        <div>
+            <label for="bookGenre">Genre</label>
+            <input id="bookGenre" name="genre" placeholder="Genre" value={{book.genre}}>
+        </div>
+
+        <div>
+            <label for="bookAvailable">Available</label>
+            <input id="bookAvailable" name="available" placeholder="Available" value={{book.available}}>
+        </div>
+
+        <div>
+            <label for="bookBorrowed">Borrowed</label>
+            <input id="bookBorrowed" name="borrowed" placeholder="Borrowed" value={{book.borrowed}}>
+        </div>
+
+        <button type="submit">Edit</button>
+
+    </form>
+
+{% endblock %}

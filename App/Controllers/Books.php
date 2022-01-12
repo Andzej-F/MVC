@@ -23,7 +23,7 @@ class Books extends \Core\Controller
     {
         $books = Book::getAll();
 
-        View::render('Books/index.php', [
+        View::renderTemplate('Books/index.html', [
             'books' => $books
         ]);
     }
@@ -35,11 +35,13 @@ class Books extends \Core\Controller
      */
     public function newAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+
+        $this->requireLibrLogin();
 
         $authors = Author::getAll();
 
-        View::render('Books/new.php', [
+        View::renderTemplate('Books/new.html', [
             'authors' => $authors
         ]);
     }
@@ -51,7 +53,8 @@ class Books extends \Core\Controller
      */
     public function createAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $book = new Book($_POST);
 
@@ -65,7 +68,7 @@ class Books extends \Core\Controller
             $this->redirect('/books/index');
         } else {
 
-            View::render('Books/new.php', [
+            View::renderTemplate('Books/new.html', [
                 'book' => $book,
                 'authors' => $authors
             ]);
@@ -79,27 +82,15 @@ class Books extends \Core\Controller
      */
     public function editAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $id = $this->route_params['id'];
 
-        // echo '<pre>';
-        // print_r($this->route_params);
-        // echo '</pre>';
-        // echo $id;
-        // echo '<hr>';
-
         $authors = Author::getAll();
         $book = Book::findByID($id);
-        // $miau = $book->author_id;
-        // $author = Author::getAuthor($book->author_id);
 
-        // echo '<pre>';
-        // print_r($book);
-        // print_r($authors);
-        // echo '</pre>';
-
-        View::render('Books/edit.php', [
+        View::renderTemplate('Books/edit.html', [
             'book' => $book,
             'authors' => $authors
         ]);
@@ -112,7 +103,8 @@ class Books extends \Core\Controller
      */
     public function updateAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $book_id = $this->route_params['id'];
         $authors = Author::getAll();
@@ -124,9 +116,9 @@ class Books extends \Core\Controller
 
             $this->redirect("/books/index");
         } else {
-            // Redisplay the form passing in the user model as this will contain
+            // Redisplay the form passing in the book model as this will contain
             // any validation error messages to display back in the form
-            View::render('Books/edit.php', [
+            View::renderTemplate('Books/edit.html', [
                 'book' => $book,
                 'authors' => $authors
             ]);
@@ -140,7 +132,8 @@ class Books extends \Core\Controller
      */
     public function deleteAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $id = $this->route_params['id'];
 
@@ -151,12 +144,6 @@ class Books extends \Core\Controller
             Flash::addMessage('Book was successfully deleted');
 
             $this->redirect("/books/index");
-        } else {
-            // Redisplay the form passing in the user model as this will contain
-            // any validation error messages to display back in the form
-            View::render('Books/delete.php', [
-                'book' => $book
-            ]);
         }
     }
 }

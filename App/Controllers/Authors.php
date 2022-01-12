@@ -22,7 +22,7 @@ class Authors extends \Core\Controller
     {
         $authors = Author::getAll();
 
-        View::render('Authors/index.php', [
+        View::renderTemplate('Authors/index.html', [
             'authors' => $authors
         ]);
     }
@@ -34,9 +34,10 @@ class Authors extends \Core\Controller
      */
     public function newAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
-        View::render('Authors/new.php');
+        View::renderTemplate('Authors/new.html');
     }
 
     /**
@@ -46,7 +47,8 @@ class Authors extends \Core\Controller
      */
     public function createAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $author = new Author($_POST);
 
@@ -58,7 +60,7 @@ class Authors extends \Core\Controller
             $this->redirect('/authors/index');
         } else {
 
-            View::render('Authors/new.php', [
+            View::renderTemplate('Authors/new.html', [
                 'author' => $author
             ]);
         }
@@ -71,13 +73,14 @@ class Authors extends \Core\Controller
      */
     public function editAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $author_id = $this->route_params['id'];
 
         $author = Author::getAuthor($author_id);
 
-        View::render('Authors/edit.php', [
+        View::renderTemplate('Authors/edit.html', [
             'author' => $author
         ]);
     }
@@ -89,7 +92,8 @@ class Authors extends \Core\Controller
      */
     public function updateAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $author_id = $this->route_params['id'];
 
@@ -103,7 +107,7 @@ class Authors extends \Core\Controller
         } else {
             // Redisplay the form passing in the user model as this will contain
             // any validation error messages to display back in the form
-            View::render('Authors/edit.php', [
+            View::renderTemplate('Authors/edit.html', [
                 'author' => $author
             ]);
         }
@@ -116,7 +120,8 @@ class Authors extends \Core\Controller
      */
     public function deleteAction()
     {
-        $this->requireLogin();
+        // $this->requireLogin();
+        $this->requireLibrLogin();
 
         $author_id = $this->route_params['id'];
 
@@ -127,12 +132,6 @@ class Authors extends \Core\Controller
             Flash::addMessage('Author was successfully deleted');
 
             $this->redirect("/authors/index");
-        } else {
-            // Redisplay the form passing in the user model as this will contain
-            // any validation error messages to display back in the form
-            View::render('Authors/delete.php', [
-                'author' => $author
-            ]);
         }
     }
 }

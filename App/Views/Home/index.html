@@ -6,7 +6,11 @@
 
     <h1>Welcome</h1>
 
-    {#% if session.user_id %#}
+    <pre>
+        {{dump(current.user)}}
+        {{dump(user)}}
+    </pre>
+
     {% if current_user %}
        Hello {{ user.name }}.
        Hello {{ current_user.name }}.

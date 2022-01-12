@@ -20,10 +20,12 @@ class Profile extends \Core\Controller
      */
     public function showAction()
     {
-        $this->requireLogin();
+        if (!isset($user)) {
+            $this->requireLogin();
+        }
 
-        View::render(
-            'Profile/show.php',
+        View::renderTemplate(
+            'Profile/show.html',
             [
                 'user' => Auth::getUser()
             ]
@@ -39,8 +41,8 @@ class Profile extends \Core\Controller
     {
         $this->requireLogin();
 
-        View::render(
-            'Profile/edit.php',
+        View::renderTemplate(
+            'Profile/edit.html',
             [
                 'user' => Auth::getUser()
             ]
@@ -67,9 +69,28 @@ class Profile extends \Core\Controller
         } else {
             // Redisplay the form passing in the user model as this will contain
             // any validation error messages to display back in the form
-            View::render('Profile/edit.php', [
+            View::renderTemplate('Profile/edit.html', [
                 'user' => $user
             ]);
+        }
+    }
+
+    /**
+     * Delete the author
+     * 
+     * @return void
+     */
+    public function deleteAction()
+    {
+        $this->requireLogin();
+
+        $user = Auth::getUser();
+
+        if ($user->deleteUser()) {
+
+            Flash::addMessage('User was successfully deleted');
+
+            $this->redirect("/");
         }
     }
 }

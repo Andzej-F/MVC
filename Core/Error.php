@@ -63,7 +63,7 @@ class Error
             $message .= "\n=======================================================\n\n";
 
             error_log($message);
-            View::render("$code.php");
+            View::renderTemplate("$code.html");
         }
     }
 }
