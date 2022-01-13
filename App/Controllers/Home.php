@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use \Core\View;
+use \App\Models\Book;
 use \App\Auth;
 
 /**
@@ -19,6 +20,10 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        View::renderTemplate('Home/index.html');
+        $new_books = Book::getNewBooks();
+
+        View::renderTemplate('Home/index.html', [
+            'new_books' => $new_books
+        ]);
     }
 }

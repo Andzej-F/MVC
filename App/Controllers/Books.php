@@ -35,18 +35,18 @@ class Books extends \Core\Controller
      */
     public function searchAction()
     {
-        // echo '<pre>';
-        // print_r($_POST);
-        // print_r($_GET);
 
         $books = Book::searchBook($_GET['search']);
 
-        // print_r($books);
-        // echo '</pre>';
-        // exit;
-        View::renderTemplate('Books/index.html', [
-            'books' => $books
-        ]);
+        if ($books) {
+            View::renderTemplate('Books/index.html', [
+                'books' => $books
+            ]);
+        } else {
+            Flash::addMessage('Book or author not found, try again', 'warning');
+
+            $this->redirect('/books/index');
+        }
     }
 
     /**

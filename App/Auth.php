@@ -7,7 +7,7 @@ use \App\Models\User;
 /**
  * Authentication
  * 
- * PHP versiom 8.0.7
+ * PHP versiom 8.1.1
  */
 class Auth
 {

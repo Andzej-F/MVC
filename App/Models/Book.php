@@ -41,9 +41,6 @@ class Book extends \Core\Model
      */
     public static function getAll()
     {
-        // $sql = 'SELECT * FROM `books` WHERE 1
-        //         ORDER BY `title`';
-
         $sql = 'SELECT * FROM `books` 
                 INNER JOIN `authors`
                 ON `books`.`author_id` = `authors`.`author_id`
@@ -140,10 +137,6 @@ class Book extends \Core\Model
             $this->errors[] = 'Error: Please select the author from the list';
         }
 
-        // elseif ($this->bookExists($this->title, $this->author_id)) {
-        //     $this->errors[] = 'Error: This author\'s book is present in the records ';
-        // }
-
         // Genre
         $this->genre = trim($this->genre);
 
@@ -165,9 +158,6 @@ class Book extends \Core\Model
         if ($this->author_id === 'default') {
             $this->errors[] = 'Error: Please select the author from the list';
         }
-        //  elseif ($this->bookExists($this->title, $this->author_id)) {
-        //     $this->errors[] = 'Error: This author\'s book is present in the records ';
-        // }
 
         // Available
         $this->available = trim($this->available);
@@ -330,20 +320,66 @@ class Book extends \Core\Model
      */
     public static function searchBook($search)
     {
-        $sql = 'SELECT * FROM `books`
+        if (Book::validateSearch($search)) {
+
+            $sql = 'SELECT * FROM `books`
                     INNER JOIN `authors` ON `books`.`author_id`=`authors`.`author_id`
                     WHERE `title`LIKE :search
                     OR `name` LIKE :search
                     OR `surname` LIKE :search';
 
+            $db = static::getDB();
+
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+            $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+        }
+
+        return false;
+    }
+
+    /**
+     * Validate search value
+     * 
+     * @return boolean 
+     */
+    public static function validateSearch($search)
+    {
+        $search = trim($search);
+
+        if (!preg_match('/^[a-zA-z ,.!().?";\'-]+$/i', $search)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Display the list of recently added books
+     * 
+     * @return array Return the list of books
+     */
+    public static function getNewBooks()
+    {
+        $sql = 'SELECT * FROM `books` 
+                INNER JOIN `authors`
+                ON `books`.`author_id` = `authors`.`author_id`
+                ORDER BY `book_id` DESC
+                LIMIT 5';
+
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchALL();
+
+        return $result;
     }
 }
