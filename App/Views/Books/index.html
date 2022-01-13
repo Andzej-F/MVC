@@ -31,7 +31,7 @@
                     <td> {{book.name }} {{ book.surname}}</td>
                     <td> {{book.genre}}</td>
                     <td> {{book.available}}</td>
-                    <td> {{book.borrowed}}></td>
+                    <td> {{book.borrowed}}</td>
             {% if current_user.role is same as "librarian" %}
                         <td>
                             <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/edit">EDIT</a>

@@ -46,8 +46,8 @@ class User extends \Core\Model
 
             $password_hash = password_hash($this->password, PASSWORD_DEFAULT);
 
-            $sql = 'INSERT INTO `users`(`name`, `surname`, `role`,`email`, `password_hash`)
-                    VALUES (:name, :surname, :role, :email, :password_hash)';
+            $sql = 'INSERT INTO `users`(`name`, `surname`, `email`, `password_hash`)
+                    VALUES (:name, :surname, :email, :password_hash)';
 
             $db = static::getDB();
 
@@ -55,7 +55,6 @@ class User extends \Core\Model
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
-            $stmt->bindValue(':role', $this->role, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':password_hash', $password_hash, PDO::PARAM_STR);
 
@@ -212,7 +211,6 @@ class User extends \Core\Model
         // Assign the values from the form to properties of the user
         $this->name = $data['name'];
         $this->surname = $data['surname'];
-        $this->role = $data['role'];
 
         // Only validate and update the email if a value provided
         if ($data['email'] != '') {
@@ -232,7 +230,6 @@ class User extends \Core\Model
             $sql = 'UPDATE `users`
                     SET `name` = :name,
                 	    `surname` = :surname,
-                	    `role` = :role,
                 	    `email` = :email';
 
 
@@ -248,7 +245,6 @@ class User extends \Core\Model
 
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
-            $stmt->bindValue(':role', $this->role, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
             $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
 

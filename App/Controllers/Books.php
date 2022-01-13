@@ -37,7 +37,8 @@ class Books extends \Core\Controller
     {
         // $this->requireLogin();
 
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $authors = Author::getAll();
 
@@ -54,7 +55,8 @@ class Books extends \Core\Controller
     public function createAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $book = new Book($_POST);
 
@@ -83,7 +85,8 @@ class Books extends \Core\Controller
     public function editAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $id = $this->route_params['id'];
 
@@ -104,7 +107,8 @@ class Books extends \Core\Controller
     public function updateAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $book_id = $this->route_params['id'];
         $authors = Author::getAll();
@@ -133,7 +137,8 @@ class Books extends \Core\Controller
     public function deleteAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $id = $this->route_params['id'];
 

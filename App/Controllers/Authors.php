@@ -35,7 +35,8 @@ class Authors extends \Core\Controller
     public function newAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         View::renderTemplate('Authors/new.html');
     }
@@ -48,7 +49,8 @@ class Authors extends \Core\Controller
     public function createAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $author = new Author($_POST);
 
@@ -74,7 +76,7 @@ class Authors extends \Core\Controller
     public function editAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
 
         $author_id = $this->route_params['id'];
 
@@ -93,7 +95,7 @@ class Authors extends \Core\Controller
     public function updateAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
 
         $author_id = $this->route_params['id'];
 
@@ -121,7 +123,8 @@ class Authors extends \Core\Controller
     public function deleteAction()
     {
         // $this->requireLogin();
-        $this->requireLibrLogin();
+        $this->requireLibrarianLogin();
+
 
         $author_id = $this->route_params['id'];
 

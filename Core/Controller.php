@@ -64,7 +64,6 @@ abstract class Controller
 
     /**
      * Require the user to be logged in before giving access to the requested page.
-     * Remember the requested page for later, then redirect to the login page.
      * 
      * @return void
      */
@@ -74,9 +73,24 @@ abstract class Controller
 
             Flash::addMessage('Please login to access that page', Flash::INFO);
 
-            Auth::rememberRequestedPage();
-
             $this->redirect('/login');
+        }
+    }
+
+    /**
+     * Require the librarian to be logged in before giving access to the requested page.
+     * 
+     * @return void
+     */
+    public function requireLibrarianLogin()
+    {
+        $user = Auth::getUser();
+
+        if ($user === null || $user->role !== "librarian") {
+
+            Flash::addMessage('Only librarians can access that page', Flash::INFO);
+
+            $this->redirect('/');
         }
     }
 }

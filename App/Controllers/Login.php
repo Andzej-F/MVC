@@ -32,7 +32,6 @@ class Login extends \Core\Controller
     public function createAction()
     {
 
-
         $user = User::authenticate($_POST['email'], $_POST['password']);
 
         if ($user) {
