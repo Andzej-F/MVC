@@ -73,6 +73,12 @@ class User extends \Core\Model
      */
     public function validate()
     {
+        // echo '<pre>';
+        // var_dump($this);
+        // var_dump($_POST);
+        // echo '</pre>';
+        // exit;
+
         // Name
         if ($this->name == '') {
             $this->errors[] = 'Name is required';
@@ -88,7 +94,11 @@ class User extends \Core\Model
             $this->errors[] = 'Invalid email';
         }
 
-        if (static::emailExists($this->email)) {
+        if (isset($this->id)) {
+            if (static::isEmailTaken($this->email, $this->id)) {
+                $this->errors[] = 'User with the same email is already registered';
+            }
+        } elseif (static::emailExists($this->email)) {
             $this->errors[] = 'email already taken';
         }
 
@@ -141,6 +151,33 @@ class User extends \Core\Model
         $stmt = static::getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+    }
+
+    /**
+     * Check if there is another user with the same email address
+     * 
+     * @param string $email email address to search for
+     * @param int $id Current user's id
+     * 
+     * @return mixed User object if found, false otherwise
+     */
+    public static function isEmailTaken($email, $id)
+    {
+        $sql = 'SELECT * FROM `users` WHERE email = :email
+                AND id != :id';
+
+        $db = static::getDB();
+
+        $stmt = static::getDB();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 

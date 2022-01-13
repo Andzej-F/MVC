@@ -39,7 +39,9 @@
                 <li><a href="http://localhost/PHP/lbm2/public/profile/show">Profile</a></li>
                 <li><a href="http://localhost/PHP/lbm2/public/items/index">Items</a></li>
             {% endif %}
+            {% if not current_user %}
                 <li><a href="http://localhost/PHP/lbm2/public/signup/new">Signup</a></li>
+            {% endif %}
                 <li><a href="">About</a></li>
         </ul>
     </nav>
