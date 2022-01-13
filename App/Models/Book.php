@@ -322,4 +322,28 @@ class Book extends \Core\Model
 
         return $stmt->execute();
     }
+
+    /**
+     * Find searched book
+     * 
+     * @return array Returns Book object on success, false on failure
+     */
+    public static function searchBook($search)
+    {
+        $sql = 'SELECT * FROM `books`
+                    INNER JOIN `authors` ON `books`.`author_id`=`authors`.`author_id`
+                    WHERE `title`LIKE :search
+                    OR `name` LIKE :search
+                    OR `surname` LIKE :search';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':search', '%' . $search . '%', PDO::PARAM_STR);
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

@@ -7,13 +7,15 @@
     <h1>Welcome</h1>
 
     <pre>
-        {{dump(current.user)}}
-        {{dump(user)}}
+        {#{dump(current.user)}}
+        {{dump(user)}#}
     </pre>
 
     {% if current_user %}
        Hello {{ user.name }}.
        Hello {{ current_user.name }}.
     {% endif %}
+
+    <h2>Newest Books in Our Library</h2>
 
 {% endblock %}

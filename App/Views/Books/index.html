@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %}Authors{% endblock %}
+{% block title %}Books{% endblock %}
 
 {%  block body %}
 
 <h1>Books</h1>
 
-<h2>Search for a book or author</h2>
+<form action="http://localhost/PHP/lbm2/public/books/search">
+    <input type="text" name="search" placeholder="Search for a book (enter a title or author)">
+    <button type="submit">Search</button>
+</form>
 
 <table>
     <thead>

@@ -29,6 +29,27 @@ class Books extends \Core\Controller
     }
 
     /**
+     * Show the index page
+     * 
+     * @return void
+     */
+    public function searchAction()
+    {
+        // echo '<pre>';
+        // print_r($_POST);
+        // print_r($_GET);
+
+        $books = Book::searchBook($_GET['search']);
+
+        // print_r($books);
+        // echo '</pre>';
+        // exit;
+        View::renderTemplate('Books/index.html', [
+            'books' => $books
+        ]);
+    }
+
+    /**
      * Show the create new book page
      * 
      * @return void

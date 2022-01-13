@@ -29,7 +29,7 @@
                 {% if authors %}
                     {% for author in authors %}
                         <option value="{{author.author_id}}">
-                            {{author.name}} {{author.surname}}
+                            {{author.surname}} {{author.name}}
                         </option>
                     {% endfor %}
                 {% endif %}
@@ -38,17 +38,17 @@
 
         <div>
             <label for="bookGenre">Genre</label>
-            <input id="bookGenre" name="genre" placeholder="Genre" value={{book.genre}}>
+            <input id="bookGenre" name="genre" placeholder="Genre" value="{{book.genre}}">
         </div>
 
         <div>
             <label for="bookAvailable">Available</label>
-            <input id="bookAvailable" name="available" placeholder="Available" value={{book.available}}>
+            <input id="bookAvailable" name="available" placeholder="Available" value="{{book.available}}">
         </div>
 
         <div>
             <label for="bookBorrowed">Borrowed</label>
-            <input id="bookBorrowed" name="borrowed" placeholder="Borrowed" value={{book.borrowed}} >
+            <input id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="{{book.borrowed}}">
         </div>
 
         <button type="submit">Add</button>

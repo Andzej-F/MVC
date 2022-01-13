@@ -10,11 +10,17 @@ CREATE TABLE `authors` (
 ) DEFAULT CHARSET=utf8mb4;
 
 -- 
--- Sample data
+-- Sample data for table `authors`
 -- 
 
-INSERT INTO `authors` (`author_id`, `name`, `surname`)
-VALUES (NULL, 'Alexandre', 'Dumas'), 
+INSERT INTO `authors` (`author_id`, `name`, `surname`) VALUES 
+(NULL, 'Alexandre', 'Dumas'),
+(NULL, 'Jules', 'Verne'),
+(NULL, 'Robert Louis', 'Stevenson'),
+(NULL, 'H. Rider', 'Haggard'),
 (NULL, 'Walter', 'Scott'),
 (NULL, 'Edgar Rice', 'Burroughs'),
-(NULL, 'Rudyard', 'Kipling'), (NULL, 'Yann', 'Martel')
+(NULL, 'Joseph', 'Conrad'),
+(NULL, 'Gary', 'Paulsen'),
+(NULL, 'Michael', 'Crichton'),
+(NULL, 'Rudyard', 'Kipling')
