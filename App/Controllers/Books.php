@@ -29,7 +29,7 @@ class Books extends \Core\Controller
     }
 
     /**
-     * Show the index page
+     * Search the book
      * 
      * @return void
      */
@@ -47,6 +47,20 @@ class Books extends \Core\Controller
 
             $this->redirect('/books/index');
         }
+    }
+
+    /**
+     * Sort the book list by selected parameter
+     * 
+     * @return void
+     */
+    public function sortAction()
+    {
+        $books = Book::sortBook($_GET['sort']);
+
+        View::renderTemplate('Books/index.html', [
+            'books' => $books
+        ]);
     }
 
     /**

@@ -382,4 +382,30 @@ class Book extends \Core\Model
 
         return $result;
     }
+
+    /**
+     * Display the list of books available in database
+     * 
+     * @return array Return the list of books
+     */
+    public static function sortBook($parameter)
+    {
+        $sql = "SELECT * FROM `books` 
+                INNER JOIN `authors`
+                ON `books`.`author_id` = `authors`.`author_id`
+                ORDER BY ";
+
+        $sql .= "`$parameter` ASC";
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->execute();
+
+        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchALL();
+
+        return $result;
+    }
 }

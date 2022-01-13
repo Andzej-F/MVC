@@ -13,7 +13,19 @@
 
 <table>
     <thead>
-        <tr>Sort by:</tr>
+        <tr>Sort by:
+            <form action="http://localhost/PHP/lbm2/public/books/sort">
+                <select name="sort" id="sort">
+                    <option value="title">Title</option>
+                    <option value="surname">Author</option>
+                    <option value="genre">Genre</option>
+                    <option value="available">Available</option>
+                    <option value="borrowed">Borrowed</option>
+                </select>
+                <button type="submit">Sort</button>
+            </form>
+
+        </tr>
         <tr>
             <th>Title</th>
             <th>Author</th>
