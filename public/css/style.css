@@ -18,7 +18,7 @@ h2 {
     text-align: center;
     color: darkgreen;
     margin-top: 5px;
-    margin-bottom: 0;
+    margin-bottom: 5px;
     font-size: 30px;
     font-weight: bold;
 }
@@ -72,13 +72,48 @@ a {
     justify-content: center;
 }
 
-.add-a-new-author {
+.add {
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 10px;
+    font-size: 25px;
+    color:indigo;
 }
 
 .alert {
     text-align: center;
     font-size: 20px;
+}
+
+.error {
+    color: red;
+}
+
+.input-group {
+    width: 50%;
+    margin: 0 auto !important;
+}
+
+.form-select{
+    width:65%;
+    float:left;
+}
+
+.select-book-author{
+    width:100%;
+}
+
+.sort-button{
+    width:30%;
+    float:left;
+}
+
+.row{
+    width:50%;
+    margin: 0 auto !important;
+}
+
+.profile-link{
+    font-size: 25px;
 }

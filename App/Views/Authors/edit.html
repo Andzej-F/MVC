@@ -2,37 +2,39 @@
 
 {% block title %}Authors{% endblock %}
 
-{%  block body %}
+{% block body %}
 
-    <h1>Edit the author</h1>
+<h1>Edit the author</h1>
 
 {% if author.errors %}
-
-    <p>Errors</p>
+<div class="form-group">
+    <p class="error">Errors</p>
     <ul>
         {% for error in author.errors %}
-            <li>{{ error }}</li>
+        <li class="error">{{ error }}</li>
         {% endfor %}
-{% endif %}
+        {% endif %}
     </ul>
-    <form method="post" action="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/update">
+</div>
 
-        <div class="form-group">
-            <label for="authorName">Name</label>
-            <input class="form-control" id="authorName" name="name" placeholder="Name" value={{ author.name}}>
-        </div>
+<form method="post" action="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/update">
 
-        <div class="form-group">
-            <label for="authorSurname">Surname</label>
-            <input class="form-control" id="authorSurname" name="surname" placeholder="Surname" value={{ author.surname}}>
-        </div>
+    <div class="form-group">
+        <label for="authorName">Name</label>
+        <input class="form-control" id="authorName" name="name" placeholder="Name" value={{ author.name}}>
+    </div>
 
-        <br>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="http://localhost/PHP/lbm2/public/authors/index">Cancel</a>
-        </div>
+    <div class="form-group">
+        <label for="authorSurname">Surname</label>
+        <input class="form-control" id="authorSurname" name="surname" placeholder="Surname" value={{ author.surname}}>
+    </div>
 
-    </form>
+    <br>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="http://localhost/PHP/lbm2/public/authors/index">Cancel</a>
+    </div>
+
+</form>
 
 {% endblock %}

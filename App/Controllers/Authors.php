@@ -34,9 +34,7 @@ class Authors extends \Core\Controller
      */
     public function newAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         View::renderTemplate('Authors/new.html');
     }
@@ -48,9 +46,7 @@ class Authors extends \Core\Controller
      */
     public function createAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         $author = new Author($_POST);
 

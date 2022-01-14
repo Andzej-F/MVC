@@ -2,36 +2,37 @@
 
 {% block title %}Authors{% endblock %}
 
-{%  block body %}
+{% block body %}
 
-    <h1>Add a new author</h1>
+<h2>Add a new author</h2>
 
 {% if author.errors %}
-
-    <p>Errors</p>
+<div class="form-group">
+    <p class="error">Errors</p>
     <ul>
         {% for error in author.errors %}
-            <li>{{ error }}</li>
+        <li class="error">{{ error }}</li>
         {% endfor %}
-    {% endif %}
-
     </ul>
-    <form method="post" action="http://localhost/PHP/lbm2/public/authors/create">
+</div>
+{% endif %}
 
-       <div class="form-group">
-            <label for="authorName">Name</label>
-            <input  class="form-control" id="authorName" name="name" placeholder="Name" value={{ author.name}}>
-        </div>
+<form method="post" action="http://localhost/PHP/lbm2/public/authors/create">
 
-       <div class="form-group">
-            <label for="authorSurname">Surname</label>
-            <input  class="form-control" id="authorSurname" name="surname" placeholder="Surname" value={{ author.surname}}>
-        </div>
+    <div class="form-group">
+        <label for="authorName">Name</label>
+        <input class="form-control" id="authorName" name="name" placeholder="Name" value={{ author.name}}>
+    </div>
+
+    <div class="form-group">
+        <label for="authorSurname">Surname</label>
+        <input class="form-control" id="authorSurname" name="surname" placeholder="Surname" value={{ author.surname}}>
+    </div>
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Add</button>
         <a href="http://localhost/PHP/lbm2/public/authors/new">Cancel</a>
-        </div>
-    </form>
+    </div>
+</form>
 
 {% endblock %}

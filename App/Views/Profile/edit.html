@@ -2,47 +2,54 @@
 
 {% block title %}Edit Profile{% endblock %}
 
-{%  block body %}
+{% block body %}
 
 <h1>Edit Profile</h1>
 
 {% if user.errors %}
-    <p>Errors: </p>
+<div class="form-group">
+    <p class="error">Errors</p>
     <ul>
-            {% for error in user.errors %}
-            <li>{{ error }}</li>
+        {% for error in user.errors %}
+        <li class="error">{{ error }}</li>
         {% endfor %}
     </ul>
-    {% endif %}
+</div>
+{% endif %}
 
 <form method="post" action="http://localhost/PHP/lbm2/public/profile/update">
 
-        <div>
+    <div class="form-group">
         <label for="inputName">Name</label>
-        <input id="inputName" name="name" placeholder="Name" value={{ user.name }} >
+        <input class="form-control" id="inputName" name="name" placeholder="Name" value={{ user.name }}>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="inputSurame">Surname</label>
-        <input id="inputSurame" name="surname" placeholder="Surname" value={{ user.surname }} >
+        <input class="form-control" id="inputSurame" name="surname" placeholder="Surname" value={{ user.surname }}>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="inputEmail">Email address</label>
-        <input id="inputEmail" name="email" placeholder="email address" value = {{ user.email }}>
+        <input class="form-control" id="inputEmail" name="email" placeholder="email address" value={{ user.email }}>
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="inputPassword">Password</label>
-        <input type="password" id="inputPassword" name="password" placeholder="Password">
+        <input class="form-control" type="password" id="inputPassword" name="password"
+            placeholder="Leave field empty to keep the current password">
     </div>
 
-    <div>
+    <div class="form-group">
         <label for="inputPasswordConfirmation">Repeat password</label>
-        <input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Repeat password">
+        <input class="form-control" type="password" id="inputPasswordConfirmation" name="password_confirmation"
+            placeholder="Leave field  empty to keep the current password">
     </div>
-    <button type="submit">Save</button>
-    <a href="http://localhost/PHP/lbm2/public/profile/show">Cancel</a>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="http://localhost/PHP/lbm2/public/profile/show">Cancel</a>
+    </div>
 
 </form>
 

@@ -1,0 +1,100 @@
+[14-Jan-2022 20:17:22 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\Core\Model.php(31): PDO->__construct('mysql:host=loca...', 'mvcuser', 'secret')
+#1 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(374): Core\Model::getDB()
+#2 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Home.php(23): App\Models\Book::getNewBooks()
+#3 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Home->indexAction()
+#4 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Model.php' on line 31
+=======================================================
+
+
+[14-Jan-2022 20:17:25 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY000] [2002] No connection could be made because the target machine actively refused it'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\Core\Model.php(31): PDO->__construct('mysql:host=loca...', 'mvcuser', 'secret')
+#1 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(374): Core\Model::getDB()
+#2 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Home.php(23): App\Models\Book::getNewBooks()
+#3 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Home->indexAction()
+#4 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Model.php' on line 31
+=======================================================
+
+
+[14-Jan-2022 21:00:14 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Sort by' in 'order clause''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(404): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(59): App\Models\Book::sortBook('Sort by')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->sortAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/sort')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 404
+=======================================================
+
+
+[14-Jan-2022 21:18:36 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "title"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(263): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 263)
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(152): App\Models\Book->updateBook(Array, '15')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->updateAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/15/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 263
+=======================================================
+
+
+[14-Jan-2022 21:19:53 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "title"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(263): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 263)
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(152): App\Models\Book->updateBook(Array, '15')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->updateAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/15/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 263
+=======================================================
+
+
+[14-Jan-2022 21:33:05 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Book::$title'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(121): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 121)
+#1 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(88): App\Models\Book->validate()
+#2 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(100): App\Models\Book->save()
+#3 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->createAction()
+#4 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 121
+=======================================================
+
+
+[14-Jan-2022 21:33:19 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined property: App\Models\Book::$title'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(121): Core\Error::errorHandler(2, 'Undefined prope...', 'C:\\xampp\\htdocs...', 121)
+#1 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(88): App\Models\Book->validate()
+#2 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(100): App\Models\Book->save()
+#3 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->createAction()
+#4 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/create')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 121
+=======================================================
+
+
+[14-Jan-2022 21:43:39 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'ErrorException' with message: 'Undefined array key "name"'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\User.php(249): Core\Error::errorHandler(2, 'Undefined array...', 'C:\\xampp\\htdocs...', 249)
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Profile.php(64): App\Models\User->updateProfile(Array)
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Profile->updateAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('profile/update')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\User.php' on line 249
+=======================================================
+
+

@@ -2,30 +2,44 @@
 
 {% block title %}Books{% endblock %}
 
-{%  block body %}
+{% block body %}
 
-<h1>Books</h1>
+<h2>Books</h2>
 
 <form action="http://localhost/PHP/lbm2/public/books/search">
-    <input type="text" name="search" placeholder="Search for a book (enter a title or author)">
-    <button type="submit">Search</button>
+
+    <div class="input-group">
+        <input class="form-control rounded" type="search" name="search"
+            placeholder="Search for a book (enter a book title or author name)" aria-label="Search"
+            aria-describedby="search-addon" />
+        <button type="button" class="btn btn-outline-primary">search</button>
+    </div>
 </form>
 
-<table>
+<table class="table table-striped w-auto">
     <thead>
-        <tr>Sort by:
+        <tr class="table-danger">
             <form action="http://localhost/PHP/lbm2/public/books/sort">
-                <select name="sort" id="sort">
-                    <option value="title">Title</option>
-                    <option value="surname">Author</option>
-                    <option value="genre">Genre</option>
-                    <option value="available">Available</option>
-                    <option value="borrowed">Borrowed</option>
-                </select>
-                <button type="submit">Sort</button>
+                <div class="form-group">
+                    <br>
+                    <select class="form-select" name="sort" id="sort" aria-label="Sort by:">
+                        <option selected>Sort by</option>
+                        <option value="title">Title</option>
+                        <option value="surname">Author</option>
+                        <option value="genre">Genre</option>
+                        <option value="available">Available</option>
+                        <option value="borrowed">Borrowed</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary sort-button">Sort</button>
+                </div>
             </form>
 
-        </tr>
+            {% if current_user.role is same as "librarian" %}
+            <div class="form-group">
+                <a class="add" href="http://localhost/PHP/lbm2/public/books/new">Add a new book</a>
+            </div>
+            {% endif %}
         <tr>
             <th>Title</th>
             <th>Author</th>
@@ -33,36 +47,33 @@
             <th>Available</th>
             <th>Borrowed</th>
             {% if current_user.role is same as "librarian" %}
-                <th>Edit</th>
-                <th>Delete</th>
+            <th>Edit</th>
+            <th>Delete</th>
             {% endif %}
         </tr>
     </thead>
     <tbody>
         {% if books %}
-            {% for book in books %}
-                <tr>
-                    <td> {{ book.title}}</td>
-                    <td> {{book.name }} {{ book.surname}}</td>
-                    <td> {{book.genre}}</td>
-                    <td> {{book.available}}</td>
-                    <td> {{book.borrowed}}</td>
+        {% for book in books %}
+        <tr>
+            <td class="table-danger"> {{ book.title}}</td>
+            <td class="table-danger"> {{book.name }} {{ book.surname}}</td>
+            <td class="table-danger"> {{book.genre}}</td>
+            <td class="table-danger"> {{book.available}}</td>
+            <td class="table-danger"> {{book.borrowed}}</td>
             {% if current_user.role is same as "librarian" %}
-                        <td>
-                            <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/edit">EDIT</a>
-                        </td>
-                        <td>
-                            <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/delete">DELETE</a>
-                        </td>
-                     {% endif %}
-                </tr>
-            {% endfor %}
-         {% endif %}
+            <td class="table-danger">
+                <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/edit">EDIT</a>
+            </td>
+            <td class="table-danger">
+                <a class="link-danger" href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/delete">DELETE</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% endif %}
     </tbody>
 </table>
-{% if current_user.role is same as "librarian" %}
-    <a href="http://localhost/PHP/lbm2/public/books/new">Add a new book</a>
- {% endif %}
 </body>
 
 </html>

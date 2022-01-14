@@ -1,58 +1,65 @@
 {% extends "base.html" %}
 
-{% block title %}Authors{% endblock %}
+{% block title %}Books{% endblock %}
 
-{%  block body %}
+{% block body %}
 
 <h1>Add a new book</h1>
 
 {% if book.errors %}
-    <p>Errors</p>
+<div class="form-group">
+    <p class="error">Errors</p>
     <ul>
         {% for error in book.errors %}
-           <li>{{ error }}</li>
+        <li class="error">{{ error }}</li>
         {% endfor %}
-{% endif %}
-
+        {% endif %}
     </ul>
-    <form method="post" action="http://localhost/PHP/lbm2/public/books/create">
+</div>
+</ul>
 
-        <div class = "form-group">
-            <label for="bookTitle">Title</label>
-            <input class="form-control" id="bookTitle" name="title" placeholder="Title" value="{{ book.title }}">
-        </div>
+<form method="post" action="http://localhost/PHP/lbm2/public/books/create">
 
-        <div class = "form-group">
-            <label for="bookAuthor">Author</label>
-            <select class="form-select" size="1" aria-label="size 3 select example" name="author_id" id="author_id">
-                <option value="default"><b>Select the author</b></option>
-                {% if authors %}
-                    {% for author in authors %}
-                        <option value="{{author.author_id}}">
-                            {{author.surname}} {{author.name}}
-                        </option>
-                    {% endfor %}
-                {% endif %}
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="bookTitle">Title</label>
+        <input class="form-control" id="bookTitle" name="title" placeholder="Title" value="{{ book.title }}">
+    </div>
 
-        <div class = "form-group">
-            <label for="bookGenre">Genre</label>
-            <input class="form-control" id="bookGenre" name="genre" placeholder="Genre" value="{{book.genre}}">
-        </div>
+    <div class="form-group">
+        <label for="bookAuthor">Author</label>
+        <select class="form-select select-book-author" name="author_id" id="author_id">
+            <option value="default"><b>Select the author</b></option>
+            {% if authors %}
+            {% for author in authors %}
+            <option value="{{author.author_id}}">
+                {{author.surname}} {{author.name}}
+            </option>
+            {% endfor %}
+            {% endif %}
+        </select>
+    </div>
 
-        <div class = "form-group">
-            <label for="bookAvailable">Available</label>
-            <input class="form-control" id="bookAvailable" name="available" placeholder="Available" value="{{book.available}}">
-        </div>
+    <div class="form-group">
+        <label for="bookGenre">Genre</label>
+        <input class="form-control" id="bookGenre" name="genre" placeholder="Genre" value="{{book.genre}}">
+    </div>
 
-        <div class = "form-group">
-            <label for="bookBorrowed">Borrowed</label>
-            <input class="form-control" id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="{{book.borrowed}}">
-        </div>
+    <div class="form-group">
+        <label for="bookAvailable">Available</label>
+        <input class="form-control" id="bookAvailable" name="available" placeholder="Available"
+            value="{{book.available}}">
+    </div>
 
-        <button type="submit">Add</button>
+    <div class="form-group">
+        <label for="bookBorrowed">Borrowed</label>
+        <input class="form-control" id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="{{book.borrowed}}">
+    </div>
 
-    </form>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Add</button>
+        <a href="http://localhost/PHP/lbm2/public/books/new">Cancel</a>
+    </div>
+
+</form>
 
 {% endblock %}
