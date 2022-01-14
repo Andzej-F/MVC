@@ -17,15 +17,15 @@
     </ul>
     <form method="post" action="http://localhost/PHP/lbm2/public/books/create">
 
-                <div>
+        <div class = "form-group">
             <label for="bookTitle">Title</label>
-            <input id="bookTitle" name="title" placeholder="Title" value={{ book.title }}>
+            <input class="form-control" id="bookTitle" name="title" placeholder="Title" value="{{ book.title }}">
         </div>
 
-        <div>
+        <div class = "form-group">
             <label for="bookAuthor">Author</label>
-            <select name="author_id" id="author_id">
-                <option value="default">Select the author</option>
+            <select class="form-select" size="1" aria-label="size 3 select example" name="author_id" id="author_id">
+                <option value="default"><b>Select the author</b></option>
                 {% if authors %}
                     {% for author in authors %}
                         <option value="{{author.author_id}}">
@@ -36,19 +36,19 @@
             </select>
         </div>
 
-        <div>
+        <div class = "form-group">
             <label for="bookGenre">Genre</label>
-            <input id="bookGenre" name="genre" placeholder="Genre" value="{{book.genre}}">
+            <input class="form-control" id="bookGenre" name="genre" placeholder="Genre" value="{{book.genre}}">
         </div>
 
-        <div>
+        <div class = "form-group">
             <label for="bookAvailable">Available</label>
-            <input id="bookAvailable" name="available" placeholder="Available" value="{{book.available}}">
+            <input class="form-control" id="bookAvailable" name="available" placeholder="Available" value="{{book.available}}">
         </div>
 
-        <div>
+        <div class = "form-group">
             <label for="bookBorrowed">Borrowed</label>
-            <input id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="{{book.borrowed}}">
+            <input class="form-control" id="bookBorrowed" name="borrowed" placeholder="Borrowed" value="{{book.borrowed}}">
         </div>
 
         <button type="submit">Add</button>

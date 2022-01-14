@@ -1,20 +1,84 @@
 body {
-    background-color: lightgrey;
+    margin-top: 1em;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: sans-serif;
+    background-color: cornsilk;
+}
+
+h1 {
+    text-align: center;
+    color: crimson;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 5px;
+    font-size: 40px;
+}
+
+h2 {
+    text-align: center;
+    color: darkgreen;
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+h3 {
+    text-align: center;
+}
+
+.navbar-nav {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav>li {
+    display: inline-block;
+    float: none;
+}
+
+.ul-about {
+    margin-left: 200px;
+}
+
+p {
+    text-align: center;
+    font-size: 25px;
+}
+
+a {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-group {
+    width: 40%;
+    margin: 0 auto !important;
+}
+
+.btn {
+    margin: 0 auto !important;
+}
+
+.table {
+    width: 50%;
+    margin: 0 auto !important;
+}
+
+.authors-list {
+    justify-content: center;
+}
+
+.add-a-new-author {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .alert {
-    border: 1px solid #ccc;
-    padding: 6px;
-}
-
-.alert-info {
-    background-color: #d9edf7;
-}
-
-.alert-success {
-    background-color: #dff0d8;
-}
-
-.alert-warning {
-    background-color: #fcf8e3;
+    text-align: center;
+    font-size: 20px;
 }

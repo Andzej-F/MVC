@@ -3,17 +3,18 @@
 {% block title %}Authors{% endblock %}
 
 {%  block body %}
-
-        <pre>
-            {#{dump (current_user) }}
-            {{dump (current_user.role) }#}
-        </pre>
-
     <h1>Authors</h1>
 
-    <table>
+{% if current_user.role is same as "librarian" %}
+    <div class="add-a-new-author">
+    <a href="http://localhost/PHP/lbm2/public/authors/new">Add a new author</a>
+</div>
+<br>
+{% endif %}
+
+    <table class="table table-striped w-auto">
     <thead>
-        <tr>
+        <tr class="table-secondary">
             <th>Name</th>
             <th>Surname</th>
             {% if current_user.role is same as "librarian" %}
@@ -24,21 +25,17 @@
     </thead>
     <tbody>
 
-        <pre>
-            {#{dump(authors)}#}
-        </pre>
-
        {% if authors %}
              {% for author in authors %}
-                <tr>
-                    <td>{{ author.name }}</td>
-                    <td>{{ author.surname }}</td>
+                <tr class="table-secondary">
+                    <td class="table-secondary">{{ author.name }}</td>
+                    <td class="table-secondary">{{ author.surname }}</td>
                     {% if current_user.role is same as "librarian" %}
-                        <td>
+                        <td class="table-secondary">
                             <a href="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/edit">EDIT</a>
                         </td>
-                        <td>
-                            <a href="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/delete">DELETE</a>
+                        <td class="table-secondary">
+                            <a class="link-danger" href="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/delete">DELETE</a>
                         </td>
                       {% endif %}
                 </tr>
@@ -46,9 +43,5 @@
           {% endif %}
     </tbody>
 </table>
-{% if current_user.role is same as "librarian" %}
-    <a href="http://localhost/PHP/lbm2/public/authors/new">Add a new author</a>
-{% endif %}
-
 
 {% endblock %}
