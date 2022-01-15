@@ -77,7 +77,6 @@ class Login extends \Core\Controller
      */
     public function showLogoutMessageAction()
     {
-        $this->requireLogin();
 
         Flash::addMessage('Logout successful');
 

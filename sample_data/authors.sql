@@ -19,8 +19,13 @@ INSERT INTO `authors` (`author_id`, `name`, `surname`) VALUES
 (NULL, 'Robert Louis', 'Stevenson'),
 (NULL, 'H. Rider', 'Haggard'),
 (NULL, 'Walter', 'Scott'),
-(NULL, 'Edgar Rice', 'Burroughs'),
+(NULL, 'Edgaras', 'Burroughsas'),
 (NULL, 'Joseph', 'Conrad'),
 (NULL, 'Gary', 'Paulsen'),
 (NULL, 'Michael', 'Crichton'),
-(NULL, 'Rudyard', 'Kipling')
+(NULL, 'Rudyard', 'Kipling'),
+(NULL, 'Agatha', 'Christie'),
+(NULL, 'Helen', 'Fielding'),
+(NULL, 'J. K.', 'Rowling'),
+(NULL, 'Gregory David', 'Roberts')
+

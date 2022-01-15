@@ -10,6 +10,7 @@
         <li><b>OOP</b> (Object-Oriented Programming) code style</li>
         <li><b>MariaDB</b> (database) for storing data</li>
         <li><b>PDO</b> (PHP Data Objects) database access layer</li>
+        <li><b>Twig</b> template for outputting HTML</li>
         <li>input <b>validation</b></li>
         <li>result <b>sorting</b></li>
         <li><b>search</b> "book" option</li>

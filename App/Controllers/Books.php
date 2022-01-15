@@ -35,7 +35,6 @@ class Books extends \Core\Controller
      */
     public function searchAction()
     {
-
         $books = Book::searchBook($_GET['search']);
 
         if ($books) {
@@ -56,6 +55,11 @@ class Books extends \Core\Controller
      */
     public function sortAction()
     {
+        if ($_GET['sort'] === 'default') {
+            Flash::addMessage('Please select the value from the list', 'warning');
+            $this->redirect('/books/index');
+        }
+
         $books = Book::sortBook($_GET['sort']);
 
         View::renderTemplate('Books/index.html', [
@@ -70,7 +74,6 @@ class Books extends \Core\Controller
      */
     public function newAction()
     {
-
         $this->requireLibrarianLogin();
 
         $authors = Author::getAll();

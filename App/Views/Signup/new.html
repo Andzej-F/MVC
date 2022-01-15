@@ -5,53 +5,52 @@
 
 {% block body %}
 
-    <h1>Sign up</h1>
+<h1>Sign up</h1>
 
 {% if user.errors is not empty %}
-    <p>Errors:</p>
+<div class="form-group">
+    <p class="error">Errors</p>
     <ul>
         {% for error in user.errors %}
-            <li>{{ error }}
-                
-            </li>
+        <li class="error">{{ error }}</li>
         {% endfor %}
     </ul>
-{% endif %}
+    {% endif %}
+</div>
 
 <form method="post" action="http://localhost/PHP/lbm2/public/signup/create" id="formSignup">
 
-    <div class = "form-group">
+    <div class="form-group">
         <label for="inputName">Name</label>
-        <input id="inputName" name="name" placeholder="Name" autofocus value="{{ user.name }}"
-        class="form-control">
+        <input id="inputName" name="name" placeholder="Name" autofocus value="{{ user.name }}" class="form-control">
     </div>
 
-    <div class = "form-group">
+    <div class="form-group">
         <label for="inputSurame">Surname</label>
         <input id="inputSurame" name="surname" placeholder="Surname" autofocus value="{{ user.surname }}"
-         class="form-control">
+            class="form-control">
     </div>
 
-    <div class = "form-group">
+    <div class="form-group">
         <label for="inputEmail">Email address</label>
-        <input id="inputEmail" name="email" placeholder="email address" autofocus value = "{{ user.email }}"
-        class="form-control">
+        <input id="inputEmail" name="email" placeholder="email address" autofocus value="{{ user.email }}"
+            class="form-control">
     </div>
 
-    <div class = "form-group">
+    <div class="form-group">
         <label for="inputPassword">Password</label>
-        <input type="password" id="inputPassword" name="password" placeholder="Password"
-        class="form-control">
+        <input type="password" id="inputPassword" name="password" placeholder="Password" class="form-control">
     </div>
 
-    <div class = "form-group">
+    <div class="form-group">
         <label for="inputPasswordConfirmation">Repeat password</label>
         <input type="password" id="inputPasswordConfirmation" name="password_confirmation" placeholder="Repeat password"
-        class="form-control">
+            class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary">Sign up</button>
-
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Sign up</button>
+    </div>
 </form>
 
 {% endblock %}

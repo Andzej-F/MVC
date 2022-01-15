@@ -16,3 +16,60 @@ Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 134
 =======================================================
 
 
+[15-Jan-2022 12:45:19 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Sort by' in 'order clause''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(394): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(59): App\Models\Book::sortBook('Sort by')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->sortAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/sort')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 394
+=======================================================
+
+
+[15-Jan-2022 12:45:26 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Sort by' in 'order clause''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(394): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(59): App\Models\Book::sortBook('Sort by')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->sortAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/sort')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 394
+=======================================================
+
+
+[15-Jan-2022 12:45:32 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Sort by' in 'order clause''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(394): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(59): App\Models\Book::sortBook('Sort by')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->sortAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/sort')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 394
+=======================================================
+
+
+[15-Jan-2022 12:46:16 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'default' in 'order clause''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(394): PDOStatement->execute()
+#1 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Books.php(59): App\Models\Book::sortBook('default')
+#2 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Books->sortAction()
+#3 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('books/sort')
+#4 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php' on line 394
+=======================================================
+
+
+[15-Jan-2022 13:32:51 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched.'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('miauss')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 134
+=======================================================
+
+
