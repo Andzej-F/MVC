@@ -1,0 +1,18 @@
+[15-Jan-2022 12:12:08 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Error' with message: 'Call to undefined method App\Controllers\Login::logoutAction()'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('login/logout')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 124
+=======================================================
+
+
+[15-Jan-2022 12:13:37 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'Exception' with message: 'No route matched.'
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('show-logout-mes...')
+#1 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Router.php' on line 134
+=======================================================
+
+

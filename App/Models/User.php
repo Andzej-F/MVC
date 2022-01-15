@@ -73,12 +73,6 @@ class User extends \Core\Model
      */
     public function validate()
     {
-        // echo '<pre>';
-        // var_dump($this);
-        // var_dump($_POST);
-        // echo '</pre>';
-        // exit;
-
         // Name
         if ($this->name == '') {
             $this->errors[] = 'Name is required';
@@ -238,13 +232,6 @@ class User extends \Core\Model
      */
     public function updateProfile($data)
     {
-        // echo '<pre>';
-        // print_r($data);
-        // print_r($_POST);
-        // print_r($this);
-        // echo '</pre>';
-        // exit;
-
         // Assign the values from the form to properties of the user
         $this->name = $data['name'];
         $this->surname = $data['surname'];
@@ -304,7 +291,7 @@ class User extends \Core\Model
     public function deleteUser()
     {
         $sql = 'DELETE FROM `users`
-                    WHERE `id` = :id';
+                WHERE `id` = :id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);

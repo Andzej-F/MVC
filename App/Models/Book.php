@@ -35,7 +35,7 @@ class Book extends \Core\Model
     }
 
     /**
-     * Display the list of books available in database
+     * Display the list of books available in the database
      * 
      * @return array Return the list of books
      */
@@ -51,32 +51,29 @@ class Book extends \Core\Model
         $stmt = $db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
-
-        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
         $result = $stmt->fetchALL();
 
         return $result;
     }
 
-    /**
-     * Display the specific book based on id
-     * 
-     * @return array Returns Book object on success, false on failure
-     */
-    public static function getBook($book_id)
-    {
-        $sql = 'SELECT * FROM `books` WHERE `book_id` =:book_id';
+    // /**
+    //  * Display the specific book based on id
+    //  * 
+    //  * @return array Returns Book object on success, false on failure
+    //  */
+    // public static function getBook($book_id)
+    // {
+    //     $sql = 'SELECT * FROM `books` WHERE `book_id` =:book_id';
 
-        $db = static::getDB();
+    //     $db = static::getDB();
 
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+    //     $stmt = $db->prepare($sql);
+    //     $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+    //     $stmt->execute();
 
-        $stmt->execute();
-
-        return $stmt->fetch();
-    }
+    //     return $stmt->fetch();
+    // }
 
     /**
      * Save the books model with the current property values
@@ -201,7 +198,7 @@ class Book extends \Core\Model
      */
     public static function bookExists($title, $author_id)
     {
-        $author = Author::getAuthor($author_id);
+        $author = Author::findByID($author_id);
 
         $sql = 'SELECT * FROM `books` 
                 INNER JOIN `authors`
@@ -218,15 +215,11 @@ class Book extends \Core\Model
         $stmt->bindValue(':title', $title, PDO::PARAM_STR);
         $stmt->bindValue(':name', $author->name, PDO::PARAM_STR);
         $stmt->bindValue(':surname', $author->surname, PDO::PARAM_STR);
-
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-
         $stmt->execute();
 
         return $stmt->fetch();
     }
-
 
     /**
      * Find the book model by ID
@@ -242,9 +235,7 @@ class Book extends \Core\Model
         $db = static::getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
-
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-
         $stmt->execute();
 
         return $stmt->fetch();
@@ -377,7 +368,6 @@ class Book extends \Core\Model
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
 
-        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
         $result = $stmt->fetchALL();
 
         return $result;
@@ -403,7 +393,6 @@ class Book extends \Core\Model
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         $stmt->execute();
 
-        // $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
         $result = $stmt->fetchALL();
 
         return $result;

@@ -70,10 +70,8 @@ class Books extends \Core\Controller
      */
     public function newAction()
     {
-        // $this->requireLogin();
 
         $this->requireLibrarianLogin();
-
 
         $authors = Author::getAll();
 
@@ -89,9 +87,7 @@ class Books extends \Core\Controller
      */
     public function createAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         $book = new Book($_POST);
 
@@ -99,9 +95,9 @@ class Books extends \Core\Controller
 
         if ($book->save()) {
 
-            // Redirect to avoid form resubmission
             Flash::addMessage('Book successfully added');
 
+            // Redirect to avoid form resubmission
             $this->redirect('/books/index');
         } else {
 
@@ -119,12 +115,9 @@ class Books extends \Core\Controller
      */
     public function editAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
 
-
         $id = $this->route_params['id'];
-
         $authors = Author::getAll();
         $book = Book::findByID($id);
 
@@ -141,13 +134,11 @@ class Books extends \Core\Controller
      */
     public function updateAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         $book_id = $this->route_params['id'];
         $authors = Author::getAll();
-        $book = Book::getBook($book_id);
+        $book = Book::findByID($book_id);
 
         if ($book->updateBook($_POST, $book_id)) {
 
@@ -155,8 +146,6 @@ class Books extends \Core\Controller
 
             $this->redirect("/books/index");
         } else {
-            // Redisplay the form passing in the book model as this will contain
-            // any validation error messages to display back in the form
             View::renderTemplate('Books/edit.html', [
                 'book' => $book,
                 'authors' => $authors
@@ -171,13 +160,11 @@ class Books extends \Core\Controller
      */
     public function deleteAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         $id = $this->route_params['id'];
 
-        $book = Book::getBook($id);
+        $book = Book::findByID($id);
 
         if ($book->deleteBook()) {
 

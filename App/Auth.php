@@ -61,7 +61,7 @@ class Auth
      */
     public static function rememberRequestedPage()
     {
-        $_SESSION['return_to'] = '/' . $_SERVER['QUERY_STRING']; ///PHP/Other/MVC/public/example.php
+        $_SESSION['return_to'] = '/' . $_SERVER['QUERY_STRING'];
     }
 
     /**

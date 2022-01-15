@@ -71,12 +71,11 @@ class Authors extends \Core\Controller
      */
     public function editAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
 
         $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($author_id);
+        $author = Author::findByID($author_id);
 
         View::renderTemplate('Authors/edit.html', [
             'author' => $author
@@ -90,12 +89,11 @@ class Authors extends \Core\Controller
      */
     public function updateAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
 
         $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($author_id);
+        $author = Author::findByID($author_id);
 
         if ($author->updateAuthor($_POST)) {
 
@@ -103,8 +101,6 @@ class Authors extends \Core\Controller
 
             $this->redirect("/authors/index");
         } else {
-            // Redisplay the form passing in the user model as this will contain
-            // any validation error messages to display back in the form
             View::renderTemplate('Authors/edit.html', [
                 'author' => $author
             ]);
@@ -118,13 +114,11 @@ class Authors extends \Core\Controller
      */
     public function deleteAction()
     {
-        // $this->requireLogin();
         $this->requireLibrarianLogin();
-
 
         $author_id = $this->route_params['id'];
 
-        $author = Author::getAuthor($author_id);
+        $author = Author::findByID($author_id);
 
         if ($author->deleteAuthor()) {
 

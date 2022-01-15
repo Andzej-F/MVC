@@ -58,6 +58,8 @@ class Login extends \Core\Controller
      */
     public function destroyAction()
     {
+        $this->requireLogin();
+
         Auth::logout();
 
         $this->redirect('/login/show-logout-message');
@@ -75,6 +77,8 @@ class Login extends \Core\Controller
      */
     public function showLogoutMessageAction()
     {
+        $this->requireLogin();
+
         Flash::addMessage('Logout successful');
 
         $this->redirect('/');

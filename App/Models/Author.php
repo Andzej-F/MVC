@@ -34,7 +34,7 @@ class Author extends \Core\Model
     }
 
     /**
-     * Display the list of authors available in database
+     * Display the list of authors available in the database
      * 
      * @return array Return array of authors
      */
@@ -52,26 +52,6 @@ class Author extends \Core\Model
         $result = $stmt->fetchAll();
 
         return $result;
-    }
-
-    /**
-     * Display the specific author's information selected by id value
-     * 
-     * @return mixed Author object on success or false on failure
-     */
-    public static function getAuthor($author_id)
-    {
-        $sql = 'SELECT * FROM `authors` WHERE `author_id` =:author_id';
-
-        $db = static::getDB();
-
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':author_id', $author_id, PDO::PARAM_INT);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-
-        $stmt->execute();
-
-        return $stmt->fetch();
     }
 
     /**
@@ -176,14 +156,12 @@ class Author extends \Core\Model
         $stmt->bindValue(':name', $name, PDO::PARAM_STR);
         $stmt->bindValue(':surname', $surname, PDO::PARAM_STR);
 
-        // $stmt->setFetchMode(PDO::FETCH_CLASS, 'App\Models\User');
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
         $stmt->execute();
 
         return $stmt->fetch();
     }
-
 
     /**
      * Find a author model by ID
