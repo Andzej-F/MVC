@@ -1,0 +1,13 @@
+[25-Jan-2022 14:52:49 Europe/Berlin] 
+=======================================================
+Uncaught exception: 'PDOException' with message: 'SQLSTATE[HY000] [1044] Access denied for user 'mvcuser'@'%' to database 'lbm2''
+Stack trace:<pre>#0 C:\xampp\htdocs\PHP\lbm2\Core\Model.php(31): PDO->__construct('mysql:host=loca...', 'mvcuser', 'secret')
+#1 C:\xampp\htdocs\PHP\lbm2\App\Models\Book.php(365): Core\Model::getDB()
+#2 C:\xampp\htdocs\PHP\lbm2\App\Controllers\Home.php(23): App\Models\Book::getNewBooks()
+#3 C:\xampp\htdocs\PHP\lbm2\Core\Router.php(124): App\Controllers\Home->indexAction()
+#4 C:\xampp\htdocs\PHP\lbm2\public\index.php(79): Core\Router->dispatch('')
+#5 {main}
+Thrown in 'C:\xampp\htdocs\PHP\lbm2\Core\Model.php' on line 31
+=======================================================
+
+

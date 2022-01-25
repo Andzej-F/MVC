@@ -6,10 +6,10 @@ require_once 'Paginator.php';
 $host = 'localhost';
 
 /* MySQL account username */
-$user = 'mvcuser';
+$user = 'root';
 
 /* MySQL account password */
-$passwd = 'secret';
+$passwd = '';
 
 /* The schema you want to use */
 $schema = 'lbm2';
@@ -37,6 +37,10 @@ $limit      = (isset($_GET['limit'])) ? $_GET['limit'] : 5;
 $page       = (isset($_GET['page'])) ? $_GET['page'] : 1;
 $links      = (isset($_GET['links'])) ? $_GET['links'] : 7;
 $query      = 'SELECT * FROM `authors` WHERE 1 ORDER BY `surname`';
+
+// echo '<pre>';
+// print_r($_GET);
+// echo '</pre>';
 
 $Paginator  = new Paginator($conn, $query);
 
