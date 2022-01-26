@@ -20,7 +20,17 @@ class Authors extends \Core\Controller
      */
     public function indexAction()
     {
-        $authors = Author::getAll();
+        // $authors = Author::getAll();
+
+        // View::renderTemplate('Authors/index.html', [
+        //     'authors' => $authors
+        // ]);
+
+        $limit      = (isset($_GET['limit'])) ? $_GET['limit'] : 5;
+        $page       = (isset($_GET['page'])) ? $_GET['page'] : 1;
+        $links      = (isset($_GET['links'])) ? $_GET['links'] : 2;
+
+        $authors = Author::getAll($limit, $page);
 
         View::renderTemplate('Authors/index.html', [
             'authors' => $authors

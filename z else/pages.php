@@ -35,12 +35,8 @@ try {
 
 $limit      = (isset($_GET['limit'])) ? $_GET['limit'] : 5;
 $page       = (isset($_GET['page'])) ? $_GET['page'] : 1;
-$links      = (isset($_GET['links'])) ? $_GET['links'] : 7;
-$query      = 'SELECT * FROM `authors` WHERE 1 ORDER BY `surname`';
-
-// echo '<pre>';
-// print_r($_GET);
-// echo '</pre>';
+$links      = (isset($_GET['links'])) ? $_GET['links'] : 2;
+$query      = 'SELECT * FROM `city` WHERE 1';
 
 $Paginator  = new Paginator($conn, $query);
 
@@ -61,20 +57,23 @@ $results    = $Paginator->getData($limit, $page);
             <table class="table table-striped table-condensed table-bordered table-rounded">
                 <thead>
                     <tr>
-                        <th width="20%">Name</th>
-                        <th width="25%">Surname</th>
+                        <th>City</th>
+                        <th width="20%">Country</th>
+                        <th width="20%">Continent</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php for ($i = 0; $i < count($results->data); $i++) : ?>
                         <tr>
-                            <td><?php echo $results->data[$i]['name']; ?></td>
-                            <td><?php echo $results->data[$i]['surname']; ?></td>
+                            <td><?php echo $results->data[$i]['Name']; ?></td>
+                            <td><?php echo $results->data[$i]['CountryCode']; ?></td>
+                            <td><?php echo $results->data[$i]['District']; ?></td>
                         </tr>
                     <?php endfor; ?>
                 </tbody>
             </table>
             <?php echo $Paginator->createLinks($links, 'pagination pagination-sm'); ?>
+            </ul>
         </div>
     </div>
 </body>

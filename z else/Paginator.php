@@ -2,18 +2,17 @@
 
 class Paginator
 {
-
-    protected $conn;
-    protected $limit;
-    protected $page;
-    protected $query;
-    protected $total; //14
+    // case page =1
+    protected $conn; // PDO Object
+    protected $limit; // 10
+    protected $page; // 1
+    protected $query; // SELECT * FROM `authors` WHERE 1 ORDER BY `surname`
+    protected $total; // 14
 
     public function __construct($conn, $query)
     {
 
-        $this->conn = $conn; // PDO Object()
-
+        $this->conn = $conn;
         $this->query = $query;
 
         $rs = $this->conn->query($this->query);
@@ -22,41 +21,31 @@ class Paginator
 
     public function getData($limit, $page)
     {
+        $this->limit   = $limit;
+        $this->page    = $page;
 
         echo '<pre>';
         print_r($this);
         echo '</pre>';
-        exit;
-
-        $this->limit   = $limit;
-        $this->page    = $page;
 
         if ($this->limit == 'all') {
             $query      = $this->query;
         } else {
             $query      = $this->query . " LIMIT " . (($this->page - 1) * $this->limit) . ", $this->limit";
+            echo $query . '<br>';
         }
         $rs             = $this->conn->query($query);
 
+
         while ($row = $rs->fetch(PDO::FETCH_ASSOC)) {
             $results[]  = $row;
-            echo '<pre>';
-            var_dump($row);
-            // print_r($results);
-            echo '</pre>';
         }
-
-        // $results = $rs->fetchAll(PDO::FETCH_ASSOC);
 
         $result         = new stdClass();
         $result->page   = $this->page;
         $result->limit  = $this->limit;
         $result->total  = $this->total;
         $result->data   = $results;
-
-        echo '<pre>';
-        print_r($result);
-        echo '</pre>';
 
         return $result;
     }
@@ -80,28 +69,28 @@ class Paginator
         $start      = (($this->page - $links) > 0) ? $this->page - $links : 1;
         $end        = (($this->page + $links) < $last) ? $this->page + $links : $last;
 
-        $html       = '<ul class="' . $list_class . '">';
+        $html       = '<ul class="pagination justify-content-center" ' . $list_class . '">';
 
         $class      = ($this->page == 1) ? "disabled" : "";
-        $html       .= '<li class="' . $class . '"><a href="?limit=' . $this->limit . '&page=' . ($this->page - 1) . '">&laquo;</a></li>';
+        $html       .= '<li class="class="page-item ' . $class . '"><a class="page-link" href="?limit=' . $this->limit . '&page=' . ($this->page - 1) . '">&laquo;</a></li>';
 
         if ($start > 1) {
-            $html   .= '<li><a href="?limit=' . $this->limit . '&page=1">1</a></li>';
-            $html   .= '<li class="disabled"><span>...</span></li>';
+            $html   .= '<li><a class="page-link" href="?limit=' . $this->limit . '&page=1">1</a></li>';
+            $html   .= '<li class="class="page-item disabled"><span>...</span></li>';
         }
 
         for ($i = $start; $i <= $end; $i++) {
             $class  = ($this->page == $i) ? "active" : "";
-            $html   .= '<li class="' . $class . '"><a href="?limit=' . $this->limit . '&page=' . $i . '">' . $i . '</a></li>';
+            $html   .= '<li class="page-item ' . $class . '"><a class="page-link" href="?limit=' . $this->limit . '&page=' . $i . '">' . $i . '</a></li>';
         }
 
         if ($end < $last) {
-            $html   .= '<li class="disabled"><span>...</span></li>';
-            $html   .= '<li><a href="?limit=' . $this->limit . '&page=' . $last . '">' . $last . '</a></li>';
+            $html   .= '<li class="class="page-item disabled"><span>...</span></li>';
+            $html   .= '<li><a class="page-link" href="?limit=' . $this->limit . '&page=' . $last . '">' . $last . '</a></li>';
         }
 
         $class      = ($this->page == $last) ? "disabled" : "";
-        $html       .= '<li class="' . $class . '"><a href="?limit=' . $this->limit . '&page=' . ($this->page + 1) . '">&raquo;</a></li>';
+        $html       .= '<li class="class="page-item ' . $class . '"><a class="page-link" href="?limit=' . $this->limit . '&page=' . ($this->page + 1) . '">&raquo;</a></li>';
 
         $html       .= '</ul>';
 
