@@ -34,18 +34,45 @@ class Book extends \Core\Model
         }
     }
 
+    // /**
+    //  * Display the list of books available in the database
+    //  * 
+    //  * @return array Return the list of books
+    //  */
+    // public static function getAll()
+    // {
+    //     $sql = 'SELECT * FROM `books` 
+    //             INNER JOIN `authors`
+    //             ON `books`.`author_id` = `authors`.`author_id`
+    //             ORDER BY `title`';
+
+    //     $db = static::getDB();
+
+    //     $stmt = $db->prepare($sql);
+    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+    //     $stmt->execute();
+    //     $result = $stmt->fetchALL();
+
+    //     return $result;
+    // }
+
     /**
      * Display the list of books available in the database
      * 
      * @return array Return the list of books
      */
-    public static function getAll()
+    public static function getAll($limit, $page)
     {
         $sql = 'SELECT * FROM `books` 
                 INNER JOIN `authors`
                 ON `books`.`author_id` = `authors`.`author_id`
                 ORDER BY `title`';
 
+        if ($limit == 'all') {
+            $sql = $sql;
+        } else {
+            $sql = $sql . " LIMIT " . (($page - 1) * $limit) . ", $limit";
+        }
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
@@ -55,25 +82,6 @@ class Book extends \Core\Model
 
         return $result;
     }
-
-    // /**
-    //  * Display the specific book based on id
-    //  * 
-    //  * @return array Returns Book object on success, false on failure
-    //  */
-    // public static function getBook($book_id)
-    // {
-    //     $sql = 'SELECT * FROM `books` WHERE `book_id` =:book_id';
-
-    //     $db = static::getDB();
-
-    //     $stmt = $db->prepare($sql);
-    //     $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
-    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-    //     $stmt->execute();
-
-    //     return $stmt->fetch();
-    // }
 
     /**
      * Save the books model with the current property values

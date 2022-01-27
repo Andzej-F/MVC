@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \Core\View;
 use \App\Flash;
+use \App\Paginator;
 use \App\Models\Author;
 use \App\Models\Book;
 
@@ -22,10 +23,23 @@ class Books extends \Core\Controller
     public function indexAction()
     {
 
-        $books = Book::getAll();
+        // $books = Book::getAll();
+
+        // View::renderTemplate('Books/index.html', [
+        //     'books' => $books
+        // ]);
+
+        $limit = (isset($_GET['limit'])) ? $_GET['limit'] : 5;
+        $page  = (isset($_GET['page'])) ? $_GET['page'] : 1;
+        $links = (isset($_GET['links'])) ? $_GET['links'] : 2;
+
+        $books = Book::getAll($limit, $page);
+        $total = Paginator::getTotalRows('Books');
+        $pagination_links = Paginator::createLinks($limit, $page, $links, $total);
 
         View::renderTemplate('Books/index.html', [
-            'books' => $books
+            'books' => $books,
+            'pagination_links' => $pagination_links
         ]);
     }
 
