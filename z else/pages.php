@@ -63,13 +63,13 @@ $results    = $Paginator->getData($limit, $page);
                     </tr>
                 </thead>
                 <tbody>
-                    <?php for ($i = 0; $i < count($results->data); $i++) : ?>
+                    <?php foreach ($results->data as $row) : ?>
                         <tr>
-                            <td><?php echo $results->data[$i]['Name']; ?></td>
-                            <td><?php echo $results->data[$i]['CountryCode']; ?></td>
-                            <td><?php echo $results->data[$i]['District']; ?></td>
+                            <td><?php echo $row['Name']; ?></td>
+                            <td><?php echo $row['CountryCode']; ?></td>
+                            <td><?php echo $row['District']; ?></td>
                         </tr>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
             <?php echo $Paginator->createLinks($links, 'pagination pagination-sm'); ?>

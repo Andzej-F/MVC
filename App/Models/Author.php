@@ -25,7 +25,6 @@ class Author extends \Core\Model
      * 
      * @return void
      */
-
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {
@@ -36,19 +35,41 @@ class Author extends \Core\Model
     /**
      * Display the list of authors available in the database
      * 
-     * @return array Return array of authors
+     * @return array Return list of authors
      */
-    public static function getAll()
+    // public static function getAll()
+    // {
+    //     $sql = 'SELECT * FROM `authors` WHERE 1
+    //             ORDER BY `surname`';
+
+    //     $db = static::getDB();
+
+    //     $stmt = $db->prepare($sql);
+    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+    //     $stmt->execute();
+
+    //     $result = $stmt->fetchAll();
+
+    //     return $result;
+    // }
+
+    public static function getAll($limit, $page)
     {
         $sql = 'SELECT * FROM `authors` WHERE 1
                 ORDER BY `surname`';
 
+        if ($limit == 'all') {
+            $sql = $sql;
+        } else {
+            $sql = $sql . " LIMIT " . (($page - 1) * $limit) . ", $limit";
+        }
+
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        // $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
-
         $result = $stmt->fetchAll();
 
         return $result;

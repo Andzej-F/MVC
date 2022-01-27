@@ -25,7 +25,6 @@ class User extends \Core\Model
      * 
      * @return void
      */
-
     public function __construct($data = [])
     {
         foreach ($data as $key => $value) {

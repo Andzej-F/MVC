@@ -14,18 +14,17 @@ CREATE TABLE `authors` (
 -- 
 
 INSERT INTO `authors` (`author_id`, `name`, `surname`) VALUES 
-(NULL, 'Alexandre', 'Dumas'),
-(NULL, 'Jules', 'Verne'),
-(NULL, 'Robert Louis', 'Stevenson'),
-(NULL, 'H. Rider', 'Haggard'),
-(NULL, 'Walter', 'Scott'),
-(NULL, 'Edgaras', 'Burroughsas'),
-(NULL, 'Joseph', 'Conrad'),
-(NULL, 'Gary', 'Paulsen'),
-(NULL, 'Michael', 'Crichton'),
-(NULL, 'Rudyard', 'Kipling'),
-(NULL, 'Agatha', 'Christie'),
-(NULL, 'Helen', 'Fielding'),
-(NULL, 'J. K.', 'Rowling'),
-(NULL, 'Gregory David', 'Roberts')
-
+(1, 'Alexandre', 'Dumas'),
+(2, 'Jules', 'Verne'),
+(3, 'Robert Louis', 'Stevenson'),
+(4, 'H. Rider', 'Haggard'),
+(5, 'Walter', 'Scott'),
+(6, 'Edgaras', 'Burroughsas'),
+(7, 'Joseph', 'Conrad'),
+(8, 'Gary', 'Paulsen'),
+(9, 'Michael', 'Crichton'),
+(10, 'Rudyard', 'Kipling'),
+(11, 'Agatha', 'Christie'),
+(12, 'Helen', 'Fielding'),
+(13, 'J. K.', 'Rowling'),
+(14, 'Gregory David', 'Roberts')

@@ -2,73 +2,74 @@
 
 namespace App;
 
-use \App\Models\Author;
-use \App\Models\Book;
-
 class Paginator extends \Core\Model
 {
     /**
-     * Display the list of authors available in the database
-     * 
-     * @return array Return array of authors
+     * Create pagination links
+     *
+     * @param string $limit Number of rows to display
+     * @param string $links_nbr Number of links to display before and after the current page
+     * @param string $page Number of links to display before and after the current page
+     *
+     * @return string $html returns HTML code
      */
-    public static function getAll($limit, $page)
+    public static function createLinks($limit, $links, $page, $total)
     {
-        $sql = 'SELECT * FROM `authors` WHERE 1 ORDER BY `surname`';
+        $page  = (isset($_GET['page'])) ? $_GET['page'] : 1;
 
         if ($limit == 'all') {
-            $sql = $sql;
-        } else {
-            $sql = $sql . " LIMIT " . (($page - 1) * $limit) . ", $limit";
+            return '';
         }
 
-        echo $sql;
+        $last = ceil(intval($total) / $limit);
+        $start = (($page - $links) > 0) ? $page - $links : 1;
+        $end = (($page + $links) < $last) ? $page + $links : $last;
 
-        $db = static::getDB();
+        $html = '<ul class="pagination justify-content-center pagination pagination-sm">';
 
-        $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute();
+        $class      = ($page == 1) ? " disabled" : "";
+        $html .= '<li class="class="page-item ' . $class . '"><a class="page-link" href="?limit=' . $limit . '&page=' . ($page - 1) . '">&laquo;</a></li>';
 
-        $results = $stmt->fetchAll();
+        if ($start > 1) {
+            $html .= '<li><a class="page-link" href="?limit=' . $limit . '&page=1">1</a></li>';
+            $html .= '<li class=" page-item disabled"><span>...</span></li>';
+        }
 
-        $total = parent::getNumberOfRows('users');
+        for ($i = $start; $i <= $end; $i++) {
+            $class = ($page == $i) ? "active" : "";
+            $html .= '<li class="page-item ' . $class . '"><a class="page-link" href="?limit=' . $limit . '&page=' . $i . '">' . $i . '</a></li>';
+        }
 
-        // while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-        //     $results[]  = $row;
-        // }
+        if ($end < $last) {
+            $html .= '<li class="class="page-item disabled"><span>...</span></li>';
+            $html .= '<li><a class="page-link" href="?limit=' . $limit . '&page=' . $last . '">' . $last . '</a></li>';
+        }
 
-        $result         = new \stdClass();
-        $result->page   = $page;
-        $result->limit  = $limit;
-        $result->total  = $total;
-        $result->data   = $results;
+        $class = ($page == $last) ? "disabled" : "";
+        $html .= '<li class=" page-item ' . $class . '"><a class="page-link" href="?limit=' . $limit . '&page=' . ($page + 1) . '">&raquo;</a></li>';
 
-        // return $result;
-        // echo '<pre>';
-        // print_r($result);
-        // echo '</pre>';
-        // exit;
+        $html .= '</ul>';
 
-        return $result;
+        return $html;
     }
 
     /**
-     * Display the number of rows in a selected table
+     * Display the number of rows int the authors table
      * 
-     * @return int Returns number of rows in table
+     * @return int Return list of authors
      */
-    public static function getNumberOfRows($table_name)
+    public static function getTotalRows($table_name)
     {
-        $sql = 'SELECT * FROM `';
-        $sql .= $table_name . '` WHERE 1';
+        // $sql = 'SELECT * FROM `';
+        $sql = "SELECT * FROM `$table_name` WHERE 1";
 
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
 
-        return $stmt->rowCount();
+        $result = $stmt->rowCount();
+
+        return $result;
     }
 }

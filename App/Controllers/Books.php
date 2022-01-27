@@ -21,6 +21,7 @@ class Books extends \Core\Controller
      */
     public function indexAction()
     {
+
         $books = Book::getAll();
 
         View::renderTemplate('Books/index.html', [
