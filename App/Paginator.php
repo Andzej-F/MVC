@@ -60,7 +60,6 @@ class Paginator extends \Core\Model
      */
     public static function getTotalRows($table_name)
     {
-        // $sql = 'SELECT * FROM `';
         $sql = "SELECT * FROM `$table_name` WHERE 1";
 
         $db = static::getDB();

@@ -66,8 +66,8 @@
             <td class="table-danger"> {{book.available}}</td>
             <td class="table-danger"> {{book.borrowed}}</td>
 
-            {% if current_user.role is same as "reader" %}
             <td class="table-danger">
+                {% if current_user.role is same as "reader" and book.available > 0 %}
                 <a class="link-primary"
                     href="http://localhost/PHP/lbm2/public/profile/{{book.book_id}}/borrow">Borrow</a>
             </td>

@@ -95,7 +95,7 @@ class Profile extends \Core\Controller
     }
 
     /**
-     * Update the profile
+     * Add borrowed book to the list and display in profile page
      * 
      * @return void
      */
@@ -108,16 +108,23 @@ class Profile extends \Core\Controller
         // echo '</pre>';
         // // exit;
 
-        // $book_id = $this->route_params['id'];
-        // echo $book_id;
+        $book_id = $this->route_params['id'];
+        echo $book_id;
         // exit;
 
         // Get the user object
         $user = Auth::getUser();
 
+        // TODO reikia kad nutu neaktyvus linkas kai available lygu 0
+
+
         echo '<pre>';
         print_r($user);
         echo '</pre>';
+
+        // $user->borrowBook($book_id);
+        // check if book is not already borrowed
+
         exit;
 
         if ($user->updateProfile($_POST)) {

@@ -299,4 +299,93 @@ class User extends \Core\Model
 
         return $stmt->execute();
     }
+
+    /**
+     * Saves borrowed book in user's profile
+     * 
+     * @param array $data Data from the edit profile form
+     *  
+     * @return void
+     */
+    public function borrowBook($book_id)
+    {
+        // include book in user's profile page
+        // substract book "available"
+
+
+        $sql = 'DELETE FROM `users`
+                WHERE `id` = :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * Checks if a given book is available for borrowing
+     *  
+     * @return boolean
+     */
+    public function validateBorrow($book_id)
+    {
+        // Chek if the book is taken by the same user
+        $this->isBookTaken($book_id);
+
+        // check if book is available() return boolean
+        // $this->isBookAvailable($book_id) return boolean
+
+
+        $sql = 'DELETE FROM `users`
+                WHERE `id` = :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    /**
+     * Checks if a book is already taken by the user
+     *  
+     * @return boolean
+     */
+    public function  isBookTaken($book_id)
+    {
+
+        $sql = 'DELETE FROM `users`
+                WHERE `id` = :id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+
+        return $stmt->execute();
+    }
+
+    // /**
+    //  * Checks if a "available" value is greater than 0
+    //  *  
+    //  * @return boolean
+    //  */
+    // public function  isBookAvailable($book_id)
+    // {
+    //     $sql = "SELECT `available` FROM `books` 
+    //             WHERE `book_id` = :book_id";
+
+    //     $db = static::getDB();
+
+    //     $stmt = $db->prepare($sql);
+    //     $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+    //     $stmt->execute();
+
+    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    //     return $result['available'] > 0 ? true : false;
+    // }
 }
