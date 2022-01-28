@@ -22,13 +22,6 @@ class Books extends \Core\Controller
      */
     public function indexAction()
     {
-
-        // $books = Book::getAll();
-
-        // View::renderTemplate('Books/index.html', [
-        //     'books' => $books
-        // ]);
-
         $limit = (isset($_GET['limit'])) ? $_GET['limit'] : 5;
         $page  = (isset($_GET['page'])) ? $_GET['page'] : 1;
         $links = (isset($_GET['links'])) ? $_GET['links'] : 2;

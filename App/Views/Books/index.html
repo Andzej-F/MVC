@@ -46,6 +46,10 @@
             <th>Genre</th>
             <th>Available</th>
             <th>Borrowed</th>
+            {% if current_user.role is same as "reader" %}
+            <th>Borrow</th>
+            {% endif %}
+
             {% if current_user.role is same as "librarian" %}
             <th>Edit</th>
             <th>Delete</th>
@@ -56,11 +60,19 @@
         {% if books %}
         {% for book in books %}
         <tr>
-            <td class="table-danger"> {{ book.title}}</td>
+            <td class="table-danger"> {{book.title}}</td>
             <td class="table-danger"> {{book.name }} {{ book.surname}}</td>
             <td class="table-danger"> {{book.genre}}</td>
             <td class="table-danger"> {{book.available}}</td>
             <td class="table-danger"> {{book.borrowed}}</td>
+
+            {% if current_user.role is same as "reader" %}
+            <td class="table-danger">
+                <a class="link-primary"
+                    href="http://localhost/PHP/lbm2/public/profile/{{book.book_id}}/borrow">Borrow</a>
+            </td>
+            {% endif %}
+
             {% if current_user.role is same as "librarian" %}
             <td class="table-danger">
                 <a href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/edit">EDIT</a>
@@ -69,6 +81,7 @@
                 <a class="link-danger" href="http://localhost/PHP/lbm2/public/books/{{book.book_id}}/delete">DELETE</a>
             </td>
             {% endif %}
+
         </tr>
         {% endfor %}
         {% endif %}

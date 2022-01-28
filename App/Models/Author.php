@@ -35,33 +35,22 @@ class Author extends \Core\Model
     /**
      * Display the list of authors available in the database
      * 
+     * @param int $limit (optional) Set the number of authors to show in pagination
+     * @param int $page (optional) Current page number
+     *
      * @return array Return list of authors
      */
-    // public static function getAll()
-    // {
-    //     $sql = 'SELECT * FROM `authors` WHERE 1
-    //             ORDER BY `surname`';
-
-    //     $db = static::getDB();
-
-    //     $stmt = $db->prepare($sql);
-    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-    //     $stmt->execute();
-
-    //     $result = $stmt->fetchAll();
-
-    //     return $result;
-    // }
-
-    public static function getAll($limit, $page)
+    public static function getAll($limit = null, $page = null)
     {
         $sql = 'SELECT * FROM `authors` WHERE 1
                 ORDER BY `surname`';
 
-        if ($limit == 'all') {
-            $sql = $sql;
-        } else {
-            $sql = $sql . " LIMIT " . (($page - 1) * $limit) . ", $limit";
+        if (isset($limit) && isset($page)) {
+            if ($limit == 'all') {
+                $sql = $sql;
+            } else {
+                $sql = $sql . " LIMIT " . (($page - 1) * $limit) . ", $limit";
+            }
         }
 
         $db = static::getDB();

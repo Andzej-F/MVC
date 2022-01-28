@@ -19,9 +19,50 @@
     <dt class="col-sm-5">Email</dt>
     <dd class="col-sm-5">{{ user.email }}</dd>
 </dl>
+{% if current_user.role is same as "reader" %}
 
 <div class="row">
-    <a class="col-sm-5 profile-link" href="http://localhost/PHP/lbm2/public/profile/edit">Edit</a>
+    <a class="col-sm-5 profile-link" href="http://localhost/PHP/lbm2/public/profile/edit">Edit Profile</a>
     <a class="col-sm-5 link-danger profile-link" href="http://localhost/PHP/lbm2/public/profile/delete">Delete</a>
 </div>
+
+<h2>Borrowed Books</h2>
+
+<table class="table table-striped w-auto">
+    <thead>
+        <tr class="table-secondary">
+            <th>Title</th>
+            <th>Author</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+            <th>Return Book</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if authors %}
+        {% for author in authors %}
+        <tr class="table-secondary">
+            <td class="table-secondary">{{ book.title }}</td>
+            <td class="table-secondary">{{ author.name }} {{ author.surname }}</td>
+            <td class="table-secondary">{{ book.borrow_date }}</td>
+            <td class="table-secondary">{{ book.return_date }}</td>
+            <td class="table-secondary">
+                <a href="http://localhost/PHP/lbm2/public/books/{{ book.book_id}}/return">RETURN</a>
+            </td>
+            {% if current_user.role is same as "reader" %}
+            <td class="table-secondary">
+            </td>
+            <td class="table-secondary">
+                <a class="link-danger"
+                    href="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/delete">DELETE</a>
+            </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endif %}
+
 {% endblock %}

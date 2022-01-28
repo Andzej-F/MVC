@@ -93,4 +93,44 @@ class Profile extends \Core\Controller
             $this->redirect("/");
         }
     }
+
+    /**
+     * Update the profile
+     * 
+     * @return void
+     */
+    public function borrowAction()
+    {
+        $this->requireLogin();
+
+        // echo '<pre>';
+        // print_r($this);
+        // echo '</pre>';
+        // // exit;
+
+        // $book_id = $this->route_params['id'];
+        // echo $book_id;
+        // exit;
+
+        // Get the user object
+        $user = Auth::getUser();
+
+        echo '<pre>';
+        print_r($user);
+        echo '</pre>';
+        exit;
+
+        if ($user->updateProfile($_POST)) {
+
+            Flash::addMessage('Changes saved');
+
+            $this->redirect("/profile/show");
+        } else {
+            // Redisplay the form passing in the user model as this will contain
+            // any validation error messages to display back in the form
+            View::renderTemplate('Profile/edit.html', [
+                'user' => $user
+            ]);
+        }
+    }
 }
