@@ -323,7 +323,6 @@ class User extends \Core\Model
         $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
 
         return  $stmt->execute();
-        // }
     }
 
     /**
@@ -378,7 +377,7 @@ class User extends \Core\Model
                 INNER JOIN `books`
                 ON `borrows`.`book_id` = `books`.`book_id`
                 INNER JOIN `authors`
-                ON `authors`.`author_id` = `books`.`book_id`
+                ON `authors`.`author_id` = `books`.`author_id`
                 WHERE `users`.`user_id`=:user_id 
                 -- AND `book_id`=:book_id
                 ORDER BY `borrow_date` ASC';
@@ -391,5 +390,37 @@ class User extends \Core\Model
         $stmt->execute();
 
         return $stmt->fetchAll();
+    }
+
+    /**
+     * Saves borrowed book in user's profile
+     * 
+     * @param array $data Data from the edit profile form
+     *  
+     * @return boolean True if a book was successfully borrowed, false otherwise
+     */
+    public function returnBook($book_id)
+    {
+        // $sql = 'INSERT INTO `borrows`(`user_id`, `book_id`)
+        //         VALUES (:user_id,:book_id);
+        //         UPDATE `books` 
+        //         SET `available` = (available - 1),
+        //             `borrowed` = (borrowed + 1)
+        //         WHERE book_id=:book_id';
+
+        $sql = 'DELETE FROM `borrows`
+                WHERE `user_id`=:user_id AND `book_id`=:book_id;
+                UPDATE `books` 
+                SET `available` = (available + 1),
+                    `borrowed` = (borrowed - 1)
+                WHERE book_id=:book_id';
+
+        $db = static::getDB();
+        $stmt = $db->prepare($sql);
+
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+
+        return  $stmt->execute();
     }
 }

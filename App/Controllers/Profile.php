@@ -20,9 +20,7 @@ class Profile extends \Core\Controller
      */
     public function showAction()
     {
-        if (!isset($user)) {
-            $this->requireLogin();
-        }
+        $this->requireLogin();
 
         $user = Auth::getUser();
 
@@ -69,8 +67,6 @@ class Profile extends \Core\Controller
 
             $this->redirect("/profile/show");
         } else {
-            // Redisplay the form passing in the user model as this will contain
-            // any validation error messages to display back in the form
             View::renderTemplate('Profile/edit.html', [
                 'user' => $user
             ]);
@@ -78,7 +74,7 @@ class Profile extends \Core\Controller
     }
 
     /**
-     * Delete the author
+     * Delete the account
      * 
      * @return void
      */
@@ -123,15 +119,29 @@ class Profile extends \Core\Controller
             $this->redirect("/books/index");
         }
 
-        $value = $user->borrowCount();
-        echo "user->isBookTaken value $value<br>";
-
-        $count = $user->isBookTaken($book_id);
-        echo "user->isBookTaken count $count<br>";
-
         $user->borrowBook($book_id);
 
         Flash::addMessage('Book has been successfully borrowed');
+
+        $this->redirect("/profile/show");
+    }
+
+    /**
+     * Add borrowed book to the list and display in profile page
+     * 
+     * @return void
+     */
+    public function returnAction()
+    {
+        $this->requireLogin();
+
+        $user = Auth::getUser();
+
+        $book_id = $this->route_params['id'];
+
+        $user->returnBook($book_id);
+
+        Flash::addMessage('Book has been successfully returned');
 
         $this->redirect("/books/index");
     }
