@@ -84,11 +84,17 @@ class Profile extends \Core\Controller
 
         $user = Auth::getUser();
 
-        if ($user->deleteUser()) {
+        if ($user->borrowCount() === 0) {
+            if ($user->deleteUser()) {
 
-            Flash::addMessage('User was successfully deleted');
+                Flash::addMessage('User was successfully deleted');
 
-            $this->redirect("/");
+                $this->redirect("/");
+            }
+        } else {
+            Flash::addMessage('Profile cannot be deleted, unless all the books are returned', 'warning');
+
+            $this->redirect("/profile/show");
         }
     }
 
