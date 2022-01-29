@@ -22,7 +22,7 @@ class Auth
     {
         session_regenerate_id(true);
 
-        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_id'] = $user->user_id;
     }
 
     /**

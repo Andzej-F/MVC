@@ -24,10 +24,13 @@ class Profile extends \Core\Controller
             $this->requireLogin();
         }
 
+        $user = Auth::getUser();
+
         View::renderTemplate(
             'Profile/show.html',
             [
-                'user' => Auth::getUser()
+                'user' => $user,
+                'user_books' => $user->getUserBooks()
             ]
         );
     }
@@ -58,7 +61,6 @@ class Profile extends \Core\Controller
     {
         $this->requireLogin();
 
-        // Get the user object
         $user = Auth::getUser();
 
         if ($user->updateProfile($_POST)) {
@@ -103,41 +105,34 @@ class Profile extends \Core\Controller
     {
         $this->requireLogin();
 
-        // echo '<pre>';
-        // print_r($this);
-        // echo '</pre>';
-        // // exit;
-
-        $book_id = $this->route_params['id'];
-        echo $book_id;
-        // exit;
-
-        // Get the user object
         $user = Auth::getUser();
 
-        // TODO reikia kad nutu neaktyvus linkas kai available lygu 0
+        $book_id = $this->route_params['id'];
 
+        if ($user->isBookTaken($book_id) === true) {
 
-        echo '<pre>';
-        print_r($user);
-        echo '</pre>';
+            Flash::addMessage('The book is already taken by you', 'warning');
 
-        // $user->borrowBook($book_id);
-        // check if book is not already borrowed
-
-        exit;
-
-        if ($user->updateProfile($_POST)) {
-
-            Flash::addMessage('Changes saved');
-
-            $this->redirect("/profile/show");
-        } else {
-            // Redisplay the form passing in the user model as this will contain
-            // any validation error messages to display back in the form
-            View::renderTemplate('Profile/edit.html', [
-                'user' => $user
-            ]);
+            $this->redirect('/books/index');
         }
+
+        if ($user->borrowCount() >= 3) {
+
+            Flash::addMessage('You are allowed to borrow up to 3 books', 'warning');
+
+            $this->redirect("/books/index");
+        }
+
+        $value = $user->borrowCount();
+        echo "user->isBookTaken value $value<br>";
+
+        $count = $user->isBookTaken($book_id);
+        echo "user->isBookTaken count $count<br>";
+
+        $user->borrowBook($book_id);
+
+        Flash::addMessage('Book has been successfully borrowed');
+
+        $this->redirect("/books/index");
     }
 }

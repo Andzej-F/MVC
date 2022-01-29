@@ -12,8 +12,6 @@ CREATE TABLE `books` (
   PRIMARY KEY (`book_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-
-
 --
 -- Sample data for table `books`
 --

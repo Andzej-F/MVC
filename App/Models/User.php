@@ -160,17 +160,17 @@ class User extends \Core\Model
      * 
      * @return mixed User object if found, false otherwise
      */
-    public static function isEmailTaken($email, $id)
+    public static function isEmailTaken($email, $user_id)
     {
         $sql = 'SELECT * FROM `users` WHERE email = :email
-                AND id != :id';
+                AND user_id != :user_id';
 
         $db = static::getDB();
 
         $stmt = static::getDB();
         $stmt = $db->prepare($sql);
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
@@ -207,13 +207,13 @@ class User extends \Core\Model
      * 
      * @return mixed User object if found, false otherwise
      */
-    public static function findByID($id)
+    public static function findByID($user_id)
     {
-        $sql = 'SELECT * FROM `users` WHERE id = :id';
+        $sql = 'SELECT * FROM `users` WHERE user_id = :user_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
-        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
 
         $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
 
@@ -261,7 +261,7 @@ class User extends \Core\Model
                 $sql .= ", `password_hash` = :password_hash";
             }
 
-            $sql .= "\nWHERE `id` = :id";
+            $sql .= "\nWHERE `user_id` = :user_id";
 
             $db = static::getDB();
             $stmt = $db->prepare($sql);
@@ -269,7 +269,7 @@ class User extends \Core\Model
             $stmt->bindValue(':name', $this->name, PDO::PARAM_STR);
             $stmt->bindValue(':surname', $this->surname, PDO::PARAM_STR);
             $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
-            $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+            $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
 
             // Add password if it's set
             if (isset($this->password)) {
@@ -290,12 +290,12 @@ class User extends \Core\Model
     public function deleteUser()
     {
         $sql = 'DELETE FROM `users`
-                WHERE `id` = :id';
+                WHERE `user_id` = :user_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
 
         return $stmt->execute();
     }
@@ -305,48 +305,25 @@ class User extends \Core\Model
      * 
      * @param array $data Data from the edit profile form
      *  
-     * @return void
+     * @return boolean True if a book was successfully borrowed, false otherwise
      */
     public function borrowBook($book_id)
     {
-        // include book in user's profile page
-        // substract book "available"
-
-
-        $sql = 'DELETE FROM `users`
-                WHERE `id` = :id';
-
-        $db = static::getDB();
-        $stmt = $db->prepare($sql);
-
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
-
-        return $stmt->execute();
-    }
-
-    /**
-     * Checks if a given book is available for borrowing
-     *  
-     * @return boolean
-     */
-    public function validateBorrow($book_id)
-    {
-        // Chek if the book is taken by the same user
-        $this->isBookTaken($book_id);
-
-        // check if book is available() return boolean
-        // $this->isBookAvailable($book_id) return boolean
-
-
-        $sql = 'DELETE FROM `users`
-                WHERE `id` = :id';
+        $sql = 'INSERT INTO `borrows`(`user_id`, `book_id`)
+                VALUES (:user_id,:book_id);
+                UPDATE `books` 
+                SET `available` = (available - 1),
+                    `borrowed` = (borrowed + 1)
+                WHERE book_id=:book_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
 
-        return $stmt->execute();
+        return  $stmt->execute();
+        // }
     }
 
     /**
@@ -356,36 +333,63 @@ class User extends \Core\Model
      */
     public function  isBookTaken($book_id)
     {
-
-        $sql = 'DELETE FROM `users`
-                WHERE `id` = :id';
+        $sql = 'SELECT * FROM `borrows`
+                WHERE `user_id` = :user_id AND `book_id` = :book_id';
 
         $db = static::getDB();
         $stmt = $db->prepare($sql);
 
-        $stmt->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-        return $stmt->execute();
+        return $stmt->rowCount() === 1 ? true : false;
     }
 
-    // /**
-    //  * Checks if a "available" value is greater than 0
-    //  *  
-    //  * @return boolean
-    //  */
-    // public function  isBookAvailable($book_id)
-    // {
-    //     $sql = "SELECT `available` FROM `books` 
-    //             WHERE `book_id` = :book_id";
+    /**
+     * Checks how many books were borrowed
+     *  
+     * @return int The number of books already taken by the user
+     */
+    public function  borrowCount()
+    {
+        $sql = "SELECT * FROM `borrows` 
+                WHERE `user_id` = :user_id";
 
-    //     $db = static::getDB();
+        $db = static::getDB();
 
-    //     $stmt = $db->prepare($sql);
-    //     $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
-    //     $stmt->execute();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    //     $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->rowCount();
+    }
 
-    //     return $result['available'] > 0 ? true : false;
-    // }
+    /**
+     * Checks how many books were borrowed
+     *  
+     * @return int The number of books already taken by the user
+     */
+    public function  getUserBooks()
+    {
+        $sql = 'SELECT * FROM `users` 
+                INNER JOIN `borrows`
+                ON `users`.`user_id` = `users`.`user_id`
+                INNER JOIN `books`
+                ON `borrows`.`book_id` = `books`.`book_id`
+                INNER JOIN `authors`
+                ON `authors`.`author_id` = `books`.`book_id`
+                WHERE `users`.`user_id`=:user_id 
+                -- AND `book_id`=:book_id
+                ORDER BY `borrow_date` ASC';
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
 }

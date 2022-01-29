@@ -19,14 +19,13 @@
     <dt class="col-sm-5">Email</dt>
     <dd class="col-sm-5">{{ user.email }}</dd>
 
-    <dt class="col-sm-5">Books</dt>
-    <dd class="col-sm-5">{{ user.book_count }}</dd>
 </dl>
 {% if current_user.role is same as "reader" %}
 
 <div class="row">
     <a class="col-sm-5 profile-link" href="http://localhost/PHP/lbm2/public/profile/edit">Edit Profile</a>
-    <a class="col-sm-5 link-danger profile-link" href="http://localhost/PHP/lbm2/public/profile/delete">Delete</a>
+    <a class="col-sm-5 link-danger profile-link" href="http://localhost/PHP/lbm2/public/profile/delete">Delete
+        Profile</a>
 </div>
 
 <h2>Borrowed Books</h2>
@@ -43,24 +42,16 @@
     </thead>
     <tbody>
 
-        {% if authors %}
-        {% for author in authors %}
+        {% if user_books %}
+        {% for user_book in user_books %}
         <tr class="table-secondary">
-            <td class="table-secondary">{{ book.title }}</td>
-            <td class="table-secondary">{{ author.name }} {{ author.surname }}</td>
-            <td class="table-secondary">{{ book.borrow_date }}</td>
-            <td class="table-secondary">{{ book.return_date }}</td>
+            <td class="table-secondary">{{ user_book.title }}</td>
+            <td class="table-secondary">{{ user_book.name }} {{ user_book.surname }}</td>
+            <td class="table-secondary">{{ user_book.borrow_date }}</td>
+            <td class="table-secondary">{{ user_book.return_date }}</td>
             <td class="table-secondary">
                 <a href="http://localhost/PHP/lbm2/public/books/{{ book.book_id}}/return">RETURN</a>
             </td>
-            {% if current_user.role is same as "reader" %}
-            <td class="table-secondary">
-            </td>
-            <td class="table-secondary">
-                <a class="link-danger"
-                    href="http://localhost/PHP/lbm2/public/authors/{{ author.author_id}}/delete">DELETE</a>
-            </td>
-            {% endif %}
         </tr>
         {% endfor %}
         {% endif %}
