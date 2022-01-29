@@ -151,4 +151,30 @@ class Profile extends \Core\Controller
 
         $this->redirect("/books/index");
     }
+
+    /**
+     * Show the profile
+     * 
+     * @return void
+     */
+    public function librariansIndexAction()
+    {
+        $this->requireLibrarianLogin();
+
+        $librarian = Auth::getUser();
+
+        $readers = $librarian->getAllReaders();
+
+        echo '<pre>';
+        print_r($readers);
+        echo '</pre>';
+
+        View::renderTemplate(
+            'Librarians/index.html',
+            [
+                'librarian' => $librarian,
+                'readers' => $readers
+            ]
+        );
+    }
 }

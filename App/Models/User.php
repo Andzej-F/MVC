@@ -379,7 +379,6 @@ class User extends \Core\Model
                 INNER JOIN `authors`
                 ON `authors`.`author_id` = `books`.`author_id`
                 WHERE `users`.`user_id`=:user_id 
-                -- AND `book_id`=:book_id
                 ORDER BY `borrow_date` ASC';
 
         $db = static::getDB();
@@ -401,13 +400,6 @@ class User extends \Core\Model
      */
     public function returnBook($book_id)
     {
-        // $sql = 'INSERT INTO `borrows`(`user_id`, `book_id`)
-        //         VALUES (:user_id,:book_id);
-        //         UPDATE `books` 
-        //         SET `available` = (available - 1),
-        //             `borrowed` = (borrowed + 1)
-        //         WHERE book_id=:book_id';
-
         $sql = 'DELETE FROM `borrows`
                 WHERE `user_id`=:user_id AND `book_id`=:book_id;
                 UPDATE `books` 
@@ -422,5 +414,32 @@ class User extends \Core\Model
         $stmt->bindValue(':book_id', $book_id, PDO::PARAM_INT);
 
         return  $stmt->execute();
+    }
+
+    /**
+     * Checks how many books were borrowed
+     *  
+     * @return int The number of books already taken by the user
+     */
+    public function  getAllReaders()
+    {
+        // // name surname email borrowed
+        $sql = "SELECT * FROM `users` 
+                INNER JOIN `borrows`
+                ON `users`.`user_id` = `borrows`.`user_id`
+                INNER JOIN `books`
+                ON `borrows`.`book_id` = `books`.`book_id`
+                INNER JOIN `authors`
+                ON `authors`.`author_id` = `books`.`author_id`
+                WHERE `users`.`role`='reader' 
+                ORDER BY `users`.`surname` ASC";
+
+        $db = static::getDB();
+
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
     }
 }

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Librarian Profile{% endblock %}
+
+{% block body %}
+
+<h2>Librarian Profile</h2>
+
+<dl class="row">
+    <dt class="col-sm-5">Name</dt>
+    <dd class="col-sm-5">{{ librarian.name }}</dd>
+
+    <dt class="col-sm-5">Surname</dt>
+    <dd class="col-sm-5">{{ librarian.surname }}</dd>
+
+    <dt class="col-sm-5">Role</dt>
+    <dd class="col-sm-5">{{ librarian.role }}</dd>
+
+    <dt class="col-sm-5">Email</dt>
+    <dd class="col-sm-5">{{ librarian.email }}</dd>
+
+</dl>
+
+<h2>Readers</h2>
+
+<table class="table table-striped w-auto">
+    <thead>
+        <tr class="table-secondary">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Borrow Date</th>
+            <th>Return Date</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if readers %}
+        {% for reader in readers %}
+        <tr class="table-secondary">
+            <td class="table-secondary"> {{ reader.name }} {{ reader.surname }}</td>
+            <td class="table-secondary">{{ reader.email }}</td>
+            <td class="table-secondary">{{ reader.title }}</td>
+            <td class="table-secondary">{{ reader.author_name }} {{ reader.author_surname }}</td>
+            <td class="table-secondary">{{ reader.borrow_date }}</td>
+            <td class="table-secondary">{{ reader.return_date }}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+
+{% endblock %}

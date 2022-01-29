@@ -59,4 +59,34 @@
 </table>
 {% endif %}
 
+{% if current_user.role is same as "librarian" %}
+<h2>Readers</h2>
+
+<table class="table table-striped w-auto">
+    <thead>
+        <tr class="table-secondary">
+            <th>Name</th>
+            <th>Email</th>
+            <th>Books Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        {% if readers %}
+        {% for reader in readers %}
+        <tr class="table-secondary">
+            <td class="table-secondary">
+                <a href="http://localhost/PHP/lbm2/public/profile/{{ readers.user_id}}/show">{{ readers.name }} {{
+                    readers.surname }}</a>
+            </td>
+            <td class="table-secondary">{{ readers.email }}</td>
+            <td class="table-secondary">{{ readers.book_count }}</td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endif %}
+
+
 {% endblock %}
