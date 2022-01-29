@@ -26,7 +26,18 @@ class Books extends \Core\Controller
         $page  = (isset($_GET['page'])) ? $_GET['page'] : 1;
         $links = (isset($_GET['links'])) ? $_GET['links'] : 2;
 
-        $books = Book::getAll($limit, $page);
+        if (isset($_GET['sort'])) {
+            if ($_GET['sort'] === 'default') {
+                Flash::addMessage('Please select the sort criteria from the list', 'warning');
+                $this->redirect('/books/index');
+            } else {
+                $sort = $_GET['sort'];
+            }
+        } else {
+            $sort = 'title';
+        }
+
+        $books = Book::getAll($limit, $page, $sort);
         $total = Paginator::getTotalRows('Books');
         $pagination_links = Paginator::createLinks($limit, $page, $links, $total);
 
@@ -54,25 +65,6 @@ class Books extends \Core\Controller
 
             $this->redirect('/books/index');
         }
-    }
-
-    /**
-     * Sort the book list by selected parameter
-     * 
-     * @return void
-     */
-    public function sortAction()
-    {
-        if ($_GET['sort'] === 'default') {
-            Flash::addMessage('Please select the value from the list', 'warning');
-            $this->redirect('/books/index');
-        }
-
-        $books = Book::sortBook($_GET['sort']);
-
-        View::renderTemplate('Books/index.html', [
-            'books' => $books
-        ]);
     }
 
     /**

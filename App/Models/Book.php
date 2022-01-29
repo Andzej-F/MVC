@@ -39,12 +39,15 @@ class Book extends \Core\Model
      * 
      * @return array Return the list of books
      */
-    public static function getAll($limit, $page)
+    public static function getAll($limit, $page, $sort)
     {
-        $sql = 'SELECT * FROM `books` 
+
+        $sql = "SELECT * FROM `books` 
                 INNER JOIN `authors`
                 ON `books`.`author_id` = `authors`.`author_id`
-                ORDER BY `title`';
+                ORDER BY ";
+
+        $sql .= "`$sort` ASC";
 
         if ($limit == 'all') {
             $sql = $sql;
@@ -327,31 +330,6 @@ class Book extends \Core\Model
                 ON `books`.`author_id` = `authors`.`author_id`
                 ORDER BY `book_id` DESC
                 LIMIT 5';
-
-        $db = static::getDB();
-
-        $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-        $stmt->execute();
-
-        $result = $stmt->fetchALL();
-
-        return $result;
-    }
-
-    /**
-     * Display the list of books available in database
-     * 
-     * @return array Return the list of books
-     */
-    public static function sortBook($parameter)
-    {
-        $sql = "SELECT * FROM `books` 
-                INNER JOIN `authors`
-                ON `books`.`author_id` = `authors`.`author_id`
-                ORDER BY ";
-
-        $sql .= "`$parameter` ASC";
 
         $db = static::getDB();
 
