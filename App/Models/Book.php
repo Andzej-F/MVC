@@ -34,28 +34,6 @@ class Book extends \Core\Model
         }
     }
 
-    // /**
-    //  * Display the list of books available in the database
-    //  * 
-    //  * @return array Return the list of books
-    //  */
-    // public static function getAll()
-    // {
-    //     $sql = 'SELECT * FROM `books` 
-    //             INNER JOIN `authors`
-    //             ON `books`.`author_id` = `authors`.`author_id`
-    //             ORDER BY `title`';
-
-    //     $db = static::getDB();
-
-    //     $stmt = $db->prepare($sql);
-    //     $stmt->setFetchMode(PDO::FETCH_CLASS, get_called_class());
-    //     $stmt->execute();
-    //     $result = $stmt->fetchALL();
-
-    //     return $result;
-    // }
-
     /**
      * Display the list of books available in the database
      * 
@@ -94,8 +72,8 @@ class Book extends \Core\Model
 
         if (empty($this->errors)) {
 
-            $sql = 'INSERT INTO `books`(`title`, `author_id`, `genre`, `available`, `borrowed`)
-                    VALUES (:title, :author_id, :genre, :available, :borrowed)';
+            $sql = 'INSERT INTO `books`(`title`, `author_id`, `genre`, `available`)
+                    VALUES (:title, :author_id, :genre, :available)';
 
             $db = static::getDB();
 
@@ -105,9 +83,7 @@ class Book extends \Core\Model
             $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
             $stmt->bindValue(':genre', $this->genre, PDO::PARAM_STR);
             $stmt->bindValue(':available', $this->available, PDO::PARAM_INT);
-            $stmt->bindValue(':borrowed', $this->borrowed, PDO::PARAM_INT);
 
-            // "PDOStatement::execute" method returns true on success or false on failure.
             return $stmt->execute();
         }
 
@@ -177,21 +153,6 @@ class Book extends \Core\Model
             $this->errors[] = 'Error: Available number must be positive';
         } elseif ($this->available > 99) {
             $this->errors[] = 'Error: Available number cannot exceed the 99';
-        }
-
-        // Borrowed
-        $this->borrowed = trim($this->borrowed);
-
-        if ($this->borrowed == '') {
-            $this->errors[] = 'Error: Borrowed number is required';
-        }
-
-        if (!is_numeric($this->borrowed)) {
-            $this->errors[] = 'Error: Borrowed number must be of integer type';
-        } elseif ($this->borrowed < 0) {
-            $this->errors[] = 'Error: Borrowed number must be positive';
-        } elseif ($this->borrowed > 99) {
-            $this->errors[] = 'Error: Borrowed number cannot exceed the 99';
         }
     }
 
@@ -263,7 +224,6 @@ class Book extends \Core\Model
         $this->author_id = $data['author_id'];
         $this->genre = $data['genre'];
         $this->available = $data['available'];
-        $this->borrowed = $data['borrowed'];
 
         $this->validate();
 
@@ -273,8 +233,7 @@ class Book extends \Core\Model
                     SET `title` = :title,
                         `author_id` = :author_id,
                         `genre` = :genre,
-                        `available` = :available,
-                        `borrowed` = :borrowed
+                        `available` = :available
                     WHERE `book_id` = :book_id';
 
 
@@ -285,7 +244,6 @@ class Book extends \Core\Model
             $stmt->bindValue(':author_id', $this->author_id, PDO::PARAM_INT);
             $stmt->bindValue(':genre', $this->genre, PDO::PARAM_STR);
             $stmt->bindValue(':available', $this->available, PDO::PARAM_INT);
-            $stmt->bindValue(':borrowed', $this->borrowed, PDO::PARAM_INT);
             $stmt->bindValue(':book_id', $this->book_id, PDO::PARAM_INT);
 
             return $stmt->execute();
