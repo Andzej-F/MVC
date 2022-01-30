@@ -27,15 +27,14 @@
         </ul>
     </li>
     <li><b>pagination</b></li>
+    <li><b>user:</b> borrow and return books functionality</li>
+    <li><b>librarian:</b> on profile page view list of users and their data:<br>
+        (name, surname, email, borrowed books, borrow and return dates)
+    </li>
 </ul>
 <br>
 <h3>Upcoming features:</h3>
 <ul>
-    <li><b>User:</b> borrow and return books functionality</li>
-    <li><b>User</b> profile page: mange currently borrowed books</li>
-    <li><b>Librarian:</b> on profile page view list of users and their data(name, surname, email, borrowed books,
-        return dates)
-    </li>
     <li><b>"remember me"</b> option</li>
     <li>password <b>reset</b></li>
     <li>account <b>activation</b></li>
