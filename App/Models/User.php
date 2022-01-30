@@ -87,8 +87,8 @@ class User extends \Core\Model
             $this->errors[] = 'Invalid email';
         }
 
-        if (isset($this->id)) {
-            if (static::isEmailTaken($this->email, $this->id)) {
+        if (isset($this->user_id)) {
+            if (static::isEmailTaken($this->email, $this->user_id)) {
                 $this->errors[] = 'User with the same email is already registered';
             }
         } elseif (static::emailExists($this->email)) {
@@ -156,7 +156,7 @@ class User extends \Core\Model
      * Check if there is another user with the same email address
      * 
      * @param string $email email address to search for
-     * @param int $id Current user's id
+     * @param int $user_id Current user's id
      * 
      * @return mixed User object if found, false otherwise
      */
@@ -373,7 +373,7 @@ class User extends \Core\Model
     {
         $sql = 'SELECT * FROM `users` 
                 INNER JOIN `borrows`
-                ON `users`.`user_id` = `users`.`user_id`
+                ON `borrows`.`user_id` = `users`.`user_id`
                 INNER JOIN `books`
                 ON `borrows`.`book_id` = `books`.`book_id`
                 INNER JOIN `authors`
@@ -417,13 +417,12 @@ class User extends \Core\Model
     }
 
     /**
-     * Checks how many books were borrowed
+     * Returns readers information
      *  
-     * @return int The number of books already taken by the user
+     * @return array The number of books already taken by the user
      */
-    public function  getAllReaders()
+    public function  getReadersData()
     {
-        // // name surname email borrowed
         $sql = "SELECT * FROM `users` 
                 INNER JOIN `borrows`
                 ON `users`.`user_id` = `borrows`.`user_id`
@@ -437,9 +436,10 @@ class User extends \Core\Model
         $db = static::getDB();
 
         $stmt = $db->prepare($sql);
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $stmt->setFetchMode(PDO::FETCH_NAMED);
         $stmt->execute();
+        $result = $stmt->fetchAll();
 
-        return $stmt->fetchAll();
+        return $result;
     }
 }

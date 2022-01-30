@@ -4,8 +4,8 @@
 
 CREATE TABLE `authors` (
   `author_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `author_name` varchar(64) DEFAULT '',
-  `author_surname` varchar(64) DEFAULT '',
+  `name` varchar(64) DEFAULT '',
+  `surname` varchar(64) DEFAULT '',
   PRIMARY KEY (`author_id`)
 ) DEFAULT CHARSET=utf8mb4;
 
@@ -13,7 +13,7 @@ CREATE TABLE `authors` (
 -- Sample data for table `authors`
 -- 
 
-INSERT INTO `authors` (`author_id`, `author_name`, `author_surname`) VALUES 
+INSERT INTO `authors` (`author_id`, `name`, `surname`) VALUES 
 (1, 'Alexandre', 'Dumas'),
 (2, 'Jules', 'Verne'),
 (3, 'Robert Louis', 'Stevenson'),

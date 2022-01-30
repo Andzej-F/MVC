@@ -163,17 +163,18 @@ class Profile extends \Core\Controller
 
         $librarian = Auth::getUser();
 
-        $readers = $librarian->getAllReaders();
+        $results = $librarian->getReadersData();
 
-        echo '<pre>';
-        print_r($readers);
-        echo '</pre>';
+        // echo '<pre>';
+        // print_r($results);
+        // echo '</pre>';
+        // exit;
 
         View::renderTemplate(
             'Librarians/index.html',
             [
                 'librarian' => $librarian,
-                'readers' => $readers
+                'results' => $results
             ]
         );
     }

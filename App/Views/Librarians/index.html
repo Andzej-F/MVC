@@ -18,7 +18,6 @@
 
     <dt class="col-sm-5">Email</dt>
     <dd class="col-sm-5">{{ librarian.email }}</dd>
-
 </dl>
 
 <h2>Readers</h2>
@@ -36,19 +35,19 @@
     </thead>
     <tbody>
 
-        {% if readers %}
-        {% for reader in readers %}
+        {% if results %}
+        {% for result in results %}
         <tr class="table-secondary">
-            <td class="table-secondary"> {{ reader.name }} {{ reader.surname }}</td>
-            <td class="table-secondary">{{ reader.email }}</td>
-            <td class="table-secondary">{{ reader.title }}</td>
-            <td class="table-secondary">{{ reader.author_name }} {{ reader.author_surname }}</td>
-            <td class="table-secondary">{{ reader.borrow_date }}</td>
-            <td class="table-secondary">{{ reader.return_date }}</td>
+            <td class="table-secondary"> {{ result.name.0 }} {{ result.surname.0 }}</td>
+            <td class="table-secondary">{{ result.email }}</td>
+            <td class="table-secondary">{{ result.title }}</td>
+            <td class="table-secondary">{{ result.name.1 }} {{ result.surname.1 }}</td>
+            <td class="table-secondary">{{ result.borrow_date }}</td>
+            <td class="table-secondary">{{ result.return_date }}</td>
         </tr>
         {% endfor %}
         {% endif %}
     </tbody>
 </table>
-
+{{ pagination_links|raw }}
 {% endblock %}
