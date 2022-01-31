@@ -1,4 +1,5 @@
 # lbm2
+
 <a>https://www.librarymirage.site/</a>
 
 "Library Mirage" is a minimalistic library management application.
@@ -40,6 +41,17 @@
     <li>if I will come up with anything else, I will add it to the list &#128521</li>
 </ul>
 
-<hr><h3 style="text-align: center;">Database Design</h3>
+Database  Design           
+:-------------------------:
+![Database Design](https://user-images.githubusercontent.com/70884391/151834733-10f12f40-6b95-4132-aabb-cc431ad68e79.png) 
+Sample Data           
 
-![Database Design](https://user-images.githubusercontent.com/70884391/151789766-0a3f8249-6ea8-4f8c-a031-cd71aad54bbc.png)
+Authors table            |  Books table
+:-------------------------:|:-------------------------:
+![Authors Table](https://user-images.githubusercontent.com/70884391/151835179-879c12d4-063a-49f9-96b3-e03061b14f2d.png)|![Books Table](https://user-images.githubusercontent.com/70884391/151837554-f14923c6-9ab1-4c1e-aeb3-eddb0fed75ff.png)
+
+
+Users table            |  Borrows table
+:-------------------------:|:-------------------------:
+![Users Table](https://user-images.githubusercontent.com/70884391/151835824-b9aa51b6-8daf-48f2-9d65-ac473fd599a5.png)|![Borrows Table](https://user-images.githubusercontent.com/70884391/151837148-507ac06c-bdbb-4c10-9e2a-ae10b129ffff.png)
+
