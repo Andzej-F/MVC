@@ -13,24 +13,22 @@
     <li><b>Twig</b> template for outputting HTML</li>
     <li>input <b>validation</b></li>
     <li>result <b>sorting</b></li>
-    <li><b>search</b> "book" option</li>
+    <li><b>search</b> "book or author" option</li>
     <li>user <b>registration</b> option, currently available for "readers". Registered
         readers can:
         <ul>
             <li><b>manage</b> their accounts(CRUD operations)</li>
+            <li><b>borrow and return</b> books</li>
         </ul>
     </li>
     <li><b>login</b> available for both "librarians" and "readers"</li>
     <li><b>logged in</b> "librarians" have the following functionality:
         <ul>
             <li> <b>manage</b> authors and books data (CRUD operations)</li>
+            <li><b>view users data:</b> name, surname, email, borrowed books, borrow and return dates</li>
         </ul>
     </li>
     <li><b>pagination</b></li>
-    <li><b>user:</b> borrow and return books functionality</li>
-    <li><b>librarian:</b> on profile page view list of users and their data:<br>
-        (name, surname, email, borrowed books, borrow and return dates)
-    </li>
 </ul>
 <br>
 <h3>Upcoming features:</h3>
@@ -41,3 +39,7 @@
     <li>email <b>notification</b></li>
     <li>if I will come up with anything else, I will add it to the list &#128521</li>
 </ul>
+
+<hr><h3 style="text-align: center;">Database Design</h3>
+
+![Database Design](https://user-images.githubusercontent.com/70884391/151789766-0a3f8249-6ea8-4f8c-a031-cd71aad54bbc.png)
