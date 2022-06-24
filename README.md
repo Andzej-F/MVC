@@ -1,7 +1,5 @@
 # lbm2
 
-<a>https://www.librarymirage.site/</a>
-
 "Library Mirage" is a minimalistic library management application.
 
 <h3>Current project features:</h3>
